@@ -1,13 +1,15 @@
 const doctor = require('../models/doctor.js')
 
-function indexRoute(req, res, next) {
-  Doctor
+function indexRoute(res) {
+  doctor
     .find()
     .exec()
-    .then(doctors => res.json(doctors))
-    .catch(next)
+    .populate('user')
+    .then(doctors => res.status(200).json(doctors))
+    .catch(err => console.log(err))
+  // or err => res.json(err)
 }
 
 module.exports = {
-  index: indexRoute
+  indexRoute
 }
