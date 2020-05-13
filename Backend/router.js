@@ -8,13 +8,13 @@ const doctors = require('./controllers/doctors')
 // ************************ doctors ************************
 
 router.route('/doctors')
-  .get(secureRoute, doctors.indexRoute)
+  .get(doctors.indexRoute)
 
-router.route('/doctorcalendar/:id')
+// router.route('/doctorcalendar/:id')
   //.get(secureRoute, doctors.indexRoute)
   //appointment requests
-  .put(secureRoute, doctors.update)
-  .delete(secureRoute, doctors.remove)
+  // .put(secureRoute, doctors.update)
+  // .delete(secureRoute, doctors.remove)
 
 // ************************ appointments? ************************
 

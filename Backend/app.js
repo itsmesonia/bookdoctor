@@ -15,6 +15,7 @@ mongoose.connect(dbURI,
   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
   () => console.log('Mongo is connected'))
 
+
 const app = express()
 
 // ************************ middlewhere ************************
@@ -23,8 +24,8 @@ app.use(bodyParser.json())
 
 app.use((req, res, next) => {
   console.log(`${req.method} to ${req.url}`)
-  res.header('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+  // res.header('Access-Control-Allow-Origin', '*')
+  // res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
   next()
 })
 
@@ -33,36 +34,36 @@ app.use((req, res, next) => {
 
 app.use('/api', router)
 
-app.use(errorHandler)
+// app.use(errorHandler)
 
-app.use(express.static('dist'))
+// app.use(express.static('dist'))
 
-app.get([
-  '/',
-  '/doctorcalendar',
-  '/doctors',
-  '/dashboard',
-  '/about',
-  '/register',
-  '/login'
-], (req, res) => {
-  res.sendFile(path.resolve('dist', 'index.html'))
-})
+// app.get([
+//   '/',
+//   '/doctorcalendar',
+//   '/doctors',
+//   '/dashboard',
+//   '/about',
+//   '/register',
+//   '/login'
+// ], (req, res) => {
+//   res.sendFile(path.resolve('dist', 'index.html'))
+// })
 
-app.get('/notfound', (req, res) => {
-  res.status(404).sendFile(path.resolve('dist', 'index.html'))
-})
+// app.get('/notfound', (req, res) => {
+//   res.status(404).sendFile(path.resolve('dist', 'index.html'))
+// })
 
-app.use('/api/*', (req, res) => res.status(404).json({ message: 'Not Found' }))
+// app.use('/api/*', (req, res) => res.status(404).json({ message: 'Not Found' }))
 
-app.use('/*', (req, res) => {
-  res.redirect('/notfound')
-})
+// app.use('/*', (req, res) => {
+//   res.redirect('/notfound')
+// })
 
 // ************************ listen to the port ************************
 
 app.listen(port, () => console.log(`Up and running on port ${port}`))
 
 
-
+module.exports = app
 

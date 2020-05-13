@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
   }
 })
 
-userSchema.plugin(uniqueValidator)
+// userSchema.plugin(uniqueValidator)
 
 // setting a virtual field on the model, this only exists when a user is first created and is not 
 //saved to the database, the idea here is that we only need a 'passwordConfirmation' once, to check if 
