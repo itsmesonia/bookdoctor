@@ -10,6 +10,9 @@ const doctorFunc = require('./controllers/doctorFunc')
 router.route('/doctors')
   .get(doctorFunc.index)
 
+router.route('/doctors/:id')
+  .get(doctorFunc.show)
+
 // router.route('/doctorcalendar/:id')
   //.get(secureRoute, doctors.indexRoute)
   //appointment requests
