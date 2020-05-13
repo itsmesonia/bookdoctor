@@ -2,13 +2,13 @@ const router = require('express').Router()
 
 const secureRoute = require('./lib/secureRoute')
 const userFunc = require('./controllers/userFunc')
-const doctors = require('./controllers/doctors')
+const doctorFunc = require('./controllers/doctorFunc')
 
 
 // ************************ doctors ************************
 
 router.route('/doctors')
-  .get(doctors.indexRoute)
+  .get(doctorFunc.index)
 
 // router.route('/doctorcalendar/:id')
   //.get(secureRoute, doctors.indexRoute)

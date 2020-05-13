@@ -1,9 +1,9 @@
-const doctor = require('../models/doctor.js')
+const Doctor = require('../models/Doctor.js')
 
-function indexRoute(res) {
-  doctor
+function index(req, res) {
+  Doctor
     .find()
-    .exec()
+    // .exec()
     .populate('user')
     .then(doctors => res.status(200).json(doctors))
     .catch(err => console.log(err))
@@ -11,5 +11,5 @@ function indexRoute(res) {
 }
 
 module.exports = {
-  indexRoute
+  index
 }
