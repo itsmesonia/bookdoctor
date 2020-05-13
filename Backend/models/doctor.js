@@ -4,7 +4,7 @@ const uniqueValidatior = require('mongoose-unique-validator')
 const doctorSchema = new mongoose.Model({
   name: String,
   image: String,
-  expertise: [ String ],
+  expertise: String,
   gp: String
 })
 

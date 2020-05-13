@@ -2,7 +2,7 @@ const router = require('express').Router()
 
 const secureRoute = require('./lib/secureRoute')
 const userFunc = require('./controllers/userFunc')
-const doctors = require('./controllers/doctors.js')
+const doctors = require('./controllers/doctors')
 
 
 // ************************ doctors ************************
@@ -11,7 +11,7 @@ router.route('/doctors')
   .get(secureRoute, doctors.indexRoute)
 
 router.route('/doctorcalendar/:id')
-  .get(secureRoute, doctors.index)
+  //.get(secureRoute, doctors.indexRoute)
   //appointment requests
   .put(secureRoute, doctors.update)
   .delete(secureRoute, doctors.remove)

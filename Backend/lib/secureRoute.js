@@ -1,4 +1,4 @@
-const user = require('../models/user')
+const User = require('../models/User')
 const { secret } = require('../config/environment')
 const jwt = require('jsonwebtoken')
 
@@ -12,7 +12,7 @@ function secureRoute(req, res, next) {
   jwt.verify(token, secret, (err, payload) => {
     if (err) return res.status(401).json({ message: 'Unauthorised!!' })
 
-    user
+    User
       // the payload.sub is our user ID
       .findById(payload.sub)
       .then(user => {
