@@ -43,21 +43,21 @@ function ProductValues(props) {
   return (
     <section className={classes.root}>
       <Container className={classes.container}>
-        <img
-          src="/static/themes/onepirate/productCurvyLines.png"
+        {/* <img
+          src="https://i.imgur.com/CXFUK5z.png"
           className={classes.curvyLines}
           alt="curvy lines"
-        />
+        /> */}
         <Grid container spacing={5}>
           <Grid item xs={12} md={4}>
             <div className={classes.item}>
               <img
                 className={classes.image}
-                src="/static/themes/onepirate/productValues1.svg"
-                alt="suitcase"
+                src="https://i.imgur.com/xFXDCxp.png"
+                alt="doctor"
               />
               <Typography variant="h6" className={classes.title}>
-                The best luxury hotels
+                Connect With your GP
               </Typography>
               <Typography variant="h5">
                 {'From the latest trendy boutique hotel to the iconic palace with XXL pool'}
@@ -69,11 +69,11 @@ function ProductValues(props) {
             <div className={classes.item}>
               <img
                 className={classes.image}
-                src="/static/themes/onepirate/productValues2.svg"
+                src="https://i.imgur.com/VjuCZ8P.png"
                 alt="graph"
               />
               <Typography variant="h6" className={classes.title}>
-                New experiences
+                Contact Your GP
               </Typography>
               <Typography variant="h5">
                 {'Privatize a pool, take a Japanese bath or wake up in 900m2 of garden… '}
@@ -85,11 +85,11 @@ function ProductValues(props) {
             <div className={classes.item}>
               <img
                 className={classes.image}
-                src="/static/themes/onepirate/productValues3.svg"
+                src="https://i.imgur.com/fnM5qV4.png"
                 alt="clock"
               />
               <Typography variant="h6" className={classes.title}>
-                Exclusive rates
+                Track Your Health
               </Typography>
               <Typography variant="h5">
                 {'By registering, you will access specially negotiated rates '}

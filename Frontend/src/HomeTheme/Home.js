@@ -7,8 +7,8 @@ import AppFooter from './Modules/Views/AppFooter'
 import ProductHero from './Modules/Views/ProductHero'
 import ProductValues from './Modules/Views/ProductValues'
 import ProductHowItWorks from './Modules/Views/ProductHowItWorks'
-//import ProductCTA from './Modules/Views/ProductCTA'
-import AppAppBar from './Modules/Views/AppAppBar'
+import ProductCTA from './Modules/Views/ProductCTA'
+//import AppAppBar from './Modules/Views/AppAppBar'
 
 function Index() {
   return (
@@ -18,7 +18,7 @@ function Index() {
       <ProductValues />
       <ProductCategories />
       <ProductHowItWorks />
-      {/* <ProductCTA /> */}
+      <ProductCTA />
       <ProductSmokingHero />
       <AppFooter />
     </React.Fragment>
