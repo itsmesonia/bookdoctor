@@ -1,4 +1,9 @@
-const doctor = require('../models/doctor.js')
+// Controllers contain all our 'handler logic' for our routes. So their
+// job is essentially to use our models to perform CRUD operations
+// (create, read, update, delete), and then send an appropriate response
+// back to the client
+
+const doctor = require('../models/doctor')
 
 function indexRoute(res) {
   doctor
