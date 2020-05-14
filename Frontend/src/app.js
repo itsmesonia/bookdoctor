@@ -10,15 +10,14 @@ import Login from './components/Login'
 import NotFound from './components/NotFound'
 
 //pages
-import Home from './components/Home'
+import Home from './HomeTheme/Home'
 import About from './components/About'
 import Doctors from './components/Doctors'
-import DoctorCalendar from './components/DoctorCalendar'
+import CalendarPage from './components/CalendarPage'
 import Dashboard from './components/Dashboard'
 
-
 import 'bulma'
-import './style.css'
+//import './style.scss'
 
 
 const App = () => (
@@ -32,7 +31,7 @@ const App = () => (
       <Route path="/dashboard" component={Dashboard} />
 
       <Route path="/doctors" component={Doctors} />
-      <Route path="/doctorcalendar" component={DoctorCalendar} />
+      <Route path="/calendar" component={CalendarPage} />
 
 
       <Route exact path= '/notfound' component={NotFound} />    
