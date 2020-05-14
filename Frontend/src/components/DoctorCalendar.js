@@ -1,4 +1,4 @@
-//doctor indivisual page with calendar? 
+//doctor individual page with calendar? 
 
 import React from 'react'
 //import { Link } from 'react-router-dom'
