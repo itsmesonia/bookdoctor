@@ -3,9 +3,9 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 
 const { port, dbURI } = require('./config/environment')
-const path = require('path')
+// const path = require('path')
 
-const errorHandler = require('./lib/errorHandler')
+// const errorHandler = require('./lib/errorHandler')
 const router = require('./router')
 
 

@@ -30,9 +30,9 @@ function login(req, res) {
 
 
 function showUser(req, res) {
-  console.log(req.currentUser)
   User
     .findById({ _id: req.params.id })
+    .populate('appointment')
     .then(user => {
       if (!user) res.status(404).json({ message: 'User Not Found' })
       return res.status(200).json(user)
@@ -41,25 +41,12 @@ function showUser(req, res) {
 }
 
 
-// function userAddCalendar(req, res) {
-//   User
-//     .findById({ _id: req.params.id })
-//     .then(user => {
-//       if (!user.identity) {
-//         Appointment.create(req.body)
-//           .then(appointment => res.status(201).json(appointment))
-//           .catch(err => console.log(err))
-//       }
-//     })
-// }
-
 
 
 module.exports = {
   register,
   login,
   showUser
-  // userAddCalendar
 }
 // exporting each 'route handling' function, taking advantage of es6 object short hand, 
 //same as saying { login: login }
