@@ -31,7 +31,7 @@ userSchema.plugin(uniqueValidator)
 userSchema
   .virtual('passwordConfirmation')
   .set(function setPasswordConfirmation(passwordConfirmation) {
-    this._passwordConfirmation  = passwordConfirmation
+    this._passwordConfirmation = passwordConfirmation
   })
 
 // When we ask our model to create a new user (this happens in /controllers/user in the register function, 
