@@ -15,13 +15,13 @@ const Navbar = () => {
   }
 
   return (
-    <div className="navbar has-background-black">
+    <div className="navbar is-transparent">
       {/* <div className="container"> */}
       <div className="navbar-brand">
         <Link className="navbar-item" to="/">
           <img className="logo" src=''/></Link>
 
-        <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" onClick={clickBurger}>
+        <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarExampleTransparentExample" onClick={clickBurger}>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
@@ -29,7 +29,7 @@ const Navbar = () => {
 
       </div>
       <div className="navbar-menu is-active">
-        <div id="navbarBasicExample" className={navClassName}>
+        <div id="navbarExampleTransparentExample" className={navClassName}>
 
           <div className="navbar-end">
             <div className="navbar-item">

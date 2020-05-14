@@ -10,12 +10,11 @@ import Login from './components/Login'
 import NotFound from './components/NotFound'
 
 //pages
-import Home from './components/Home'
+import Home from './HomeTheme/Home'
 import About from './components/About'
 import Doctors from './components/Doctors'
 import CalendarPage from './components/CalendarPage'
 import Dashboard from './components/Dashboard'
-
 
 import 'bulma'
 //import './style.scss'
