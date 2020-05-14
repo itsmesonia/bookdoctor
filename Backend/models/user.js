@@ -3,18 +3,19 @@ const bcrypt = require('bcrypt') // our library used to hash our users passwords
 const uniqueValidator = require('mongoose-unique-validator')
 
 
+
 const userSchema = new mongoose.Schema({ 
-  username: { type: String, required: true, unique: true }, 
+  patientname: { type: String, required: true, unique: true }, 
   email: { type: String, required: true },
-  password: { type: String, required: true  }
+  password: { type: String, required: true  },
+  appointments: { type: [String] }
 }, {
   timestamps: true, 
   toJSON: { 
     transform(doc, json) {
       return { 
-        username: json.username,
-        id: json._id,
-        likes: json.likes 
+        username: json.patientname,
+        id: json._id
       }
     }
   }
@@ -64,4 +65,6 @@ userSchema
 userSchema.methods.validatePassword = function validatePassword(password) {// our own methods attached to our user model to validate if a password is correct at login.
   return bcrypt.compareSync(password, this.password) // bcyrpt hashes the password our user is trying to login with the same it hashed the one stored in the DB when they registered, it then compares them for us to see if they match, and returns true or false depending on the outcome
 }
+
+
 module.exports = mongoose.model('User', userSchema) //exporting our models, with all its new methods and functiionality to be used in the user controller. see /controllers/user.js
