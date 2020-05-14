@@ -1,5 +1,6 @@
 const router = require('express').Router()
 
+const userControl = require('./lib/userContorl')
 const secureRoute = require('./lib/secureRoute')
 const userFunc = require('./controllers/userFunc')
 const doctorFunc = require('./controllers/doctorFunc')
@@ -31,6 +32,12 @@ router.route('/register')
 router.route('/login')
   .post(userFunc.login)
 
+
+router.route('/user/:id')
+  .get(secureRoute, userControl('doctor'), userFunc.showUser)
+
+// router.route('/test')
+//   .post(userFunc.userAddCalendar)
 
 
 // ************************ dashboard ************************

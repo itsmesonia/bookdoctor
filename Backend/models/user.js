@@ -3,19 +3,37 @@ const bcrypt = require('bcrypt') // our library used to hash our users passwords
 const uniqueValidator = require('mongoose-unique-validator')
 
 
+const Schema = mongoose.Schema
+
 
 const userSchema = new mongoose.Schema({ 
-  patientname: { type: String, required: true, unique: true }, 
+  username: { type: String, required: true, unique: true }, 
   email: { type: String, required: true },
   password: { type: String, required: true  },
-  appointments: { type: [String] }
+  role: {
+    type: String,
+    enum: ['doctor', 'patient', 'admin']
+    // default: 'patient'
+  },
+  // this column is not require as the user might be a patient
+  expertise: { type: String },
+  // same reason here
+  clinic: { type: String },
+  appointment: {
+    type: [Schema.Types.ObjectId],
+    ref: 'Appointment'
+  }
 }, {
   timestamps: true, 
   toJSON: { 
     transform(doc, json) {
-      return { 
-        username: json.patientname,
-        id: json._id
+      return {
+        username: json.username,
+        id: json._id,
+        role: json.role,
+        expertise: json.expertise,
+        clinic: json.clinic,
+        appointment: json.appointment
       }
     }
   }
