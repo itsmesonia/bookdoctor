@@ -22,6 +22,10 @@ const userSchema = new Schema({
   appointment: [{
     type: Schema.Types.ObjectId,
     ref: 'Appointment'
+  }],
+  history: [{
+    type: Schema.Types.ObjectId,
+    ref: 'History'
   }]
 }, {
   timestamps: true, 

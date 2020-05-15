@@ -24,6 +24,7 @@ function create(req, res) {
     .catch(err => res.json(err))
 }
 
+
 function index(req, res) {
   Appointment
     .find()
