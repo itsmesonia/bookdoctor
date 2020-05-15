@@ -57,7 +57,7 @@ function index(req, res) {
 
 
 // version 2.0
-function show(req, res) {
+function showAppointment(req, res) {
 // find the current user's appointments from the appointment collection
   Appointment
     .find({ user: req.currentUser._id })
@@ -80,5 +80,5 @@ module.exports = {
   register,
   login,
   index,
-  show
+  showAppointment
 }

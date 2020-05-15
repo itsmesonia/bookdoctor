@@ -40,7 +40,7 @@ router.route('/user')
 
 
 router.route('/user/:id')
-  .get(secureRoute, userFunc.show)
+  .get(secureRoute, userFunc.showAppointment)
 
 
 
