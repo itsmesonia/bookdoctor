@@ -11,6 +11,17 @@ function create(req, res) {
 }
 
 
+function create(req, res) {
+  History.create(req.body)
+    .then(history => {
+      return User.findOneAndUpdate({ _id: req.currentUser._id }, { $push: { appointment: history._id } }, { new: true })
+    })
+    .then(history => {
+      return res.status(201).json(history)
+    })
+    .catch(err => res.json(err))
+}
+
 
 module.exports = {
   create

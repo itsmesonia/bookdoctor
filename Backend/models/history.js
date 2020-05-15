@@ -7,8 +7,8 @@ const Schema = mongoose.Schema
 const historySchema = new Schema({
   date: { type: String, required: true },
   content: { type: String, required: true },
-  patient: { type: String, require: true },
-  user: { type: Schema.Types.ObjectId, ref: 'User', required: true }
+  patient: { type: String, require: true }
+  // user: { type: Schema.Types.ObjectId, ref: 'User', required: true }
 })
 
 
