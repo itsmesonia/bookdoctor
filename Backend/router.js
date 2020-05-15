@@ -3,17 +3,16 @@ const router = require('express').Router()
 const userControl = require('./lib/userContorl')
 const secureRoute = require('./lib/secureRoute')
 const userFunc = require('./controllers/userFunc')
-const doctorFunc = require('./controllers/doctorFunc')
 const appointmentFunc =  require('./controllers/appointmentFunc')
 
 
 // ************************ doctors ************************
 
-router.route('/doctors')
-  .get(doctorFunc.index)
+// router.route('/doctors')
+//   .get(doctorFunc.index)
 
-router.route('/doctors/:id')
-  .get(doctorFunc.show)
+// router.route('/doctors/:id')
+//   .get(doctorFunc.show)
 
   
 
@@ -21,6 +20,9 @@ router.route('/doctors/:id')
 router.route('/appointment')
   .post(secureRoute, userControl('patient'), appointmentFunc.create)
   .get(appointmentFunc.index)
+
+router.route('/appointment/:id')
+  .get(appointmentFunc.show)
 
 
 
@@ -33,9 +35,12 @@ router.route('/register')
 router.route('/login')
   .post(userFunc.login)
 
+router.route('/user')
+  .get(secureRoute, userFunc.index)
+
 
 router.route('/user/:id')
-  .get(userFunc.showUser)
+  .get(secureRoute, userFunc.show)
 
 
 
