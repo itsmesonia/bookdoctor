@@ -1,4 +1,5 @@
-const History = require('../models/history')
+const History = require('../models/History')
+const User = require('../models/User')
 
 
 // function create(req, res) {
