@@ -1,5 +1,5 @@
 const User = require('../models/User')
-const Appointment = require('../models/Appointment')
+// const Appointment = require('../models/Appointment')
 const jwt = require('jsonwebtoken')
 const { secret } = require('../config/environment')
 const mongoose = require('mongoose')
@@ -44,34 +44,37 @@ function index(req, res) {
 
 
 // version 1
-// function show(req, res) {
-//   User
-//     .findById({ _id: req.params.id })
-//     .populate('appointment')
-//     .then(user => {
-//       if (!user) res.status(404).json({ message: 'User Not Found' })
-//       return res.status(200).json(user)
-//     })
-//     .catch(err => console.log(err))
-// }
+function show(req, res) {
+  User
+    .findById(req.params.id)
+    // ..and populate all of the appointment associated with it
+    .populate('appointment')
+    .then(user => {
+      if (!user) res.status(404).json({ message: 'User Not Found' })
+      return res.status(200).json(user)
+    })
+    .catch(err => console.log(err))
+}
+
+
 
 
 // version 2.0
-function showAppointment(req, res) {
-// find the current user's appointments from the appointment collection
-  Appointment
-    .find({ user: req.currentUser._id })
-    // then filter the user which the user id matches from our url
-    // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
-    .then(appointment => {
-      return User.findOneAndUpdate({ _id: req.params.id }, { appointment: appointment }, { new: true })
-    })
-    .then(user => {
-      if (!user) res.status(404).jason({ message: 'User Not Found' })
-      return res.status(200).json(user)
-    })
-    .catch(err => res.json(err))
-}
+// function showAppointment(req, res) {
+// // find the current user's appointments from the appointment collection
+//   Appointment
+//     .find({ user: req.currentUser._id })
+//     // then filter the user which the user id matches from our url
+//     // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
+//     .then(appointment => {
+//       return User.findOneAndUpdate({ _id: req.params.id }, { appointment: appointment }, { new: true })
+//     })
+//     .then(user => {
+//       if (!user) res.status(404).jason({ message: 'User Not Found' })
+//       return res.status(200).json(user)
+//     })
+//     .catch(err => res.json(err))
+// }
 
 
 
@@ -80,5 +83,5 @@ module.exports = {
   register,
   login,
   index,
-  showAppointment
+  show
 }

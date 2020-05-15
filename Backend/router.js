@@ -4,6 +4,7 @@ const userControl = require('./lib/userContorl')
 const secureRoute = require('./lib/secureRoute')
 const userFunc = require('./controllers/userFunc')
 const appointmentFunc =  require('./controllers/appointmentFunc')
+const historyFunc = require('./controllers/historyFunc')
 
 
 // ************************ doctors ************************
@@ -16,13 +17,27 @@ const appointmentFunc =  require('./controllers/appointmentFunc')
 
   
 
-// ************************ appointments? ************************
+// ************************ appointments ************************
 router.route('/appointment')
   .post(secureRoute, userControl('patient'), appointmentFunc.create)
   .get(appointmentFunc.index)
 
+
+router.route('/appointment/doc')
+  .get(secureRoute, userControl('doctor'), appointmentFunc.doctorAppointment)
+
+  
+
 router.route('/appointment/:id')
   .get(appointmentFunc.show)
+
+
+
+
+// ************************ history ************************
+router.route('/history')
+  .post(secureRoute, userControl('doctor'), historyFunc.create)
+
 
 
 
@@ -40,15 +55,9 @@ router.route('/user')
 
 
 router.route('/user/:id')
-  .get(secureRoute, userFunc.showAppointment)
+  .get(secureRoute, userFunc.show)
 
 
-
-// ************************ dashboard ************************
-
-//router.route('/dashboard/:userId')
-// .get(secureRoute, userFunc.prescription)
-//.put(secureRoute, userFunc.updateprescription)
 
 
 

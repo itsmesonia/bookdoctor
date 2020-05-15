@@ -19,10 +19,10 @@ const userSchema = new Schema({
   expertise: { type: String },
   // same reason here
   clinic: { type: String },
-  appointment: {
-    type: [Schema.Types.ObjectId],
+  appointment: [{
+    type: Schema.Types.ObjectId,
     ref: 'Appointment'
-  }
+  }]
 }, {
   timestamps: true, 
   toJSON: { 
