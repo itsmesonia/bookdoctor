@@ -7,20 +7,12 @@ const appointmentFunc =  require('./controllers/appointmentFunc')
 const historyFunc = require('./controllers/historyFunc')
 
 
-// ************************ doctors ************************
 
-// router.route('/doctors')
-//   .get(doctorFunc.index)
-
-// router.route('/doctors/:id')
-//   .get(doctorFunc.show)
-
-  
 
 // ************************ appointments ************************
 router.route('/appointment')
   .post(secureRoute, userControl('patient'), appointmentFunc.create)
-  .get(appointmentFunc.index)
+  .get(secureRoute, appointmentFunc.index)
 
 
 router.route('/appointment/doc')
@@ -28,8 +20,8 @@ router.route('/appointment/doc')
 
 
 router.route('/appointment/:id')
-  .delete(appointmentFunc.remove)
-  .get(appointmentFunc.show)
+  .delete(secureRoute, appointmentFunc.remove)
+  .get(secureRoute, appointmentFunc.show)
 
 
 
@@ -37,12 +29,12 @@ router.route('/appointment/:id')
 // ************************ history ************************
 router.route('/history')
   .post(secureRoute, userControl('doctor'), historyFunc.create)
-  .get(historyFunc.index)
+  .get(secureRoute, historyFunc.index)
 
 
 router.route('/history/:id')
-  .get(historyFunc.show)
-  .delete(historyFunc.remove)
+  .get(secureRoute, historyFunc.show)
+  .delete(secureRoute, userControl('doctor'), historyFunc.remove)
 
 
 
@@ -54,13 +46,14 @@ router.route('/register')
 router.route('/login')
   .post(userFunc.login)
 
+
 router.route('/user')
   .get(secureRoute, userFunc.index)
 
 
 router.route('/user/:id')
   .get(secureRoute, userFunc.show)
-
+  
 
 
 
