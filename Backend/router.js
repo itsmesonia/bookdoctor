@@ -26,11 +26,10 @@ router.route('/appointment')
 router.route('/appointment/doc')
   .get(secureRoute, userControl('doctor'), appointmentFunc.doctorAppointment)
 
-  
 
 router.route('/appointment/:id')
-  .delete(appointmentFunc.test)
-  // .delete(appointmentFunc.remove)
+  .delete(appointmentFunc.remove)
+  .get(appointmentFunc.show)
 
 
 
@@ -40,8 +39,10 @@ router.route('/history')
   .post(secureRoute, userControl('doctor'), historyFunc.create)
   .get(historyFunc.index)
 
+
 router.route('/history/:id')
   .get(historyFunc.show)
+  .delete(historyFunc.remove)
 
 
 

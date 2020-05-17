@@ -47,8 +47,27 @@ function show(req, res) {
 
 
 
+function remove(req, res) {
+  History
+    .findById(req.params.id)
+    .then(history => {
+      if (!history) return res.status(404).json({ message: 'Patient history not found' })
+      return history.remove()
+    })
+
+  User
+    .findOneAndUpdate({ history: req.params.id }, { $pull: { history: req.params.id } }, { new: true }).exec()
+    .then(user => {
+      return res.status(200).json(user)
+    })
+    .catch(err => res.json(err))
+}
+
+
+
 module.exports = {
   create,
   index,
-  show
+  show,
+  remove
 }
