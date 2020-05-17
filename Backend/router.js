@@ -29,7 +29,8 @@ router.route('/appointment/doc')
   
 
 router.route('/appointment/:id')
-  .get(appointmentFunc.show)
+  .get(appointmentFunc.test)
+  .delete(appointmentFunc.remove)
 
 
 

@@ -2,7 +2,7 @@ const Appointment = require('../models/Appointment')
 const User = require('../models/User')
 
 function create(req, res) {
-  // req.body.user = req.currentUser
+  req.body.user = req.currentUser
   const appoint = Appointment.findOne({ date: req.body.date, doctor: req.body.doctor }).exec()
   appoint
     .then(function(appointmentItem) {
@@ -10,79 +10,28 @@ function create(req, res) {
         console.log('Appointment available')
         Appointment
           .create(req.body)
-          .then(appointment => {
-            return User.findOneAndUpdate({ _id: req.currentUser._id }, { $push: { appointment: appointment } }, { new: true })
+          .then(async function(appointment) {
+            try {
+              let promise1 = User.findOneAndUpdate({ _id: req.currentUser._id }, { $push: { appointment: appointment } }, { new: true })
+              let promise2 = User.findOneAndUpdate({ username: req.body.doctor }, { $push: { appointment: appointment } }, { new: true })
+              let result = await Promise.all([promise1, promise2])
+              return res.status(200).json(appointment)
+            } catch (err) {
+              console.log(err)
+            }
           })
-          // and push it to doctor's appointment as well
-          .then(appointment => {
-            return User.findOneAndUpdate({ username: req.body.doctor }, { $addToSet: { appointment: appointment } }, { new: true })
-          })
-          .then(appointment => {
-            return res.status(200).json(appointment)
-          })
+          // That particular error occurs whenever you try to send more than one response to the same request and is usually caused by improper asynchronous code.
+          // .then(appointment => {
+          //   return res.status(200).json(appointment)
+          // })
           .catch(err => res.json(err))
       } else {
-        console.log('has booked')
+        console.log('Time not available')
         return res.status(406).json({ message: 'This time is not available' })
       }
     })
-    // .then(console.log('hoe to make this line await?'))
 }
 
-
-
-// function create(req, res) {
-//   // req.body.user = req.currentUser
-//   Appointment
-//     .findOne({ date: req.body.date, doctor: req.body.doctor }, function(err, appointmentItem) {
-//       if (err) {
-//         console.log(err)
-//         return false
-//       }
-//       if (!appointmentItem) {
-//         console.log('No exsit appointment found')
-//         Appointment
-//           .create(req.body)
-//           .then(appointment => {
-//             return res.status(200).json(appointment)
-//           })
-
-//       } else {
-//         console.log('This time is not available')
-//         return res.status(500).json({ message: 'This time is not available' })
-//       }
-//       return true
-//     })
-//     // .then(appointment => {
-//     //   return User.findOneAndUpdate({ _id: req.currentUser._id }, { $push: { appointment: appointment } }, { new: true })
-//     // })
-//     // // and push it to doctor's appointment as well
-//     // .then(appointment => {
-//     //   return User.findOneAndUpdate({ username: req.body.doctor }, { $addToSet: { appointment: appointment } }, { new: true })
-//     // })
-//     // .then(appointment => {
-//     //   return res.status(201).json(appointment)
-//     // })
-//     // .catch(err => res.json(err))
-
-// }
-
-// function create(req, res) {
-//   Appointment.create(req.body)
-//     // If a appointment was created successfully, find one User with an `_id` equal to current user id. Update the User to be associated with the new appointment
-//     // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
-//     .then(appointment => {
-//       return User.findOneAndUpdate({ _id: req.currentUser._id }, { $push: { appointment: appointment } }, { new: true })
-//     })
-//     // and push it to doctor's appointment as well
-//     .then(appointment => {
-//       return User.findOneAndUpdate({ username: req.body.doctor }, { $addToSet: { appointment: appointment } }, { new: true })
-//     })
-//     .then(appointment => {
-//       return res.status(201).json(appointment)
-//     })
-//     .catch(err => res.json(err))
-// }
 
 
 function index(req, res) {
@@ -91,6 +40,7 @@ function index(req, res) {
     .then(appointment => res.status(200).json(appointment))
     .catch(err => res.json(err))
 }
+
 
 function show(req, res) {
   Appointment
@@ -113,6 +63,35 @@ function doctorAppointment(req, res) {
 }
 
 
+function remove(req, res) {
+  Appointment
+    .findById(req.params.id)
+    .then(appointment => {
+      if (!appointment) return res.status(404).json({ message: 'appointment not found' })
+      User
+        .then(async appointment => {
+          try {
+            let promise1 = User.findById({ appointment: req.params._id })
+            return res.status(200).json(appointment)
+          } catch (err) {
+            console.log(err)
+          }
+        })
+      // return appointment.remove()
+    })
+    .then(() => res.status(200).json({ message: 'appointment removed' }))
+    .catch(err => res.json(err))
+}
+
+
+function test(req, res) {
+  User
+    .find({ appointment: req.params.id })
+    .then(user => {
+      return res.status(200).json(user)
+    })
+
+}
 
 
 
@@ -122,5 +101,7 @@ module.exports = {
   create,
   index,
   show,
-  doctorAppointment
+  doctorAppointment,
+  remove,
+  test
 }
