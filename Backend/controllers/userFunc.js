@@ -49,6 +49,7 @@ function show(req, res) {
     .findById(req.params.id)
     // ..and populate all of the appointment associated with it
     .populate('appointment')
+    .populate('history')
     .then(user => {
       if (!user) res.status(404).json({ message: 'User Not Found' })
       return res.status(200).json(user)

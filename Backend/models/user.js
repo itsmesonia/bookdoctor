@@ -37,7 +37,8 @@ const userSchema = new Schema({
         role: json.role,
         expertise: json.expertise,
         clinic: json.clinic,
-        appointment: json.appointment
+        appointment: json.appointment,
+        history: json.history
       }
     }
   }

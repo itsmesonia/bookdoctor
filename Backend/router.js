@@ -37,8 +37,10 @@ router.route('/appointment/:id')
 // ************************ history ************************
 router.route('/history')
   .post(secureRoute, userControl('doctor'), historyFunc.create)
+  .get(historyFunc.index)
 
-
+router.route('/history/:id')
+  .get(historyFunc.show)
 
 
 
