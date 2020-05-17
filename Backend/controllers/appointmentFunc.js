@@ -68,16 +68,7 @@ function remove(req, res) {
     .findById(req.params.id)
     .then(appointment => {
       if (!appointment) return res.status(404).json({ message: 'appointment not found' })
-      User
-        .then(async appointment => {
-          try {
-            let promise1 = User.findById({ appointment: req.params._id })
-            return res.status(200).json(appointment)
-          } catch (err) {
-            console.log(err)
-          }
-        })
-      // return appointment.remove()
+      return appointment.remove()
     })
     .then(() => res.status(200).json({ message: 'appointment removed' }))
     .catch(err => res.json(err))
@@ -85,10 +76,25 @@ function remove(req, res) {
 
 
 function test(req, res) {
-  User
-    .find({ appointment: req.params.id })
-    .then(user => {
-      return res.status(200).json(user)
+  Appointment
+    .findById(req.params.id)
+    .then(appointment => {
+      if (!appointment) return res.status(404).json({ message: 'appointment not found' })
+      return appointment.remove()
+    })
+
+  const allUser = User.find({ appointment: req.params.id }).exec()
+  allUser
+    .then(async user => {
+      if (!user) return res.status(404).json({ message: 'Appointment does not exist, cannot be deleted' })
+      try {
+        let promise1 = User.findOneAndUpdate({ appointment: req.params.id, role: 'doctor' }, { $pull: { appointment: req.params.id } }, { new: true })
+        let promise2 = User.findOneAndUpdate({ appointment: req.params.id, role: 'patient' }, { $pull: { appointment: req.params.id } }, { new: true })
+        let result = await Promise.all([promise1, promise2])
+        return res.status(200).json({ message: 'Appointment deleted!' })
+      } catch (err) {
+        console.log(err)
+      }
     })
 
 }
