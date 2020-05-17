@@ -32,6 +32,9 @@ router.route('/history')
   .get(secureRoute, historyFunc.index)
 
 
+router.route('/history/patient')
+  .get(secureRoute, userControl('patient'), historyFunc.patientHistory)
+
 router.route('/history/:id')
   .get(secureRoute, historyFunc.show)
   .delete(secureRoute, userControl('doctor'), historyFunc.remove)

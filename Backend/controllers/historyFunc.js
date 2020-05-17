@@ -46,6 +46,15 @@ function show(req, res) {
 }
 
 
+function patientHistory(req, res) {
+  History
+    .find({ patient: req.currentUser.username })
+    .then(history => {
+      return res.status(200).json(history)
+    })
+}
+
+
 
 function remove(req, res) {
   History
@@ -69,5 +78,6 @@ module.exports = {
   create,
   index,
   show,
-  remove
+  remove,
+  patientHistory
 }
