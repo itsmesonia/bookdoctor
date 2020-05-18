@@ -1,57 +1,64 @@
+import 'date-fns'
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import Input from '@material-ui/core/Input'
-import InputLabel from '@material-ui/core/InputLabel'
-import InputAdornment from '@material-ui/core/InputAdornment'
-import FormControl from '@material-ui/core/FormControl'
-import TextField from '@material-ui/core/TextField'
 import Grid from '@material-ui/core/Grid'
-import AccountCircle from '@material-ui/icons/AccountCircle'
+import DateFnsUtils from '@date-io/date-fns'
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker,
+} from '@material-ui/pickers'
 
-const useStyles = makeStyles((theme) => ({
-  margin: {
-    margin: theme.spacing(1),
-  },
-}))
+import SelectDoc from './SelectDoc'
 
-export default function InputWithIcon() {
-  const classes = useStyles()
+export default function MaterialUIPickers() {
+  // The first commit of Material-UI
+  const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'))
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date)
+  }
 
   return (
-    <div>
-      <FormControl className={classes.margin}>
-        <InputLabel htmlFor="input-with-icon-adornment">With a start adornment</InputLabel>
-        <Input
-          id="input-with-icon-adornment"
-          startAdornment={
-            <InputAdornment position="start">
-              <AccountCircle />
-            </InputAdornment>
-          }
+    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+      <Grid container justify="space-around">
+        {/* <KeyboardDatePicker
+          disableToolbar
+          variant="inline"
+          format="MM/dd/yyyy"
+          margin="normal"
+          id="date-picker-inline"
+          label="Date picker inline"
+          value={selectedDate}
+          onChange={handleDateChange}
+          KeyboardButtonProps={{
+            'aria-label': 'change date',
+          }} 
+        />  */}
+        
+        <SelectDoc />
+        
+        <KeyboardDatePicker
+          margin="normal"
+          id="date-picker-dialog"
+          label="Date picker dialog"
+          format="MM/dd/yyyy"
+          value={selectedDate}
+          onChange={handleDateChange}
+          KeyboardButtonProps={{
+            'aria-label': 'change date',
+          }}
         />
-      </FormControl>
-      <TextField
-        className={classes.margin}
-        id="input-with-icon-textfield"
-        label="TextField"
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <AccountCircle />
-            </InputAdornment>
-          ),
-        }}
-      />
-      <div className={classes.margin}>
-        <Grid container spacing={1} alignItems="flex-end">
-          <Grid item>
-            <AccountCircle />
-          </Grid>
-          <Grid item>
-            <TextField id="input-with-icon-grid" label="With a grid" />
-          </Grid>
-        </Grid>
-      </div>
-    </div>
+        <KeyboardTimePicker
+          margin="normal"
+          id="time-picker"
+          label="Time picker"
+          value={selectedDate}
+          onChange={handleDateChange}
+          KeyboardButtonProps={{
+            'aria-label': 'change time',
+          }}
+        />
+      </Grid>
+    </MuiPickersUtilsProvider>
   )
 }
