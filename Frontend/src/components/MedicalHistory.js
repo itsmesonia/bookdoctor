@@ -32,11 +32,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function Orders() {
+export default function MedicalHistory() {
   const classes = useStyles()
   return (
     <React.Fragment>
-      <Title>Recent Prescriptions</Title>
+      <Title>Medical History</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
@@ -61,7 +61,7 @@ export default function Orders() {
       </Table>
       <div className={classes.seeMore}>
         <Link color="primary" href="#" onClick={preventDefault}>
-          See more prescriptions
+          See more history
         </Link>
       </div>
     </React.Fragment>

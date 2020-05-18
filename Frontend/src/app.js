@@ -7,13 +7,14 @@ import ReactDOM from 'react-dom'
 import Navbar from './components/Navbar'
 import Register from './components/Register'
 import Login from './components/Login'
+import BookAppointment from './components/BookAppointment'
+
 import NotFound from './components/NotFound'
 
 //pages
 import Home from './HomeTheme/Home'
 import About from './components/About'
 import Doctors from './components/Doctors'
-import CalendarPage from './components/CalendarPage'
 import Dashboard from './components/Dashboard'
 
 import 'bulma'
@@ -31,7 +32,7 @@ const App = () => (
       <Route path="/dashboard" component={Dashboard} />
 
       <Route path="/doctors" component={Doctors} />
-      <Route path="/calendar" component={CalendarPage} />
+      <Route path="/appointment" component={BookAppointment} />
 
 
       <Route exact path= '/notfound' component={NotFound} />    
