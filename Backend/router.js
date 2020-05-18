@@ -3,25 +3,41 @@ const router = require('express').Router()
 const userControl = require('./lib/userContorl')
 const secureRoute = require('./lib/secureRoute')
 const userFunc = require('./controllers/userFunc')
-const doctorFunc = require('./controllers/doctorFunc')
 const appointmentFunc =  require('./controllers/appointmentFunc')
+const historyFunc = require('./controllers/historyFunc')
 
 
-// ************************ doctors ************************
 
-router.route('/doctors')
-  .get(doctorFunc.index)
 
-router.route('/doctors/:id')
-  .get(doctorFunc.show)
-
-  
-
-// ************************ appointments? ************************
+// ************************ appointments ************************
 router.route('/appointment')
   .post(secureRoute, userControl('patient'), appointmentFunc.create)
-  .get(appointmentFunc.index)
+  .get(secureRoute, appointmentFunc.index)
 
+
+router.route('/appointment/doc')
+  .get(secureRoute, userControl('doctor'), appointmentFunc.doctorAppointment)
+
+
+router.route('/appointment/:id')
+  .delete(secureRoute, appointmentFunc.remove)
+  .get(secureRoute, appointmentFunc.show)
+
+
+
+
+// ************************ history ************************
+router.route('/history')
+  .post(secureRoute, userControl('doctor'), historyFunc.create)
+  .get(secureRoute, historyFunc.index)
+
+
+router.route('/history/patient')
+  .get(secureRoute, userControl('patient'), historyFunc.patientHistory)
+
+router.route('/history/:id')
+  .get(secureRoute, historyFunc.show)
+  .delete(secureRoute, userControl('doctor'), historyFunc.remove)
 
 
 
@@ -34,16 +50,14 @@ router.route('/login')
   .post(userFunc.login)
 
 
+router.route('/user')
+  .get(secureRoute, userFunc.index)
+
+
 router.route('/user/:id')
-  .get(userFunc.showUser)
+  .get(secureRoute, userFunc.show)
+  
 
-
-
-// ************************ dashboard ************************
-
-//router.route('/dashboard/:userId')
-// .get(secureRoute, userFunc.prescription)
-//.put(secureRoute, userFunc.updateprescription)
 
 
 

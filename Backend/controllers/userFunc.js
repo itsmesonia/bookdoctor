@@ -1,7 +1,12 @@
 const User = require('../models/User')
-const Appointment = require('../models/appointment')
+// const Appointment = require('../models/Appointment')
 const jwt = require('jsonwebtoken')
 const { secret } = require('../config/environment')
+const mongoose = require('mongoose')
+mongoose.set('useFindAndModify', false)
+
+
+
 
 function register(req, res) {
   User
@@ -29,10 +34,22 @@ function login(req, res) {
 }
 
 
-function showUser(req, res) {
+function index(req, res) {
   User
-    .findById({ _id: req.params.id })
+    .find()
+    // .populate('appointment.user')
+    .then(user => res.status(200).json(user))
+    .catch(err => res.json(err))
+}
+
+
+// version 1
+function show(req, res) {
+  User
+    .findById(req.params.id)
+    // ..and populate all of the appointment associated with it
     .populate('appointment')
+    .populate('history')
     .then(user => {
       if (!user) res.status(404).json({ message: 'User Not Found' })
       return res.status(200).json(user)
@@ -43,10 +60,29 @@ function showUser(req, res) {
 
 
 
+// version 2.0
+// function showAppointment(req, res) {
+// // find the current user's appointments from the appointment collection
+//   Appointment
+//     .find({ user: req.currentUser._id })
+//     // then filter the user which the user id matches from our url
+//     // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
+//     .then(appointment => {
+//       return User.findOneAndUpdate({ _id: req.params.id }, { appointment: appointment }, { new: true })
+//     })
+//     .then(user => {
+//       if (!user) res.status(404).jason({ message: 'User Not Found' })
+//       return res.status(200).json(user)
+//     })
+//     .catch(err => res.json(err))
+// }
+
+
+
+
 module.exports = {
   register,
   login,
-  showUser
+  index,
+  show
 }
-// exporting each 'route handling' function, taking advantage of es6 object short hand, 
-//same as saying { login: login }

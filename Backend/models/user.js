@@ -6,23 +6,27 @@ const uniqueValidator = require('mongoose-unique-validator')
 const Schema = mongoose.Schema
 
 
-const userSchema = new mongoose.Schema({ 
+const userSchema = new Schema({ 
   username: { type: String, required: true, unique: true }, 
   email: { type: String, required: true },
   password: { type: String, required: true  },
   role: {
     type: String,
-    enum: ['doctor', 'patient', 'admin']
-    // default: 'patient'
+    enum: ['doctor', 'patient', 'admin'],
+    default: 'patient'
   },
   // this column is not require as the user might be a patient
   expertise: { type: String },
   // same reason here
   clinic: { type: String },
-  appointment: {
-    type: [Schema.Types.ObjectId],
+  appointment: [{
+    type: Schema.Types.ObjectId,
     ref: 'Appointment'
-  }
+  }],
+  history: [{
+    type: Schema.Types.ObjectId,
+    ref: 'History'
+  }]
 }, {
   timestamps: true, 
   toJSON: { 
@@ -33,7 +37,8 @@ const userSchema = new mongoose.Schema({
         role: json.role,
         expertise: json.expertise,
         clinic: json.clinic,
-        appointment: json.appointment
+        appointment: json.appointment,
+        history: json.history
       }
     }
   }
