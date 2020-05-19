@@ -7,9 +7,12 @@ import DashboardIcon from '@material-ui/icons/Dashboard'
 import PeopleIcon from '@material-ui/icons/People'
 import LayersIcon from '@material-ui/icons/Layers'
 // import AssignmentIcon from '@material-ui/icons/Assignment'
+import Avatar from './Avatar'
 
 export const mainListItems = (
   <div>
+    <Avatar />
+
     <ListItem button>
       <ListItemIcon>
         <DashboardIcon />

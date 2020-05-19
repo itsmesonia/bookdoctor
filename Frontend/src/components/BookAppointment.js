@@ -1,64 +1,83 @@
-import 'date-fns'
-import React from 'react'
-import Grid from '@material-ui/core/Grid'
-import DateFnsUtils from '@date-io/date-fns'
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker,
-} from '@material-ui/pickers'
+import React from 'react'  
+import Avatar from '@material-ui/core/Avatar'  
+import CssBaseline from '@material-ui/core/CssBaseline'  
+import Link from '@material-ui/core/Link'    
+import Grid from '@material-ui/core/Grid'  
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined'  
+import Typography from '@material-ui/core/Typography'  
+import { makeStyles } from '@material-ui/core/styles'  
+import AppointmentForm from './AppointmentForm'
 
-import SelectDoc from './SelectDoc'
+function Login() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://material-ui.com/">
+        bookdoctors.com
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  )  
+}
 
-export default function MaterialUIPickers() {
-  // The first commit of Material-UI
-  const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'))
-
-  const handleDateChange = (date) => {
-    setSelectedDate(date)
+const useStyles = makeStyles((theme) => ({
+  root: {
+    height: '100vh'
+  },
+  image: {
+    backgroundImage: 'url(https://source.unsplash.com/random)',
+    backgroundRepeat: 'no-repeat',
+    backgroundColor:
+      theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
+    backgroundSize: 'cover',
+    backgroundPosition: 'center'
+  },
+  paper: {
+    margin: theme.spacing(8, 4),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1)
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2)
   }
+}))  
+
+export default function SignInSide() {
+  const classes = useStyles()  
 
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <Grid container justify="space-around">
-        {/* <KeyboardDatePicker
-          disableToolbar
-          variant="inline"
-          format="MM/dd/yyyy"
-          margin="normal"
-          id="date-picker-inline"
-          label="Date picker inline"
-          value={selectedDate}
-          onChange={handleDateChange}
-          KeyboardButtonProps={{
-            'aria-label': 'change date',
-          }} 
-        />  */}
-        
-        <SelectDoc />
-        
-        <KeyboardDatePicker
-          margin="normal"
-          id="date-picker-dialog"
-          label="Date picker dialog"
-          format="MM/dd/yyyy"
-          value={selectedDate}
-          onChange={handleDateChange}
-          KeyboardButtonProps={{
-            'aria-label': 'change date',
-          }}
-        />
-        <KeyboardTimePicker
-          margin="normal"
-          id="time-picker"
-          label="Time picker"
-          value={selectedDate}
-          onChange={handleDateChange}
-          KeyboardButtonProps={{
-            'aria-label': 'change time',
-          }}
-        />
+    <Grid container component="main" className={classes.root}>
+      <CssBaseline />
+      <Grid item xs={false} sm={4} md={7} className={classes.image} />
+      <Grid item xs={12} sm={8} md={5} elevation={6} square>
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Book your Appointment
+          </Typography>
+          {/* <form className={classes.form} noValidate> */}
+
+          <form className={classes.container} noValidate>
+            <AppointmentForm />
+
+            {/* form will go in here */}
+
+          </form>
+
+        </div>
       </Grid>
-    </MuiPickersUtilsProvider>
-  )
+    </Grid>
+  )  
 }
