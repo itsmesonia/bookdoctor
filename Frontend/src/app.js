@@ -18,6 +18,7 @@ import Doctors from './components/Doctors'
 import Dashboard from './components/Dashboard'
 
 import 'bulma'
+
 //import './style.scss'
 
 
