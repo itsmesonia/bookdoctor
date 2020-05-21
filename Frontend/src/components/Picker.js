@@ -15,13 +15,13 @@ export default function Picker({ updateDate }) {
   const [selectedDays, setSelectedDays] = useState([])
   const [errors, setErrors] = useState()
 
-  useEffect(() => {
-    axios.get('/api/doctors/', {
-      headers: { Authorization: `Bearer ${Auth.getToken()}` }
-    })
-      .then(res => setSelectedDays(res.data))
-      .catch(err => setErrors({ ...errors, errors: err.response.data }))
-  }, [])
+  // useEffect(() => {
+  //   axios.get('/api/doctors/', {
+  //     headers: { Authorization: `Bearer ${Auth.getToken()}` }
+  //   })
+  //     .then(res => setSelectedDays(res.data))
+  //     .catch(err => setErrors({ ...errors, errors: err.response.data }))
+  // }, [])
 
 
   function handleChange(e) {
