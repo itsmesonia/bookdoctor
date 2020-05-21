@@ -1,18 +1,14 @@
-import React from 'react'  
+import React, { useState, useEffect } from 'react' 
+import { Link } from 'react-router-dom' 
 import Avatar from '@material-ui/core/Avatar'  
-import Button from '@material-ui/core/Button'  
 import CssBaseline from '@material-ui/core/CssBaseline'  
-import TextField from '@material-ui/core/TextField'  
-import FormControlLabel from '@material-ui/core/FormControlLabel'  
-import Checkbox from '@material-ui/core/Checkbox'  
-import Link from '@material-ui/core/Link'  
-import Paper from '@material-ui/core/Paper'  
+import TextField from '@material-ui/core/TextField'   
 import Box from '@material-ui/core/Box'  
 import Grid from '@material-ui/core/Grid'  
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined'  
-import Typography from '@material-ui/core/Typography'  
+import AssignmentIcon from '@material-ui/icons/Assignment'  
 import { makeStyles } from '@material-ui/core/styles'  
 
+import axios from 'axios'
 
 
 
@@ -47,24 +43,72 @@ const useStyles = makeStyles((theme) => ({
   }
 }))  
 
-export default function SignInSide() {
+export default function Register(props) {
+
+
   const classes = useStyles()  
+  const [registerInfo, setRegisterInfo] = useState({
+    username: '',
+    email: '',
+    password: '',
+    passwordConfirmation: ''
+  })
+
+  const [errors, setErrors] = useState('')
+
+
+  function handleChange(e) {
+    e.persist()
+    setRegisterInfo({ ...registerInfo, [e.target.name]: e.target.value })
+    // setErrors({ ...errors, [e.target.name]: '' })
+  }
+
+
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    axios.post('/api/register', registerInfo)
+      .then(() => {
+        if (errors === '') {
+          props.history.push('/login')
+        }
+      })
+      .catch(err => {
+        setErrors( { ...errors, ...err.response.data.errors } )
+      })
+  }
+
+
+
 
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
-      <Grid item xs={12} sm={8} md={5} elevation={6} square>
+      <Grid item xs={12} sm={8} md={5} elevation={6} square='true'>
         <div className={classes.paper}>
+
           <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
+            <AssignmentIcon /> 
           </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign Up
-          </Typography>
-          <form className={classes.form} noValidate>
+          
+          <h1>Sign Up</h1>
+
+          <form className='formStyle' onSubmit={(e) => handleSubmit(e)}>
             <TextField
-              // variant="outlined"
+              onChange={(e) => handleChange(e)}
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="username"
+              label="Username"
+              id="username"
+            />
+            <TextField
+              onChange={(e) => handleChange(e)}
+              variant="outlined"
               margin="normal"
               required
               fullWidth
@@ -75,7 +119,8 @@ export default function SignInSide() {
               autoFocus
             />
             <TextField
-              // variant="outlined"
+              onChange={(e) => handleChange(e)}
+              variant="outlined"
               margin="normal"
               required
               fullWidth
@@ -83,37 +128,31 @@ export default function SignInSide() {
               label="Password"
               type="password"
               id="password"
-              autoComplete="current-password"
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
+            <TextField
+              onChange={(e) => handleChange(e)}
+              variant="outlined"
+              margin="normal"
+              required
               fullWidth
-              variant="contained"
-              color="#005EB8"
-              className={classes.submit}
-            >
+              name="passwordConfirmation"
+              label="Password Confirmation"
+              type="password"
+              id="passwordConfirmation"
+            />
+
+            <button className='button' >
               Sign In
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                {/* <Link href="/register" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link> */}
-              </Grid>
-            </Grid>
-            <Box mt={5}>
-              <div>Copyright © <Link target='blank' href="https://github.com/soniacweb/bookdoctor">bookdoctors.com</Link>{' '}{new Date().getFullYear()}</div>
-            </Box>
+            </button>
+
           </form>
+            
+          <Link to="/login" className='links'>Already have an account? Login</Link>
+
+          <Box mt={5}>
+            <div>Copyright © <Link target='blank' className='links' to="https://github.com/soniacweb/bookdoctor">bookdoctors.com</Link>{' '}{new Date().getFullYear()}</div>
+          </Box>
+
         </div>
       </Grid>
     </Grid>
