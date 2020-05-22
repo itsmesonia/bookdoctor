@@ -31,4 +31,8 @@ body {
   transition: 0.3s ease;
 }
 
+.selectInput {
+  margin-top: 20px;
+}
+
 /*# sourceMappingURL=style.css.map */
