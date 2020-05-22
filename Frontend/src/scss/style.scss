@@ -1,0 +1,38 @@
+@import '../css/reset.css';
+
+
+$nhs-color: #005EB8;
+$hover-color: rgb(127, 183, 236);
+
+
+body {
+  color: $nhs-color;
+}
+
+.button {
+  border: none;
+  outline: none;
+  background-color: $nhs-color;
+  color: #fff;
+  width: 380px;
+  margin: 20px auto 40px auto;
+  &:hover {
+    color: #fff;
+    background-color: $hover-color;
+    transition: .3s ease;
+  }
+}
+
+.formStyle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.links {
+  text-decoration: underline;
+  &:hover {
+    color: $hover-color;
+    transition: .3s ease;
+  }
+}

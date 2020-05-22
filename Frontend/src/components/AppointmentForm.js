@@ -41,7 +41,7 @@ export default function MaterialUIPickers() {
         <KeyboardDatePicker
           required
           fullWidth
-          margin="normal"
+          margin= "dense"
           id="date-picker-dialog"
           label="Date picker dialog"
           format="MM/dd/yyyy"
@@ -54,7 +54,7 @@ export default function MaterialUIPickers() {
         <KeyboardTimePicker
           required
           fullWidth
-          margin="normal"
+          margin="dense" 
           id="time-picker"
           label="Time picker"
           value={selectedDate}

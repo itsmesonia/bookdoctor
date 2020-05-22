@@ -42,7 +42,7 @@ const Navbar = () => {
               <Link className='white' to={'/login'}>Login</Link>
             </div>
             <div className="navbar-item">
-              <Link className='white'to={'/register'}>Register</Link>
+              <Link className='white' to={'/register'}>Register</Link>
             </div>
           </div>
         </div>

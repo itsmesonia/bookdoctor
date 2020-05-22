@@ -10,7 +10,7 @@
     "seed": "node backend/db/seeds.js;",
     "serve:back": "nodemon backend/app.js",
     "serve:front": "webpack-dev-server --mode-development",
-    "start": "node backend/app.js",
+    "sass": "sass --watch frontend/src/scss/style.scss:frontend/src/css/style.css",
     "heroku-postbuild": "npm install && npm run build"
   },
   "repository": {

@@ -1,0 +1,34 @@
+@import '../css/reset.css';
+body {
+  color: #005EB8;
+}
+
+.button {
+  border: none;
+  outline: none;
+  background-color: #005EB8;
+  color: #fff;
+  width: 380px;
+  margin: 20px auto 40px auto;
+}
+.button:hover {
+  color: #fff;
+  background-color: #7fb7ec;
+  transition: 0.3s ease;
+}
+
+.formStyle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.links {
+  text-decoration: underline;
+}
+.links:hover {
+  color: #7fb7ec;
+  transition: 0.3s ease;
+}
+
+/*# sourceMappingURL=style.css.map */

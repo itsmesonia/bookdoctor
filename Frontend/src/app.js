@@ -19,7 +19,7 @@ import Dashboard from './components/Dashboard'
 
 import 'bulma'
 
-//import './style.scss'
+import './css/style.css'
 
 
 const App = () => (
