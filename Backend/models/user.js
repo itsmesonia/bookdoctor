@@ -8,7 +8,7 @@ const Schema = mongoose.Schema
 
 const userSchema = new Schema({ 
   username: { type: String, required: true, unique: true }, 
-  email: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
   password: { type: String, required: true  },
   role: {
     type: String,
@@ -79,11 +79,6 @@ userSchema
     }
     next() // now move on to saving
   })
-
-
-
-  
-
 
 userSchema.methods.validatePassword = function validatePassword(password) {// our own methods attached to our user model to validate if a password is correct at login.
   return bcrypt.compareSync(password, this.password) // bcyrpt hashes the password our user is trying to login with the same it hashed the one stored in the DB when they registered, it then compares them for us to see if they match, and returns true or false depending on the outcome

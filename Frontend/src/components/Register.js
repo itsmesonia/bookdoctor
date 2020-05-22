@@ -54,13 +54,17 @@ export default function Register(props) {
     passwordConfirmation: ''
   })
 
-  const [errors, setErrors] = useState('')
+  const [errors, setErrors] = useState({
+    username: '',
+    email: '',
+    password: '',
+    passwordConfirmation: ''
+  })
 
 
   function handleChange(e) {
     e.persist()
     setRegisterInfo({ ...registerInfo, [e.target.name]: e.target.value })
-    // setErrors({ ...errors, [e.target.name]: '' })
   }
 
 
@@ -69,17 +73,18 @@ export default function Register(props) {
   const handleSubmit = (e) => {
     e.preventDefault()
     axios.post('/api/register', registerInfo)
-      .then(() => {
-        if (errors === '') {
-          props.history.push('/login')
-        }
-      })
+      .then(res => 
+        console.log('posted')
+        // if (errors === '') {
+        //   props.history.push('/login')
+        // }
+      )
       .catch(err => {
-        setErrors( { ...errors, ...err.response.data.errors } )
+        setErrors({ ...errors, ...err.response.data })
       })
   }
 
-
+  console.log(errors)
 
 
   return (
@@ -106,6 +111,7 @@ export default function Register(props) {
               label="Username"
               id="username"
             />
+            {errors.username && <small>{errors.username.message}</small>}
             <TextField
               onChange={(e) => handleChange(e)}
               variant="outlined"

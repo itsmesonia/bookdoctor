@@ -2,19 +2,20 @@ const User = require('../models/User')
 // const Appointment = require('../models/Appointment')
 const jwt = require('jsonwebtoken')
 const { secret } = require('../config/environment')
-const mongoose = require('mongoose')
-mongoose.set('useFindAndModify', false)
+// const mongoose = require('mongoose')
+// mongoose.set('useFindAndModify', false)
 
 
 
 
-function register(req, res) {
+function register(req, res, next) {
   User
     .create(req.body) // same as creating any other resource, see animals create controller, except runs our extra pre 'save' and 'validate' methods. See /models/User for these.
-    .then(user => res.status(200).json({ message: `Hello ${user.username}, thank you for registering` })) // if creates succesfully, send a welcome message with users username embedded
+    .then(user => res.status(200).json({ message: `Hello ${user.username}, thank you for registering` }))
+    // .catch(next)
     .catch(err => {
-      console.log(err)
-      res.status(200).json({ message: 'Problem registering account', error: err.message })
+      console.log(err.errors)
+      res.status(422).json(err.errors)
     })
 }
 
