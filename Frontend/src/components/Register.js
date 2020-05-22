@@ -73,12 +73,11 @@ export default function Register(props) {
   const handleSubmit = (e) => {
     e.preventDefault()
     axios.post('/api/register', registerInfo)
-      .then(res => 
-        console.log('posted')
-        // if (errors === '') {
-        //   props.history.push('/login')
-        // }
-      )
+      .then(() => {
+        if (errors.username === '' && errors.email === '' && errors.password === '' && errors.passwordConfirmation === '') {
+          props.history.push('/login')
+        }
+      })
       .catch(err => {
         setErrors({ ...errors, ...err.response.data })
       })
