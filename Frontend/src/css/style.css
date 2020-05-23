@@ -13,7 +13,7 @@ body {
 }
 .button:hover {
   color: #fff;
-  background-color: #7fb7ec;
+  background-color: #41B6E6;
   transition: 0.3s ease;
 }
 
@@ -27,12 +27,16 @@ body {
   text-decoration: underline;
 }
 .links:hover {
-  color: #7fb7ec;
+  color: #41B6E6;
   transition: 0.3s ease;
 }
 
 .selectInput {
   margin-top: 20px;
+}
+
+.input .textarea:focus {
+  border-color: #AE2573;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -16,6 +16,13 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh'
   },
+  cssOutlinedInput: {
+    '&$cssFocused $notchedOutline': {
+      borderColor: '#005EB8'
+    }
+  },
+  notchedOutline: {},
+  cssFocused: {},
   image: {
     backgroundImage: 'url(https://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/800/cached.offlinehbpl.hbpl.co.uk/news/PGH/NHS_sign_iStock-20170428030700941.jpg)',
     backgroundRepeat: 'no-repeat',
@@ -32,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main
+    backgroundColor: '#AE2573'
   },
   form: {
     width: '100%', // Fix IE 11 issue.
@@ -109,6 +116,13 @@ export default function Register(props) {
               name="username"
               label="Username"
               id="username"
+              InputProps={{
+                classes: {
+                  root: classes.cssOutlinedInput,
+                  focused: classes.cssFocused,
+                  notchedOutline: classes.notchedOutline
+                }
+              }}
             />
             {errors.username && <small>{errors.username.message}</small>}
             <TextField
@@ -122,6 +136,13 @@ export default function Register(props) {
               name="email"
               autoComplete="email"
               autoFocus
+              InputProps={{
+                classes: {
+                  root: classes.cssOutlinedInput,
+                  focused: classes.cssFocused,
+                  notchedOutline: classes.notchedOutline
+                }
+              }}
             />
             <TextField
               onChange={(e) => handleChange(e)}
@@ -133,6 +154,13 @@ export default function Register(props) {
               label="Password"
               type="password"
               id="password"
+              InputProps={{
+                classes: {
+                  root: classes.cssOutlinedInput,
+                  focused: classes.cssFocused,
+                  notchedOutline: classes.notchedOutline
+                }
+              }}
             />
             <TextField
               onChange={(e) => handleChange(e)}
@@ -144,6 +172,13 @@ export default function Register(props) {
               label="Password Confirmation"
               type="password"
               id="passwordConfirmation"
+              InputProps={{
+                classes: {
+                  root: classes.cssOutlinedInput,
+                  focused: classes.cssFocused,
+                  notchedOutline: classes.notchedOutline
+                }
+              }}
             />
 
             <button className='button' >
