@@ -15,7 +15,12 @@ module.exports = {
       { test: /\.s(a|c)ss$/, loader: ['style-loader', 'css-loader', 'sass-loader'] },
       { test: /\.(jpg|png|gif)/, use: [{
         loader: 'url-loader', options: { limit: 5000 }
-      }] }
+      // { test: /\.(png|jpe?g|gif)$/i,
+      //   use: [
+      //     {
+      //      loader: 'file-loader',
+      //     },
+      }] } 
     ]
   },
   devServer: {

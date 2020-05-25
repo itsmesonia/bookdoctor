@@ -4,29 +4,30 @@ import { withStyles } from '@material-ui/core/styles'
 import Button from '../Components/Button'
 import Typography from '../Components/Typography'
 import ProductHeroLayout from './ProductHeroLayout'
+import Image from './../../../img'
 
-const backgroundImage =
-  'https://i.imgur.com/qUlHfLb.jpg'
+
+// const backgroundImage = 'https://i.imgur.com/F1h0UvP.jpg'
 
 const styles = (theme) => ({
   background: {
-    backgroundImage: `url(${backgroundImage})`,
+    backgroundImage: `url(${Image})`,
     backgroundColor: '#7fc7d9', // Average color of the background image.
-    backgroundPosition: 'center',
+    backgroundPosition: 'center'
   },
   button: {
-    minWidth: 200,
+    minWidth: 200
   },
   h5: {
     marginBottom: theme.spacing(4),
     marginTop: theme.spacing(4),
     [theme.breakpoints.up('sm')]: {
-      marginTop: theme.spacing(10),
-    },
+      marginTop: theme.spacing(10)
+    }
   },
   more: {
-    marginTop: theme.spacing(2),
-  },
+    marginTop: theme.spacing(2)
+  }
 })
 
 function ProductHero(props) {
