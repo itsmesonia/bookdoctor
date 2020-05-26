@@ -8,6 +8,7 @@ import Typography from '../Components/Typography'
 import TextField from '../Components/TextField'
 import Snackbar from '../Components/Snackbar'
 import Button from '../Components/Button'
+import { relativeTimeRounding } from 'moment'
 
 const styles = (theme) => ({
   root: {
@@ -17,6 +18,8 @@ const styles = (theme) => ({
   },
   cardWrapper: {
     zIndex: 1,
+    position: 'relative',
+    left: 80
   },
   card: {
     display: 'flex',
@@ -49,8 +52,8 @@ const styles = (theme) => ({
   },
   image: {
     position: 'absolute',
-    top: -28,
-    left: -28,
+    top: -100,
+    left: 0,
     right: 0,
     bottom: 0,
     width: '100%',
@@ -96,13 +99,16 @@ function ProductCTA(props) {
           <Hidden smDown>
             <div className={classes.imageDots} />
             <img
-              src="https://i.imgur.com/qUlHfLb.jpg"
+              // src="https://i.imgur.com/qUlHfLb.jpg"
+              src='https://i.imgur.com/oha3yLB.jpg'
               alt="wellbeing"
               className={classes.image}
             />
           </Hidden>
         </Grid>
+      
       </Grid>
+
       <Snackbar
         open={open}
         onClose={handleClose}
