@@ -6,8 +6,8 @@ import Link from '@material-ui/core/Link'
 
 const styles = (theme) => ({
   listItem: {
-    marginTop: theme.spacing(1),
-  },
+    marginTop: theme.spacing(1)
+  }
 })
 
 const options = {
@@ -16,7 +16,7 @@ const options = {
     h2: { component: (props) => <Typography gutterBottom variant="h6" {...props} /> },
     h3: { component: (props) => <Typography gutterBottom variant="subtitle1" {...props} /> },
     h4: {
-      component: (props) => <Typography gutterBottom variant="caption" paragraph {...props} />,
+      component: (props) => <Typography gutterBottom variant="caption" paragraph {...props} />
     },
     p: { component: (props) => <Typography paragraph {...props} /> },
     a: { component: Link },
@@ -25,9 +25,9 @@ const options = {
         <li className={classes.listItem}>
           <Typography component="span" {...props} />
         </li>
-      )),
-    },
-  },
+      ))
+    }
+  }
 }
 
 function Markdown(props) {

@@ -3,38 +3,39 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Container from '@material-ui/core/Container'
-import Typography from '../Components/Typography'
+// import Typography from '../Components/Typography'
+import Typography from '@material-ui/core/Typography'
 
 const styles = (theme) => ({
   root: {
     display: 'flex',
     overflow: 'hidden',
-    backgroundColor: theme.palette.secondary.light,
+    backgroundColor: theme.palette.secondary.light
   },
   container: {
     marginTop: theme.spacing(15),
     marginBottom: theme.spacing(30),
     display: 'flex',
-    position: 'relative',
+    position: 'relative'
   },
   item: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: theme.spacing(0, 5),
+    padding: theme.spacing(0, 5)
   },
   image: {
-    height: 55,
+    height: 55
   },
   title: {
     marginTop: theme.spacing(5),
-    marginBottom: theme.spacing(5),
+    marginBottom: theme.spacing(5)
   },
   curvyLines: {
     pointerEvents: 'none',
     position: 'absolute',
-    top: -180,
-  },
+    top: -180
+  }
 })
 
 function ProductValues(props) {
@@ -104,7 +105,7 @@ function ProductValues(props) {
 }
 
 ProductValues.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 }
 
 export default withStyles(styles)(ProductValues)

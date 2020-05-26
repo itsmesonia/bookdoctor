@@ -7,17 +7,17 @@ import { withStyles } from '@material-ui/core/styles'
 
 const styles = (theme) => ({
   backgroundLight: {
-    backgroundColor: theme.palette.secondary.light,
+    backgroundColor: theme.palette.secondary.light
   },
   backgroundMain: {
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.secondary.main
   },
   backgroundDark: {
-    backgroundColor: theme.palette.secondary.dark,
+    backgroundColor: theme.palette.secondary.dark
   },
   padding: {
-    padding: theme.spacing(1),
-  },
+    padding: theme.spacing(1)
+  }
 })
 
 function Paper(props) {
@@ -29,7 +29,7 @@ function Paper(props) {
       className={clsx(
         classes[`background${capitalize(background)}`],
         {
-          [classes.padding]: padding,
+          [classes.padding]: padding
         },
         className,
       )}
@@ -42,7 +42,7 @@ Paper.propTypes = {
   background: PropTypes.oneOf(['light', 'main', 'dark']),
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
-  padding: PropTypes.bool,
+  padding: PropTypes.bool
 }
 
 export default withStyles(styles)(Paper)

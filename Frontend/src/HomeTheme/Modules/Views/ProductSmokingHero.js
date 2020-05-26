@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import Button from '@material-ui/core/Button'
 import Container from '@material-ui/core/Container'
 import { withStyles } from '@material-ui/core/styles'
-import Typography from '../Components/Typography'
+// import Typography from '../Components/Typography'
+import Typography from '@material-ui/core/Typography'
 
 const styles = (theme) => ({
   root: {
@@ -11,21 +12,21 @@ const styles = (theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     marginTop: theme.spacing(9),
-    marginBottom: theme.spacing(9),
+    marginBottom: theme.spacing(9)
   },
   button: {
     border: '4px solid currentColor',
     borderRadius: 0,
     height: 'auto',
-    padding: theme.spacing(2, 5),
+    padding: theme.spacing(2, 5)
   },
   link: {
     marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(3),
+    marginBottom: theme.spacing(3)
   },
   buoy: {
-    width: 60,
-  },
+    width: 60
+  }
 })
 
 function ProductSmokingHero(props) {
@@ -47,7 +48,7 @@ function ProductSmokingHero(props) {
 }
 
 ProductSmokingHero.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 }
 
 export default withStyles(styles)(ProductSmokingHero)

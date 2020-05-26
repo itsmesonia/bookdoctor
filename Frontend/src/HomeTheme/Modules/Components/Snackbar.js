@@ -16,24 +16,24 @@ const styles = (theme) => ({
       borderTopLeftRadius: 0,
       borderTopRightRadius: 0,
       borderBottomRightRadius: 4,
-      borderBottomLeftRadius: 4,
-    },
+      borderBottomLeftRadius: 4
+    }
   },
   contentMessage: {
     fontSize: 16,
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   contentAction: {
-    paddingLeft: theme.spacing(2),
+    paddingLeft: theme.spacing(2)
   },
   info: {
     flexShrink: 0,
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(2)
   },
   close: {
-    padding: theme.spacing(1),
-  },
+    padding: theme.spacing(1)
+  }
 })
 
 function Transition(props) {
@@ -52,8 +52,8 @@ function Snackbar(props) {
         classes: {
           root: classes.content,
           message: classes.contentMessage,
-          action: classes.contentAction,
-        },
+          action: classes.contentAction
+        }
       }}
       message={
         <React.Fragment>
@@ -70,7 +70,7 @@ function Snackbar(props) {
           onClick={onClose}
         >
           <CloseIcon />
-        </IconButton>,
+        </IconButton>
       ]}
       {...other}
     />
@@ -79,7 +79,7 @@ function Snackbar(props) {
 
 Snackbar.propTypes = {
   classes: PropTypes.object.isRequired,
-  SnackbarContentProps: PropTypes.object,
+  SnackbarContentProps: PropTypes.object
 }
 
 export default withStyles(styles)(Snackbar)

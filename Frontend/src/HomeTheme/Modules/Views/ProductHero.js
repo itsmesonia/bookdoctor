@@ -2,9 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import Button from '../Components/Button'
-import Typography from '../Components/Typography'
+// import Typography from '../Components/Typography'
+import Typography from '@material-ui/core/Typography'
+
 import ProductHeroLayout from './ProductHeroLayout'
-import Image from './../../../img'
+import Image from './../../../img/abb.jpg'
 
 
 // const backgroundImage = 'https://i.imgur.com/F1h0UvP.jpg'
@@ -36,7 +38,7 @@ function ProductHero(props) {
   return (
     <ProductHeroLayout backgroundClassName={classes.background}>
       {/* Increase the network loading priority of the background image. */}
-      <img style={{ display: 'none' }} src={backgroundImage} alt="increase priority" />
+      <img style={{ display: 'none' }} src={Image} alt="increase priority" />
       <Typography color="inherit" align="center" variant="h2" marked="center">
         Upgrade your Sundays
       </Typography>
@@ -61,7 +63,7 @@ function ProductHero(props) {
 }
 
 ProductHero.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 }
 
 export default withStyles(styles)(ProductHero)
