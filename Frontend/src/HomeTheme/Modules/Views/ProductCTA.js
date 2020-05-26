@@ -21,7 +21,7 @@ const styles = (theme) => ({
   card: {
     display: 'flex',
     justifyContent: 'center',
-    backgroundColor: theme.palette.warning.main,
+    backgroundColor: '#E8EDEE',
     padding: theme.spacing(8, 3),
   },
   cardContent: {
@@ -74,22 +74,24 @@ function ProductCTA(props) {
   return (
     <Container className={classes.root} component="section">
       <Grid container>
+
         <Grid item xs={12} md={6} className={classes.cardWrapper}>
           <div className={classes.card}>
             <form onSubmit={handleSubmit} className={classes.cardContent}>
               <Typography variant="h2" component="h2" gutterBottom>
-                Repeat Prescriptions
+                Book your appointment
               </Typography>
               <Typography variant="h5">
-                Search for your GP
+                Check the available time
               </Typography>
-              <TextField noBorder className={classes.textField} placeholder="Your email" />
+              <TextField noBorder className={classes.textField} placeholder="Search for your GP" />
               <Button type="submit" color="primary" variant="contained" className={classes.button}>
-                Track your health
+                Search
               </Button>
             </form>
           </div>
         </Grid>
+
         <Grid item xs={12} md={6} className={classes.imagesWrapper}>
           <Hidden smDown>
             <div className={classes.imageDots} />
