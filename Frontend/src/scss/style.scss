@@ -2,7 +2,7 @@
 
 
 $nhs-color: #005EB8;
-$hover-color: rgb(127, 183, 236);
+$nhs-light-blue: #41B6E6;
 
 
 body {
@@ -18,7 +18,7 @@ body {
   margin: 20px auto 40px auto;
   &:hover {
     color: #fff;
-    background-color: $hover-color;
+    background-color: $nhs-light-blue;
     transition: .3s ease;
   }
 }
@@ -32,7 +32,7 @@ body {
 .links {
   text-decoration: underline;
   &:hover {
-    color: $hover-color;
+    color: $nhs-light-blue;
     transition: .3s ease;
   }
 }
