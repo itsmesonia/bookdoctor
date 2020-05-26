@@ -1,4 +1,6 @@
 import WithRoot from './Modules/WithRoot'
+import Navbar from '../components/Navbar'
+
 // --- Post bootstrap -----
 import React from 'react'
 import ProductCategories from './Modules/Views/ProductCategories'
@@ -10,9 +12,12 @@ import ProductHowItWorks from './Modules/Views/ProductHowItWorks'
 import ProductCTA from './Modules/Views/ProductCTA'
 //import AppAppBar from './Modules/Views/AppAppBar'
 
+
 function Index() {
   return (
+    
     <React.Fragment>
+      <Navbar />
       {/* <AppAppBar /> */}
       <ProductHero />
       <ProductValues />

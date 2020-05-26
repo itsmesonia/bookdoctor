@@ -36,6 +36,9 @@ const Navbar = () => {
               <Link className='white' to={'/'}>Home</Link>
             </div>
             <div className="navbar-item">
+              <Link className='white' to={'/dashboard'}>Dashboard</Link>
+            </div>
+            <div className="navbar-item">
               <Link className='white' to={'/about'}>About</Link>
             </div>
             <div className="navbar-item">

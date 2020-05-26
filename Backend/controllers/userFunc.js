@@ -2,8 +2,7 @@ const User = require('../models/User')
 // const Appointment = require('../models/Appointment')
 const jwt = require('jsonwebtoken')
 const { secret } = require('../config/environment')
-// const mongoose = require('mongoose')
-// mongoose.set('useFindAndModify', false)
+
 
 
 

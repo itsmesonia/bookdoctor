@@ -1,73 +1,27 @@
-//health history?
-//medication?
-//repeat prescription request?
-
-import React from 'react' 
+import React, { useState, useEffect } from 'react' 
+import { Link } from 'react-router-dom'
 import clsx from 'clsx' 
 import { makeStyles } from '@material-ui/core/styles' 
-import CssBaseline from '@material-ui/core/CssBaseline' 
 import Drawer from '@material-ui/core/Drawer' 
 import Box from '@material-ui/core/Box' 
-import AppBar from '@material-ui/core/AppBar' 
-import Toolbar from '@material-ui/core/Toolbar' 
-import List from '@material-ui/core/List' 
-import Typography from '@material-ui/core/Typography' 
 import Divider from '@material-ui/core/Divider' 
 import IconButton from '@material-ui/core/IconButton' 
-import Badge from '@material-ui/core/Badge' 
 import Container from '@material-ui/core/Container' 
 import Grid from '@material-ui/core/Grid' 
 import Paper from '@material-ui/core/Paper' 
-import Link from '@material-ui/core/Link' 
-import MenuIcon from '@material-ui/icons/Menu' 
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft' 
-import NotificationsIcon from '@material-ui/icons/Notifications' 
-import { mainListItems } from './ListItems' 
-// import Chart from './Chart' 
-import Deposits from './Deposits' 
-import Orders from './Orders' 
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
+import ChevronRightIcon from '@material-ui/icons/ChevronRight' 
+import ListItems from './ListItems' 
 import MedicalHistory from './MedicalHistory' 
-// import CalendarPage from './CalendarPage'
-//import Picker from './Picker'
  
-// import { Link } from 'react-router-dom'
 import { MuiPickersUtilsProvider } from '@material-ui/pickers'
 import DateFnsUtils from '@date-io/date-fns'
-// import axios from 'axios'
+import axios from 'axios'
 import Picker from './Picker'
 import Auth from '../lib/auth'
 
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        bookdoctors.com
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  ) 
-}
 
-function CalendarPage() {
-
-  // const [date, setDate] = useState()
-  
-  return (
-    <div className='relative vh-100'>
-      {Auth.isAuthenticated() && <Link to='/inbox' className='fixed top-1 right-2 .no-underline near-black pointer grow'>
-        {/* <BackRight /> */}
-      </Link>}
-      <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <Picker 
-          // updateDate={setDate}
-        />
-      </MuiPickersUtilsProvider> 
-    </div>
-  )
-}
 
 const drawerWidth = 240 
 
@@ -153,46 +107,36 @@ const useStyles = makeStyles((theme) => ({
   // }
 })) 
 
-export default function Dashboard() {
-  const classes = useStyles() 
-  const [open, setOpen] = React.useState(true) 
-  const handleDrawerOpen = () => {
-    setOpen(true) 
-  } 
-  const handleDrawerClose = () => {
-    setOpen(false) 
-  } 
+
+
+
+export default function Dashboard(props) {
+  const classes = useStyles()
+  
+  const [singleUser, setSingleUser] = useState()
+  const [open, setOpen] = useState(false) 
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight) 
+
+  const handleDrawer = () => {
+    return open ? setOpen(false) : setOpen(true)
+  } 
  
-  // function CalendarPage() { 
-  //   const [date, setDate] = useState()
-  // }
+ 
+
+  useEffect(() => {
+    axios.get(`/api/user/${Auth.getUser().id}`, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
+      .then(res => setSingleUser(res.data))
+      .catch(err => console.log(err))
+  }, [])
+
+
+  console.log(singleUser)
 
   return (
     <div className={classes.root}>
-      <CssBaseline />
-      <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
-        <Toolbar className={classes.toolbar}>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-           Welcome
-            {/* `Welcome ${user.username}` */}
-          </Typography>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
-        </Toolbar>
-      </AppBar>
+
       <Drawer
         variant="permanent"
         classes={{
@@ -201,52 +145,57 @@ export default function Dashboard() {
         open={open}
       >
         <div className={classes.toolbarIcon}>
-          <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftIcon />
+          <IconButton onClick={() => handleDrawer()}>
+            {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>
-        <Divider />
-        <List>{mainListItems}</List>
-        <Divider />
-        {/* <List>{secondaryListItems}</List> */}
-      </Drawer>
-      <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
-        
-            {/* calender page */}
-            <CalendarPage />
-  
-  
-            {/* Chart */}
-            {/* <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
-                <Chart />
-              </Paper>
-            </Grid> */}
-            {/* Recent Deposits */}
-            <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}>
-                <Deposits />
-              </Paper>
-            </Grid>
-            {/* Recent Orders */}
-            <Grid item xs={12}>
-              <Paper className={classes.paper}>
-                <Orders />
-              </Paper>
-            </Grid>
 
+        <Divider />
+
+        <ListItems 
+          open={open}
+        />
+
+        <Divider />
+      </Drawer>
+
+
+      <main className={classes.content}>
+        
+
+        <Container maxWidth="lg" className={classes.container}>
+
+          <Grid container spacing={3}>
+      
+            <Box margin={1.5}>
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <Picker 
+                  // updateDate={setDate}
+                />
+              </MuiPickersUtilsProvider> 
+            </Box>
+
+            {singleUser && <Grid item xs={12} md={4} lg={3}>
+              <Paper className={fixedHeightPaper}>
+                <h1>Your most recent appointment: {singleUser.appointment[singleUser.appointment.length - 1].date}</h1>
+                <h2>with {singleUser.appointment[singleUser.appointment.length - 1].doctor}</h2>
+              </Paper>
+            </Grid>}
+          
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <MedicalHistory />
+                <MedicalHistory 
+                  singleUser={singleUser}
+                />
               </Paper>
             </Grid>
           </Grid>
-          <Box pt={4}>
-            <Copyright />
+
+          
+          <Box mt={5}>
+            <div>Copyright © <Link target='blank' className='links' to="https://github.com/soniacweb/bookdoctor">bookdoctors.com</Link>{' '}{new Date().getFullYear()}</div>
           </Box>
+
         </Container>
       </main>
     </div>

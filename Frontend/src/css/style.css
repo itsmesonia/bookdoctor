@@ -44,4 +44,11 @@ body {
   border-color: #AE2573;
 }
 
+.flexBox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 /*# sourceMappingURL=style.css.map */

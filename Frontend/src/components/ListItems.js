@@ -4,63 +4,51 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 // import ListSubheader from '@material-ui/core/ListSubheader'
-import DashboardIcon from '@material-ui/icons/Dashboard'
-import PeopleIcon from '@material-ui/icons/People'
-import LayersIcon from '@material-ui/icons/Layers'
-// import AssignmentIcon from '@material-ui/icons/Assignment'
+import HomeIcon from '@material-ui/icons/Home'
+import AddCircleIcon from '@material-ui/icons/AddCircle'
 import Avatar from './Avatar'
 
-export const mainListItems = (
-  <div>
-    <Avatar />
+import Auth from '../lib/auth'
 
-    <ListItem button>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <Link to={'/dashboard'}>
-        <ListItemText primary="Dashboard" />
-      </Link>
-    </ListItem>
-   
-    <ListItem button>
-      <ListItemIcon>
-        <PeopleIcon />
-      </ListItemIcon>
-      <Link to={'/appointment'}>
-        <ListItemText primary="Book Appointment"/> 
-      </Link>
-    </ListItem>
-   
-    {/* <ListItem button>
-      <ListItemIcon>
-        <LayersIcon />
-      </ListItemIcon>
-      <ListItemText primary="History" />
-    </ListItem> */}
-  </div>
-)
 
-// export const secondaryListItems = (
-//   <div>
-//     <ListSubheader inset>Saved reports</ListSubheader>
-//     <ListItem button>
-//       <ListItemIcon>
-//         <AssignmentIcon />
-//       </ListItemIcon>
-//       <ListItemText primary="Current month" />
-//     </ListItem>
-//     <ListItem button>
-//       <ListItemIcon>
-//         <AssignmentIcon />
-//       </ListItemIcon>
-//       <ListItemText primary="Last quarter" />
-//     </ListItem>
-//     <ListItem button>
-//       <ListItemIcon>
-//         <AssignmentIcon />
-//       </ListItemIcon>
-//       <ListItemText primary="Year-end sale" />
-//     </ListItem>
-//   </div>
-// )
+
+export default function ListItems({ open }) {
+
+
+  return (
+    <div>
+      <div className='flexBox'>
+        <Avatar />
+        {open ? <h1>Hello, {`${Auth.getUser().username}`}</h1> : null}
+      </div>
+
+
+      <ListItem button>
+        <ListItemIcon>
+          <HomeIcon />
+        </ListItemIcon>
+        <Link to={'/'}>
+          <ListItemText primary="Home" />
+        </Link>
+      </ListItem>
+    
+      <ListItem button>
+        <ListItemIcon>
+          <AddCircleIcon />
+        </ListItemIcon>
+        <Link to={'/appointment'}>
+          <ListItemText primary="Book Appointment"/> 
+        </Link>
+      </ListItem>
+    
+      {/* <ListItem button>
+        <ListItemIcon>
+          <LayersIcon />
+        </ListItemIcon>
+        <ListItemText primary="History" />
+      </ListItem> */}
+    </div>
+  )
+
+} 
+

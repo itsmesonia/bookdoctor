@@ -1,6 +1,8 @@
 const History = require('../models/History')
 const User = require('../models/User')
 
+const mongoose = require('mongoose')
+mongoose.set('useFindAndModify', false)
 
 
 
@@ -24,8 +26,7 @@ function create(req, res) {
 
 function index(req, res) {
   History
-    .find()
-    // .populate('user')
+    .find({ user: { _id: req.currentUser._id } })
     .then(history => {
       return res.status(200).json(history)
     })

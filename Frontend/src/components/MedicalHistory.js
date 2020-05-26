@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function MedicalHistory() {
+export default function MedicalHistory({ singleUser }) {
   const classes = useStyles()
   return (
     <React.Fragment>

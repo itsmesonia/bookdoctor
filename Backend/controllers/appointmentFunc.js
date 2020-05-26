@@ -1,6 +1,9 @@
 const Appointment = require('../models/Appointment')
 const User = require('../models/User')
 
+const mongoose = require('mongoose')
+mongoose.set('useFindAndModify', false)
+
 
 
 function create(req, res) {
@@ -38,7 +41,8 @@ function create(req, res) {
 
 function index(req, res) {
   Appointment
-    .find()
+  // this will restrict user to only see their own appointments
+    .find({ user: { _id: req.currentUser._id } })
     .then(appointment => res.status(200).json(appointment))
     .catch(err => res.json(err))
 }

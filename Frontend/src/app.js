@@ -24,7 +24,7 @@ import './css/style.css'
 
 const App = () => (
   <BrowserRouter>
-    <Navbar />
+
     <Switch>
       <Route exact path= '/' component={Home} /> 
       <Route path="/about" component={About} />
