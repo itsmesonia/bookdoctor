@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"version":3,"sourceRoot":"","sources":["../scss/style.scss"],"names":[],"mappings":"AAAQ;AAOR;EACE,OALU;;;AAQZ;EACE;EACA;EACA,kBAXU;EAYV;EACA;EACA;;AACA;EACE;EACA,kBAhBU;EAiBV;;;AAIJ;EACE;EACA;EACA;;;AAGF;EACE;;AACA;EACE,OA9BU;EA+BV;;;AAIJ;EACE;;;AAKF;EACE;EACA","file":"style.css"}
+=======
+{"version":3,"sourceRoot":"","sources":["../scss/style.scss"],"names":[],"mappings":"AAAQ;AAiBR;EACE,OAfU;;;AAkBZ;EACE;EACA;EACA,kBArBU;EAsBV;EACA;EACA;;AACA;EACE;EACA,kBA1Ba;EA2Bb;;;AAIJ;EACE;EACA;EACA;;;AAGF;EACE;;AACA;EACE,OAxCa;EAyCb;;;AAIJ;EACE;;;AAKA;EACE,cAjDO","file":"style.css"}
+>>>>>>> homepage

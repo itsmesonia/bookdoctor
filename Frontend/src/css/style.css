@@ -13,7 +13,7 @@ body {
 }
 .button:hover {
   color: #fff;
-  background-color: #7fb7ec;
+  background-color: #41B6E6;
   transition: 0.3s ease;
 }
 
@@ -27,7 +27,7 @@ body {
   text-decoration: underline;
 }
 .links:hover {
-  color: #7fb7ec;
+  color: #41B6E6;
   transition: 0.3s ease;
 }
 
@@ -38,6 +38,10 @@ body {
 .MuiContainer-root {
   padding-left: 64px;
   padding-right: 24px;
+}
+
+.input .textarea:focus {
+  border-color: #AE2573;
 }
 
 /*# sourceMappingURL=style.css.map */

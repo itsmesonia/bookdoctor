@@ -1,8 +1,8 @@
 import React, { useState } from 'react'  
+import { Link } from 'react-router-dom'  
 import Avatar from '@material-ui/core/Avatar'  
 import CssBaseline from '@material-ui/core/CssBaseline'  
 import TextField from '@material-ui/core/TextField'  
-import Link from '@material-ui/core/Link'   
 import Box from '@material-ui/core/Box'  
 import Grid from '@material-ui/core/Grid'  
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn'  
@@ -20,6 +20,13 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh'
   },
+  cssOutlinedInput: {
+    '&$cssFocused $notchedOutline': {
+      borderColor: '#005EB8'
+    }
+  },
+  notchedOutline: {},
+  cssFocused: {},
   image: {
     backgroundImage: 'url(https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80)',
     backgroundRepeat: 'no-repeat',
@@ -112,6 +119,13 @@ export default function Login(props) {
               name="email"
               autoComplete="email"
               autoFocus
+              InputProps={{
+                classes: {
+                  root: classes.cssOutlinedInput,
+                  focused: classes.cssFocused,
+                  notchedOutline: classes.notchedOutline
+                }
+              }}
             />
             {/* {errors.username && <small>{errors.username.message}</small>} */}
             <TextField
@@ -124,6 +138,13 @@ export default function Login(props) {
               label="Password"
               type="password"
               id="password"
+              InputProps={{
+                classes: {
+                  root: classes.cssOutlinedInput,
+                  focused: classes.cssFocused,
+                  notchedOutline: classes.notchedOutline
+                }
+              }}
             />
             <FormControl variant="outlined" >
               <InputLabel className='selectInput' htmlFor="outlined-age-native-simple">Login as</InputLabel>
@@ -133,10 +154,6 @@ export default function Login(props) {
                 onChange={(e) => handleChange(e)}
                 label='login as..'
                 name='role'
-                // inputProps={{
-                //   name: 'role'
-                //   // id: 'outlined-age-native-simple'
-                // }}
               >
                 <option aria-label="None" value="" />
                 <option value='patient'>Patient</option>
@@ -152,7 +169,7 @@ export default function Login(props) {
 
           </form>
             
-          <Link to="/login" className='links'>Already have an account? Login</Link>
+          <Link to="/register" className='links'>Don't have an account? Sign up</Link>
 
           <Box mt={5}>
             <div>Copyright © <Link target='blank' className='links' to="https://github.com/soniacweb/bookdoctor">bookdoctors.com</Link>{' '}{new Date().getFullYear()}</div>
