@@ -1,6 +1,6 @@
 const router = require('express').Router()
 
-const userControl = require('./lib/userContorl')
+const userControl = require('./lib/userControl')
 const secureRoute = require('./lib/secureRoute')
 const userFunc = require('./controllers/userFunc')
 const appointmentFunc =  require('./controllers/appointmentFunc')
