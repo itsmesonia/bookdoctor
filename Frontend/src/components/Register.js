@@ -83,7 +83,7 @@ export default function Register(props) {
       })
   }
 
-  console.log(errors)
+  console.log(registerInfo)
 
 
   return (

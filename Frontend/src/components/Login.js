@@ -81,6 +81,10 @@ export default function Login(props) {
       .catch(err => setErrors(err.response.data))
   }
 
+  
+
+  console.log(loginInfo)
+
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -155,6 +159,8 @@ export default function Login(props) {
           </Box>
 
         </div>
+
+        {loginInfo.role === 'doctor' && <div>hello</div>}
       </Grid>
     </Grid>
   )  
