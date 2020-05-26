@@ -15,8 +15,8 @@ router.route('/appointment')
   .get(secureRoute, appointmentFunc.index)
 
 
-router.route('/appointment/doc')
-  .get(secureRoute, userControl('doctor'), appointmentFunc.doctorAppointment)
+router.route('/appointment/doc/:id')
+  .get(secureRoute, appointmentFunc.doctorAppointment)
 
 
 router.route('/appointment/:id')

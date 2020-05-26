@@ -62,7 +62,7 @@ function show(req, res) {
 
 function doctorAppointment(req, res) {
   Appointment
-    .find({ doctor: req.currentUser.username })
+    .find({ doctor: req.params.id })
     .then(appointment => {
       return res.status(200).json(appointment)
     })
