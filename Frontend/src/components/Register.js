@@ -123,6 +123,7 @@ export default function Register(props) {
               autoComplete="email"
               autoFocus
             />
+            {errors.email && <small>{errors.email.message}</small>}
             <TextField
               onChange={(e) => handleChange(e)}
               variant="outlined"
@@ -134,6 +135,7 @@ export default function Register(props) {
               type="password"
               id="password"
             />
+            {errors.password && <small>{errors.password.message}</small>}
             <TextField
               onChange={(e) => handleChange(e)}
               variant="outlined"
@@ -145,7 +147,7 @@ export default function Register(props) {
               type="password"
               id="passwordConfirmation"
             />
-
+            {errors.passwordConfirmation && <small>{errors.passwordConfirmation.message}</small>}
             <button className='button' >
               Sign In
             </button>
