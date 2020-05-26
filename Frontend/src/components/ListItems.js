@@ -24,18 +24,22 @@ export default function ListItems({ open }) {
 
 
       <ListItem button>
-        <ListItemIcon>
-          <HomeIcon />
-        </ListItemIcon>
+        <Link to={'/'}>
+          <ListItemIcon>
+            <HomeIcon />
+          </ListItemIcon>
+        </Link>
         <Link to={'/'}>
           <ListItemText primary="Home" />
         </Link>
       </ListItem>
     
       <ListItem button>
-        <ListItemIcon>
-          <AddCircleIcon />
-        </ListItemIcon>
+        <Link to={'/appointment'}>
+          <ListItemIcon>
+            <AddCircleIcon />
+          </ListItemIcon>
+        </Link>
         <Link to={'/appointment'}>
           <ListItemText primary="Book Appointment"/> 
         </Link>

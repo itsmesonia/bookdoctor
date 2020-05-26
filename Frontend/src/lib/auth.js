@@ -17,6 +17,11 @@ class Auth {
     return JSON.parse(localStorage.getItem('user'))
   }
 
+  static logOut() {
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
+  }
+
   //in order for users to access the content, they must sign in:
   static getPayload() {
     return jwt.decode(this.getToken())

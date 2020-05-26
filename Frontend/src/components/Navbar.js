@@ -2,6 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import 'bulma'
 
+import Auth from '../lib/auth'
+
+
 const Navbar = () => {
 
   const [navClassName, setNavClassName] = React.useState('navbar-menu')
@@ -13,6 +16,14 @@ const Navbar = () => {
       setNavClassName('navbar-menu')
     }
   }
+
+
+  function handleLogout() {
+    Auth.logOut()
+    window.location.reload()
+  }
+
+
 
   return (
     <div className="navbar is-transparent">
@@ -36,17 +47,24 @@ const Navbar = () => {
               <Link className='white' to={'/'}>Home</Link>
             </div>
             <div className="navbar-item">
-              <Link className='white' to={'/dashboard'}>Dashboard</Link>
-            </div>
-            <div className="navbar-item">
               <Link className='white' to={'/about'}>About</Link>
             </div>
-            <div className="navbar-item">
-              <Link className='white' to={'/login'}>Login</Link>
-            </div>
-            <div className="navbar-item">
-              <Link className='white' to={'/register'}>Register</Link>
-            </div>
+            {Auth.isAuthenticated() && <div className='flexBox'>
+              <div className="navbar-item">
+                <Link className='white' to={'/dashboard'}>Dashboard</Link>
+              </div>
+              <div className="navbar-item" onClick={() => handleLogout()}>
+                <a id=''>Log Out</a>
+              </div>
+            </div>}
+            {!Auth.isAuthenticated() && <div className='flexBox'>
+              <div className="navbar-item">
+                <Link className='white' to={'/login'}>Login</Link>
+              </div>
+              <div className="navbar-item">
+                <Link className='white' to={'/register'}>Register</Link>
+              </div>
+            </div>}
           </div>
         </div>
       </div>
