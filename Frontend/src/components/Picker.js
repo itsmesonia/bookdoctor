@@ -35,22 +35,22 @@ export default function Picker() {
     overrides: {
       MuiPickersToolbar: {
         toolbar: {
-          backgroundColor: '#267DFF'
+          backgroundColor: '#005EB8'
         }
       },
       MuiPickersCalendarHeader: {
         iconButton: {
-          backgroundColor: '#EDEDED'
+          backgroundColor: '#fff'
         }
       },
       MuiPickersBasePicker: {
         pickerViewLandscape: {
-          backgroundColor: '#EDEDED'
+          backgroundColor: '#fff'
         }
       },
       MuiPickersDay: {
         daySelected: {
-          backgroundColor: '#267DFF'
+          backgroundColor: '#005EB8'
         }
       }
 
@@ -82,7 +82,7 @@ export default function Picker() {
             }).filter(trues => {
               return trues === true
             }).length
-            return <Badge color={isSelected ? 'secondary' : undefined} overlap="circle" badgeContent={isSelected ? length : undefined} ><a href={isSelected ? '/#/inbox' : null}>{dayComponent}</a></Badge>
+            return <Badge color={isSelected ? 'error' : undefined} overlap="circle" badgeContent={isSelected ? length : undefined} >{dayComponent}</Badge>
           }}
         />
       </ThemeProvider>

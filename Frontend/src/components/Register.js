@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   notchedOutline: {},
   cssFocused: {},
   image: {
-    backgroundImage: 'url(https://cached.imagescaler.hbpl.co.uk/resize/scaleWidth/800/cached.offlinehbpl.hbpl.co.uk/news/PGH/NHS_sign_iStock-20170428030700941.jpg)',
+    backgroundImage: 'url(https://images.unsplash.com/photo-1588775005506-cc9c22cdef84?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80)',
     backgroundRepeat: 'no-repeat',
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],

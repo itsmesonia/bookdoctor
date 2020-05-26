@@ -1,24 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Button from '@material-ui/core/Button'
 import Container from '@material-ui/core/Container'
 import { withStyles } from '@material-ui/core/styles'
-// import Typography from '../Components/Typography'
-import Typography from '@material-ui/core/Typography'
+
 
 const styles = (theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    marginTop: theme.spacing(9),
-    marginBottom: theme.spacing(9)
+    marginTop: theme.spacing(22),
+    marginBottom: theme.spacing(12)
   },
-  button: {
-    border: '4px solid currentColor',
-    borderRadius: 0,
+  a: {
+    border: '2px solid black',
+    borderRadius: 100,
     height: 'auto',
-    padding: theme.spacing(2, 5)
+    padding: theme.spacing(3)
   },
   link: {
     marginTop: theme.spacing(3),
@@ -29,20 +27,21 @@ const styles = (theme) => ({
   }
 })
 
+
 function ProductSmokingHero(props) {
   const { classes } = props
 
   return (
     <Container className={classes.root} component="section">
-      <Button className={classes.button}>
-        <Typography variant="h4" component="span">
-          Got any questions? Need help?
-        </Typography>
-      </Button>
-      <Typography variant="subtitle1" className={classes.link}>
+      <h1 className='homeTitle'>
+        Got any questions? Need help?
+      </h1>
+      <p className='content'>
         We are here to help. Get in touch!
-      </Typography>
-      <img src="https://i.imgur.com/GQBnuem.png" className={classes.buoy} alt="buoy" />
+      </p>
+      <a href="mailto: abc@example.com" className={classes.a}>
+        <img src="https://i.imgur.com/GQBnuem.png" className={classes.buoy} alt="buoy" />
+      </a>
     </Container>
   )
 }

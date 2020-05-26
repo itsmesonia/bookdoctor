@@ -1,42 +1,22 @@
 import React from 'react'
-import Link from '@material-ui/core/Link'
-import { makeStyles } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
-import Title from './Title'
-
-// Generate Order Data
-function createData(id, date, name, prescription, history) {
-  return { id, date, name, prescription, history }
-}
 
 
-const rows = [
-  createData(0, '16 Mar, 2019', 'Sonia', 'Sleeping Pills', '2 years' ),
-  createData(1, '16 Mar, 2019', 'Denisa', 'All the pills', '10 years')
-  // createData(2, '16 Mar, 2019', 'Tom Scholz', 'Boston, MA', 'MC ⠀•••• 1253', 100.81),
-  // createData(3, '16 Mar, 2019', 'Michael Jackson', 'Gary, IN', 'AMEX ⠀•••• 2000', 654.39),
-  // createData(4, '15 Mar, 2019', 'Bruce Springsteen', 'Long Branch, NJ', 'VISA ⠀•••• 5919', 212.79),
-]
 
-function preventDefault(event) {
-  event.preventDefault()
-}
-
-const useStyles = makeStyles((theme) => ({
-  seeMore: {
-    marginTop: theme.spacing(3),
-  },
-}))
 
 export default function MedicalHistory({ singleUser }) {
-  const classes = useStyles()
+
+  
+
+  console.log(singleUser)
+
   return (
     <React.Fragment>
-      <Title>Medical History</Title>
+      <h1 className='title'>Medical History</h1>
       <Table size="small">
         <TableHead>
           <TableRow>
@@ -48,22 +28,22 @@ export default function MedicalHistory({ singleUser }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell>{row.date}</TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.prescription}</TableCell>
-              <TableCell>{row.history}</TableCell>
+          {singleUser && singleUser.history.map(history => (
+            <TableRow key={history._id}>
+              <TableCell>{history.date}</TableCell>
+              <TableCell>{history.patient}</TableCell>
+              <TableCell>{history.prescription}</TableCell>
+              <TableCell>{history.content}</TableCell>
               {/* <TableCell align="right">{row.amount}</TableCell> */}
             </TableRow>
           ))}
         </TableBody>
       </Table>
-      <div className={classes.seeMore}>
+      {/* <div className={classes.seeMore}>
         <Link color="primary" href="#" onClick={preventDefault}>
           See more history
         </Link>
-      </div>
+      </div> */}
     </React.Fragment>
   )
 }

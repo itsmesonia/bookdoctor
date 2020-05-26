@@ -1,4 +1,5 @@
 @import '../css/reset.css';
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500&display=swap');
 
 
 $nhs-color: #005EB8;
@@ -11,12 +12,15 @@ $nhs-purple: #330072;
 $nhs-pale-gray: #E8EDEE;
 $nhs-mid-gray: #768692;
 $nhs-dark-gray: #425563;
+$milk-white: #faf6ef;
 
 
 
 
 body {
   color: $nhs-color;
+  font-family: 'Barlow', sans-serif;
+  position: relative;
 }
 
 .button {
@@ -70,4 +74,45 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
+}
+
+.homeTitle {
+  color: $nhs-color;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+
+.title {
+  color: $nhs-color;
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+.content {
+  font-size: 20px;
+  color: $nhs-dark-blue;
+}
+
+.navbar {
+  background-color: transparent;
+  background-image: none;
+  position: absolute;
+}
+
+.naV {
+  color: $nhs-color;
+  font-weight: 400;
+  font-size: 18px;
+  &:hover {
+    color: $nhs-light-blue;
+  }
+}
+
+
+.navbar-item {
+  &:hover{
+    color: $nhs-light-blue;
+  }
 }

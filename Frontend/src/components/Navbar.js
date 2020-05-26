@@ -26,8 +26,8 @@ const Navbar = () => {
 
 
   return (
-    <div className="navbar is-transparent">
-      {/* <div className="container"> */}
+    <div className="navbar">
+
       <div className="navbar-brand">
         <Link className="navbar-item" to="/">
           <img className="logo" src=''/></Link>
@@ -39,37 +39,37 @@ const Navbar = () => {
         </a>
 
       </div>
-      <div className="navbar-menu is-active">
-        <div id="navbarExampleTransparentExample" className={navClassName}>
 
-          <div className="navbar-end">
-            <div className="navbar-item">
-              <Link className='white' to={'/'}>Home</Link>
-            </div>
-            <div className="navbar-item">
-              <Link className='white' to={'/about'}>About</Link>
-            </div>
-            {Auth.isAuthenticated() && <div className='flexBox'>
-              <div className="navbar-item">
-                <Link className='white' to={'/dashboard'}>Dashboard</Link>
-              </div>
-              <div className="navbar-item" onClick={() => handleLogout()}>
-                <a id=''>Log Out</a>
-              </div>
-            </div>}
-            {!Auth.isAuthenticated() && <div className='flexBox'>
-              <div className="navbar-item">
-                <Link className='white' to={'/login'}>Login</Link>
-              </div>
-              <div className="navbar-item">
-                <Link className='white' to={'/register'}>Register</Link>
-              </div>
-            </div>}
+
+      <div className={navClassName}>
+
+        <div className="navbar-end">
+          <div className="navbar-item">
+            <Link className='naV' to={'/'}>Home</Link>
           </div>
+          <div className="navbar-item">
+            <Link className='naV' to={'/about'}>About</Link>
+          </div>
+          {Auth.isAuthenticated() && <div className='flexBox'>
+            <div className="navbar-item">
+              <Link className='naV' to={'/dashboard'}>Dashboard</Link>
+            </div>
+            <div className="navbar-item" onClick={() => handleLogout()}>
+              <a id='' className='naV'>LogOut</a>
+            </div>
+          </div>}
+          {!Auth.isAuthenticated() && <div className='flexBox'>
+            <div className="navbar-item">
+              <Link className='naV' to={'/login'}>Login</Link>
+            </div>
+            <div className="navbar-item">
+              <Link className='naV' to={'/register'}>Register</Link>
+            </div>
+          </div>}
         </div>
       </div>
-      {/* </div> */}
     </div>
+
   )
 }
 

@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   notchedOutline: {},
   cssFocused: {},
   image: {
-    backgroundImage: 'url(https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80)',
+    backgroundImage: 'url(https://images.unsplash.com/photo-1588784434842-697ea91ac4f1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80)',
     backgroundRepeat: 'no-repeat',
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],

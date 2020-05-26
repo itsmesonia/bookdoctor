@@ -1,6 +1,9 @@
 @import '../css/reset.css';
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500&display=swap");
 body {
   color: #005EB8;
+  font-family: "Barlow", sans-serif;
+  position: relative;
 }
 
 .button {
@@ -49,6 +52,43 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
+}
+
+.homeTitle {
+  color: #005EB8;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.title {
+  color: #005EB8;
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+.content {
+  font-size: 20px;
+  color: #003087;
+}
+
+.navbar {
+  background-color: transparent;
+  background-image: none;
+  position: absolute;
+}
+
+.naV {
+  color: #005EB8;
+  font-weight: 400;
+  font-size: 18px;
+}
+.naV:hover {
+  color: #41B6E6;
+}
+
+.navbar-item:hover {
+  color: #41B6E6;
 }
 
 /*# sourceMappingURL=style.css.map */

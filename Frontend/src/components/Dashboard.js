@@ -39,30 +39,6 @@ const useStyles = makeStyles((theme) => ({
     padding: '0 8px',
     ...theme.mixins.toolbar
   },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    })
-  },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen
-    })
-  },
-  menuButton: {
-    marginRight: 36
-  },
-  menuButtonHidden: {
-    display: 'none'
-  },
-  title: {
-    flexGrow: 1
-  },
   drawerPaper: {
     position: 'relative',
     whiteSpace: 'nowrap',
@@ -87,9 +63,11 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     height: '100vh',
-    overflow: 'auto'
+    // overflow: 'auto',
+    backgroundColor: '#faf6ef'
   },
   container: {
+    marginLeft: '40px',
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4)
   },
@@ -97,14 +75,13 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     display: 'flex',
     overflow: 'auto',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    width: '80%'
   },
   fixedHeight: {
     height: 240
   }
-  // CalendarPage: {
-  //   margin: 45
-  // }
+
 })) 
 
 
@@ -132,10 +109,11 @@ export default function Dashboard(props) {
   }, [])
 
 
-  console.log(singleUser)
+
 
   return (
     <div className={classes.root}>
+
 
       <Drawer
         variant="permanent"
@@ -144,25 +122,20 @@ export default function Dashboard(props) {
         }}
         open={open}
       >
+
         <div className={classes.toolbarIcon}>
           <IconButton onClick={() => handleDrawer()}>
             {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>
-
+        <Divider />
+        <ListItems open={open}/>
         <Divider />
 
-        <ListItems 
-          open={open}
-        />
-
-        <Divider />
       </Drawer>
 
 
       <main className={classes.content}>
-        
-
         <Container maxWidth="lg" className={classes.container}>
 
           <Grid container spacing={3}>
@@ -177,8 +150,8 @@ export default function Dashboard(props) {
 
             {singleUser && <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-                <h1>Your most recent appointment: {singleUser.appointment[singleUser.appointment.length - 1].date}</h1>
-                <h2>with {singleUser.appointment[singleUser.appointment.length - 1].doctor}</h2>
+                <h1 className='title'>Most recent appointment </h1>
+                <p className='content'>{singleUser.appointment[singleUser.appointment.length - 1].date} with {singleUser.appointment[singleUser.appointment.length - 1].doctor}</p>
               </Paper>
             </Grid>}
           
@@ -189,15 +162,18 @@ export default function Dashboard(props) {
                 />
               </Paper>
             </Grid>
+
           </Grid>
 
           
-          <Box mt={5}>
+          <Box mt={18}>
             <div>Copyright © <Link target='blank' className='links' to="https://github.com/soniacweb/bookdoctor">bookdoctors.com</Link>{' '}{new Date().getFullYear()}</div>
           </Box>
 
         </Container>
       </main>
+
+
     </div>
   ) 
 }

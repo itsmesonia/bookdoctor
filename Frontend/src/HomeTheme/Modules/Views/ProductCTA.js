@@ -11,7 +11,7 @@ import Button from '../Components/Button'
 
 const styles = (theme) => ({
   root: {
-    marginTop: theme.spacing(10),
+    marginTop: theme.spacing(20),
     marginBottom: 0,
     display: 'flex',
   },
