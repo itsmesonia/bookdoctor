@@ -19,6 +19,10 @@ import {
 import SelectDoc from './SelectDoc'
 // import AppointmentComment from './AppointmentComment'
 
+
+
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
@@ -52,18 +56,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
+
+
+
+
 //connect frontend and backend
 export default function BookApp(props) {
   const classes = useStyles()
 
   const [selectedDate, setSelectedDate] = useState({ date: new Date() })
-
   const [doctorInfo, setDoctorInfo] = useState()
+  const [time, setTime] = useState()
+  const [reason, setReason] = useState()
 
-  function handleChange(e) {
-    // e.persist()
-    // setAppointmentInfo({ ...appointmentInfo, [e.target.name]: e.target.value })
-  }
+
 
   const handleDateChange = (date) => {
     setSelectedDate({ date: date })
@@ -74,8 +80,7 @@ export default function BookApp(props) {
     e.preventDefault()
     axios
       .post('/api/appointment')
-      .then(
-        () => console.log('sent')
+      .then(() => console.log('sent')
         // {
         // if (
         //   errors.date === '' &&
@@ -154,7 +159,6 @@ export default function BookApp(props) {
                   }}
                 /> */}
 
-              {/* <AppointmentComment /> */}
               {/* </Grid> */}
             </MuiPickersUtilsProvider>
           </form>
