@@ -1,27 +1,23 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Avatar from '@material-ui/core/Avatar'
 import CssBaseline from '@material-ui/core/CssBaseline'
-// import Link from '@material-ui/core/Link'
 import Grid from '@material-ui/core/Grid'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
-import AppointmentForm from './AppointmentForm'
-import axios from 'axios'
-import Auth from '../lib/auth'
+// import AppointmentForm from './AppointmentForm'
 
-// function Login() {
-//   return (
-//     <Typography variant="body2" color="textSecondary" align="center">
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://material-ui.com/">
-//         bookdoctors.com
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   )
-// }
+import axios from 'axios'
+import 'date-fns'
+import DateFnsUtils from '@date-io/date-fns'
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker,
+} from '@material-ui/pickers'
+
+import SelectDoc from './SelectDoc'
+import AppointmentComment from './AppointmentComment'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -56,18 +52,50 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function BookApp() {
+//connect frontend and backend
+export default function BookApp(props) {
   const classes = useStyles()
 
-  function handleSubmit(e) {
+  const [selectedDate, setSelectedDate] = useState(new Date())
+
+  const [appointmentInfo, setAppointmentInfo] = useState({
+    date: '',
+    reason: '',
+    doctor: '',
+  })
+
+  function handleChange(e) {
+    e.persist()
+    setAppointmentInfo({ ...appointmentInfo, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = (e) => {
     e.preventDefault()
     axios
-      .post('/api/appintment', {
-        headers: { Authorization: `Bearer ${Auth.getToken()}` },
-      })
-      .then(console.log('booked'))
+      .post('/api/appointment', appointmentInfo)
+      .then(
+        () => console.log('sent')
+        // {
+        // if (
+        //   errors.date === '' &&
+        //   errors.reason === '' &&
+        //   errors.doctor === ''
+        // ) {
+        // props.history.push('/dashboard')
+        // props.history.push('/')
+        // window.location.reload()
+        //ask aichi about this line^
+        // }
+      )
       .catch((err) => console.log(err))
   }
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date)
+  }
+
+  // send booked time in string
+  console.log(selectedDate.toLocaleString())
 
   return (
     <Grid container className={classes.root}>
@@ -82,9 +110,46 @@ export default function BookApp() {
             Book your Appointment
           </Typography>
 
-          <form className={classes.container} onClick={(e) => handleSubmit(e)}>
-            <AppointmentForm />
-            <button>book</button>
+          <form
+            className={classes.container}
+            noValidate
+            onSubmit={(e) => handleSubmit(e)}
+          >
+            {/* <AppointmentForm /> */}
+
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <Grid container justify="space-around">
+                <SelectDoc />
+
+                <KeyboardDatePicker
+                  required
+                  fullWidth
+                  margin="dense"
+                  id="date"
+                  label="Date"
+                  format="MM/dd/yyyy"
+                  value={selectedDate}
+                  onChange={(e) => handleDateChange(e)}
+                  KeyboardButtonProps={{
+                    'aria-label': 'change date',
+                  }}
+                />
+                <KeyboardTimePicker
+                  required
+                  fullWidth
+                  margin="dense"
+                  id="date"
+                  label="Time"
+                  value={selectedDate}
+                  onChange={(e) => handleChange(e)}
+                  KeyboardButtonProps={{
+                    'aria-label': 'change time',
+                  }}
+                />
+
+                {/* <AppointmentComment /> */}
+              </Grid>
+            </MuiPickersUtilsProvider>
           </form>
         </div>
       </Grid>
