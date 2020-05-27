@@ -17,7 +17,7 @@ import {
 } from '@material-ui/pickers'
 
 import SelectDoc from './SelectDoc'
-import AppointmentComment from './AppointmentComment'
+// import AppointmentComment from './AppointmentComment'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -56,23 +56,24 @@ const useStyles = makeStyles((theme) => ({
 export default function BookApp(props) {
   const classes = useStyles()
 
-  const [selectedDate, setSelectedDate] = useState(new Date())
+  const [selectedDate, setSelectedDate] = useState({ date: new Date() })
 
-  const [appointmentInfo, setAppointmentInfo] = useState({
-    date: '',
-    reason: '',
-    doctor: '',
-  })
+  const [doctorInfo, setDoctorInfo] = useState()
 
   function handleChange(e) {
-    e.persist()
-    setAppointmentInfo({ ...appointmentInfo, [e.target.name]: e.target.value })
+    // e.persist()
+    // setAppointmentInfo({ ...appointmentInfo, [e.target.name]: e.target.value })
   }
 
+  const handleDateChange = (date) => {
+    setSelectedDate({ date: date })
+  }
+
+  
   const handleSubmit = (e) => {
     e.preventDefault()
     axios
-      .post('/api/appointment', appointmentInfo)
+      .post('/api/appointment')
       .then(
         () => console.log('sent')
         // {
@@ -90,12 +91,12 @@ export default function BookApp(props) {
       .catch((err) => console.log(err))
   }
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date)
-  }
 
-  // send booked time in string
-  console.log(selectedDate.toLocaleString())
+
+
+  if (doctorInfo) console.log(doctorInfo)
+  if (selectedDate) console.log(selectedDate)
+
 
   return (
     <Grid container className={classes.root}>
@@ -117,24 +118,30 @@ export default function BookApp(props) {
           >
             {/* <AppointmentForm /> */}
 
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-              <Grid container justify="space-around">
-                <SelectDoc />
+            <SelectDoc 
+              update={setDoctorInfo}
+            />
 
-                <KeyboardDatePicker
-                  required
-                  fullWidth
-                  margin="dense"
-                  id="date"
-                  label="Date"
-                  format="MM/dd/yyyy"
-                  value={selectedDate}
-                  onChange={(e) => handleDateChange(e)}
-                  KeyboardButtonProps={{
-                    'aria-label': 'change date',
-                  }}
-                />
-                <KeyboardTimePicker
+            <MuiPickersUtilsProvider utils={DateFnsUtils} >
+              {/* <Grid container justify="space-around"> */}
+
+              <KeyboardDatePicker
+                name='date'
+                required
+                fullWidth
+                margin="dense"
+                id="date"
+                label="Date"
+                format="MM/dd/yyyy"
+                value={selectedDate.date}
+                onChange={(e) => handleDateChange(e)}
+                KeyboardButtonProps={{
+                  'aria-label': 'change date',
+                }}
+              />
+
+              {/* <KeyboardTimePicker
+                  name='date'
                   required
                   fullWidth
                   margin="dense"
@@ -145,10 +152,10 @@ export default function BookApp(props) {
                   KeyboardButtonProps={{
                     'aria-label': 'change time',
                   }}
-                />
+                /> */}
 
-                {/* <AppointmentComment /> */}
-              </Grid>
+              {/* <AppointmentComment /> */}
+              {/* </Grid> */}
             </MuiPickersUtilsProvider>
           </form>
         </div>

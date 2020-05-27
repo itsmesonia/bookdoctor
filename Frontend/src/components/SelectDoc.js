@@ -3,41 +3,69 @@ import { makeStyles } from '@material-ui/core/styles'
 import InputLabel from '@material-ui/core/InputLabel'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
+import axios from 'axios'
+import Auth from '../lib/auth'
+
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 450,
+    minWidth: 450
   },
+  cssOutlinedInput: {
+    '&$cssFocused $notchedOutline': {
+      borderColor: '#005EB8'
+    }
+  },
+  notchedOutline: {},
+  cssFocused: {},
   selectEmpty: {
     marginTop: theme.spacing(2),
-  },
+  }
 }))
 
-export default function SimpleSelect() {
+export default function SimpleSelect({ update }) {
   const classes = useStyles()
 
   const [doctor, setDoctor] = useState()
+  const [select, setSelect] = useState()
 
-  const handleChange = (event) => {
-    setAge(event.target.value)
+  useEffect(() => {
+    axios.get('/api/doctors', {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
+      .then(res => {
+        setDoctor(res.data)
+      })
+      .catch(err => console.log(err))
+  },[])
+
+
+  function handleChange(e) {
+    setSelect({ [e.target.name]: e.target.value })
+    update({ [e.target.name]: e.target.value })
   }
 
+
+
   return (
-    <div>
+    <div >
       <FormControl required className={classes.formControl}>
-        <InputLabel id="demo-simple-select-required-label">Name</InputLabel>
+        <InputLabel className='selectedInput'>Doctor</InputLabel>
         <Select
-          // margin="normal"
-          labelId="demo-simple-select-required-label"
-          id="demo-simple-select-required"
-          // value={age}
-          // onChange={handleChange}
-          className={classes.selectEmpty}
+          className='selectInput'
+          native
+          onChange={(e) => handleChange(e)}
+          label='Your GP'
+          name='doctor'
         >
-          {/* <option aria-label="None" value="" />
-                <option value='patient'>Patient</option>
-                <option value='doctor'>Doctor</option> */}
+          <option aria-label="None" value="" />
+          { doctor && doctor.map((doc) => {
+            return <option key={doc.id}>
+              {doc.username}
+            </option>
+          })}
+
         </Select>
       </FormControl>
     </div>
