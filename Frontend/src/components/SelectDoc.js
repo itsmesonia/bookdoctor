@@ -9,11 +9,11 @@ import Select from '@material-ui/core/Select'
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 450
+    minWidth: 450,
   },
   selectEmpty: {
-    marginTop: theme.spacing(2)
-  }
+    marginTop: theme.spacing(2),
+  },
 }))
 
 export default function SimpleSelect() {
@@ -26,13 +26,11 @@ export default function SimpleSelect() {
 
   return (
     <div>
-      <FormControl className={classes.formControl}>
-        
-      </FormControl> 
+      <FormControl className={classes.formControl}></FormControl>
       <FormControl required className={classes.formControl}>
         <InputLabel id="demo-simple-select-required-label">Name</InputLabel>
         <Select
-          margin="normal"
+          // margin="normal"
           labelId="demo-simple-select-required-label"
           id="demo-simple-select-required"
           // value={age}
@@ -46,8 +44,6 @@ export default function SimpleSelect() {
           <MenuItem value={20}>Doctor2</MenuItem>
           <MenuItem value={30}>Doctor3</MenuItem>
         </Select>
-      
-   
       </FormControl>
     </div>
   )
