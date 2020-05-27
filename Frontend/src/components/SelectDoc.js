@@ -1,8 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import InputLabel from '@material-ui/core/InputLabel'
-import MenuItem from '@material-ui/core/MenuItem'
-import FormHelperText from '@material-ui/core/FormHelperText'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
 
@@ -18,15 +16,15 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SimpleSelect() {
   const classes = useStyles()
-  // const [age, setAge] = React.useState('')
 
-  // const handleChange = (event) => {
-  //   setAge(event.target.value)
-  // }
+  const [doctor, setDoctor] = useState()
+
+  const handleChange = (event) => {
+    setAge(event.target.value)
+  }
 
   return (
     <div>
-      <FormControl className={classes.formControl}></FormControl>
       <FormControl required className={classes.formControl}>
         <InputLabel id="demo-simple-select-required-label">Name</InputLabel>
         <Select
@@ -37,12 +35,9 @@ export default function SimpleSelect() {
           // onChange={handleChange}
           className={classes.selectEmpty}
         >
-          {/* <MenuItem value="">
-            <em>None</em>
-          </MenuItem> */}
-          <MenuItem value={10}>Doctor1</MenuItem>
-          <MenuItem value={20}>Doctor2</MenuItem>
-          <MenuItem value={30}>Doctor3</MenuItem>
+          {/* <option aria-label="None" value="" />
+                <option value='patient'>Patient</option>
+                <option value='doctor'>Doctor</option> */}
         </Select>
       </FormControl>
     </div>

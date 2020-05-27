@@ -15,7 +15,7 @@ router.route('/appointment')
   .get(secureRoute, appointmentFunc.index)
 
 
-router.route('/appointment/doc/:id')
+router.route('/appointment/doc/:name')
   .get(secureRoute, appointmentFunc.doctorAppointment)
 
 
@@ -54,10 +54,12 @@ router.route('/user')
   .get(secureRoute, userFunc.index)
 
 
+router.route('/doctors')
+  .get(secureRoute, userFunc.doctors)
+
+
 router.route('/user/:id')
   .get(secureRoute, userFunc.show)
-  
-
 
 
 
