@@ -100,13 +100,13 @@ export default function Dashboard(props) {
  
  
 
-  useEffect(() => {
-    axios.get(`/api/user/${Auth.getUser().id}`, {
-      headers: { Authorization: `Bearer ${Auth.getToken()}` }
-    })
-      .then(res => setSingleUser(res.data))
-      .catch(err => console.log(err))
-  }, [])
+  // useEffect(() => {
+  //   axios.get(`/api/user/${Auth.getUser().id}`, {
+  //     headers: { Authorization: `Bearer ${Auth.getToken()}` }
+  //   })
+  //     .then(res => setSingleUser(res.data))
+  //     .catch(err => console.log(err))
+  // }, [])
 
 
 
