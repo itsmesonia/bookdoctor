@@ -6,9 +6,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
       margin: theme.spacing(2),
-      width: '40ch',
-    },
-  },
+      width: '40ch'
+    }
+  }
 }))
 
 export default function MultilineTextFields() {
@@ -20,18 +20,24 @@ export default function MultilineTextFields() {
   }
 
   return (
-    <form className={classes.root} noValidate autoComplete="off">
+    <form className={classes.root} noValidate autoComplete="off" 
+      onChange={(e) => handleChange(e)}
+    >
       <div>
        
         <TextField
-          id="standard-multiline-static"
-          label="Reasons"
+          onChange={(e) => handleChange(e)}
+          id="reason"
+          label="Reason"
           multiline
           rows={4}
           defaultValue="Why would you like to see the doctor?"
         />
       </div>
      
+      <button className='button' >
+              Submit
+      </button>
     </form>
   )
 }

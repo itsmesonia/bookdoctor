@@ -4,9 +4,6 @@ const jwt = require('jsonwebtoken')
 const { secret } = require('../config/environment')
 
 
-
-
-
 function register(req, res, next) {
   User
     .create(req.body) // same as creating any other resource, see animals create controller, except runs our extra pre 'save' and 'validate' methods. See /models/User for these.

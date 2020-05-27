@@ -9,12 +9,12 @@ mongoose.connect(dbURI, (err, db) => {
   Doctor.create([{
     name: 'Aichi test',
     image: 'https://www.tradefinanceglobal.com/wp-content/uploads/2018/09/unicorn-20072661280.jpg',
-    expertise: 'Everything bitch',
+    expertise: 'Everything',
     gp: 'Miltonkeynes'
   }, {
     name: 'Denisa test',
     image: 'https://www.tradefinanceglobal.com/wp-content/uploads/2018/09/unicorn-20072661280.jpg',
-    expertise: 'Everything bitch',
+    expertise: 'Everything',
     gp: 'Miltonkeynes'
 
   }])
