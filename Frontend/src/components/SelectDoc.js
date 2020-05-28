@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function SimpleSelect({ update }) {
+export default function SimpleSelect({ update, data }) {
   const classes = useStyles()
 
   const [doctor, setDoctor] = useState()
@@ -43,14 +43,14 @@ export default function SimpleSelect({ update }) {
 
   function handleChange(e) {
     setSelect({ [e.target.name]: e.target.value })
-    update({ [e.target.name]: e.target.value })
+    update({ ...data, [e.target.name]: e.target.value })
   }
 
 
 
   return (
     <div >
-      <FormControl required className={classes.formControl}>
+      <FormControl required className={classes.formControl} >
         <InputLabel className='selectedInput'>Doctor</InputLabel>
         <Select
           className='selectInput'
