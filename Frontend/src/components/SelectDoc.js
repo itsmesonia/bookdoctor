@@ -68,6 +68,37 @@ export default function SimpleSelect({ update, data }) {
 
         </Select>
       </FormControl>
+      
+      <FormControl required className={classes.formControl} >
+        <InputLabel className='selectedInput'>Time</InputLabel>
+        <Select
+          className='selectInput'
+          native
+          onChange={(e) => handleChange(e)}
+          label='Time'
+          name='time'
+        >
+          <option aria-label="None" value="" />
+          <option value='9:00AM'>9:00AM</option>
+          <option value='9:30AM'>9:30AM</option>
+          <option value='10:00AM'>10:00AM</option>
+          <option value='10:30AM'>10:30AM</option>
+          <option value='11:00AM'>11:00AM</option>
+          <option value='11:30AM'>11:30AM</option>
+          <option value='12:00PM'>12:00PM</option>
+          <option value='13:30PM'>13:30PM</option>
+          <option value='14:00PM'>14:00PM</option>
+          <option value='14:30PM'>14:30PM</option>
+          <option value='15:00PM'>15:00PM</option>
+          <option value='15:30PM'>15:30PM</option>
+          <option value='16:00PM'>16:00PM</option>
+          <option value='16:30PM'>16:30PM</option>
+          <option value='17:00PM'>17:00PM</option>
+          <option value='17:30PM'>17:30PM</option>
+        </Select>
+      </FormControl>
+        
+      
     </div>
   )
 }

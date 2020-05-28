@@ -8,7 +8,7 @@ mongoose.set('useFindAndModify', false)
 
 function create(req, res) {
   req.body.user = req.currentUser
-  const appoint = Appointment.findOne({ date: req.body.date, doctor: req.body.doctor }).exec()
+  const appoint = Appointment.findOne({ date: req.body.date, time: req.body.time, doctor: req.body.doctor }).exec()
   appoint
     .then(function(appointmentItem) {
       if (!appointmentItem) {

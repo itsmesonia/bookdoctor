@@ -4,7 +4,6 @@ import Avatar from '@material-ui/core/Avatar'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Grid from '@material-ui/core/Grid'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
-import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Box from '@material-ui/core/Box'
 import TextField from '@material-ui/core/TextField'  
@@ -62,6 +61,7 @@ export default function BookApp(props) {
 
   const [data, setData] = useState({
     date: selectedDate.date.toLocaleDateString(),
+    time: '',
     reason: '',
     doctor: ''
   })
@@ -82,7 +82,7 @@ export default function BookApp(props) {
 
   
   const handleSubmit = (e) => {
-    if (data.doctor === '' || data.reason === '') alert('Please fill in all sections')
+    if (data.doctor === '' || data.reason === '' || data.time === '') alert('Please fill in all sections')
     e.preventDefault()
     axios
       .post('/api/appointment', data, {
@@ -97,6 +97,7 @@ export default function BookApp(props) {
   }
 
 
+  console.log(data)
 
 
   if (error) {
@@ -114,9 +115,9 @@ export default function BookApp(props) {
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <h1>
             Book your Appointment
-          </Typography>
+          </h1>
 
           <form
             className={classes.container}
@@ -146,8 +147,9 @@ export default function BookApp(props) {
                   'aria-label': 'change date',
                 }}
               />
+            </MuiPickersUtilsProvider>
 
-              {/* <KeyboardTimePicker
+            {/* <KeyboardTimePicker
                   name='date'
                   required
                   fullWidth
@@ -161,8 +163,7 @@ export default function BookApp(props) {
                   }}
                 /> */}
 
-              {/* </Grid> */}
-            </MuiPickersUtilsProvider>
+            {/* </Grid> */}
 
             <TextField
               onChange={(e) => handleChange(e)}
