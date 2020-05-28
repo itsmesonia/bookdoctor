@@ -33,7 +33,7 @@ function login(req, res) {
 }
 
 function index(req, res) {
-  User.find({ role: 'doctor' })
+  User.find()
     // .populate('appointment.user')
     .then((user) => res.status(200).json(user))
     .catch((err) => res.json(err))
