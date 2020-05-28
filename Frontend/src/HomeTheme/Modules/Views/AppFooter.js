@@ -13,7 +13,7 @@ function Copyright() {
     <React.Fragment>
       {'© '}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        bookdoctor.com
       </Link>{' '}
       {new Date().getFullYear()}
     </React.Fragment>
@@ -23,18 +23,18 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    backgroundColor: theme.palette.secondary.light,
+    backgroundColor: '#faf6ef'
   },
   container: {
     marginTop: theme.spacing(8),
     marginBottom: theme.spacing(8),
-    display: 'flex',
+    display: 'flex'
   },
   iconsWrapper: {
-    height: 120,
+    height: 120
   },
   icons: {
-    display: 'flex',
+    display: 'flex'
   },
   icon: {
     width: 48,
@@ -46,33 +46,33 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1),
     '&:hover': {
       // backgroundColor: theme.palette.warning.dark,
-    },
+    }
   },
   list: {
     margin: 0,
     listStyle: 'none',
-    padding: 0,
+    padding: 0
   },
   listItem: {
     paddingTop: theme.spacing(0.5),
-    paddingBottom: theme.spacing(0.5),
+    paddingBottom: theme.spacing(0.5)
   },
   language: {
     marginTop: theme.spacing(1),
-    width: 150,
-  },
+    width: 150
+  }
 }))
 
-const LANGUAGES = [
-  {
-    code: 'en-US',
-    name: 'English',
-  },
-  {
-    code: 'fr-FR',
-    name: 'Français',
-  },
-]
+// const LANGUAGES = [
+//   {
+//     code: 'en-US',
+//     name: 'English',
+//   },
+//   {
+//     code: 'fr-FR',
+//     name: 'Français',
+//   },
+// ]
 
 export default function AppFooter() {
   const classes = useStyles()
@@ -116,10 +116,24 @@ export default function AppFooter() {
             </ul>
           </Grid>
           <Grid item xs={6} sm={8} md={4}>
+
             <Typography variant="h6" marked="left" gutterBottom>
-              Language
+              Contact
             </Typography>
-            <TextField
+            <ul className={classes.list}>
+              <li className={classes.listItem}>
+                <Link href="/premium-themes/onepirate/terms/">NHS</Link>
+              </li>
+              <li className={classes.listItem}>
+                <Link href="/premium-themes/onepirate/privacy/">GOV.UK</Link>
+              </li>
+            </ul>
+
+
+            {/* <Typography variant="h6" marked="left" gutterBottom>
+              Language
+            </Typography> */}
+            {/* <TextField
               select
               SelectProps={{
                 native: true,
@@ -131,26 +145,26 @@ export default function AppFooter() {
                   {language.name}
                 </option>
               ))}
-            </TextField>
+            </TextField> */}
           </Grid>
           <Grid item>
             <Typography variant="caption">
-              {'Icons made by '}
+              {'Created by Aichi Chang, Denisa Miheala and Sonia Choudhury'}
               <Link href="https://www.freepik.com" rel="sponsored" title="Freepik">
-                Freepik
+                {/* Freepik */}
               </Link>
-              {' from '}
+              {' - GA Grads 2020'}
               <Link href="https://www.flaticon.com" rel="sponsored" title="Flaticon">
-                www.flaticon.com
+                {/* www.flaticon.com */}
               </Link>
-              {' is licensed by '}
+              {/* {' is licensed by '} */}
               <Link
                 href="https://creativecommons.org/licenses/by/3.0/"
                 title="Creative Commons BY 3.0"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                CC 3.0 BY
+                {/* CC 3.0 BY */}
               </Link>
             </Typography>
           </Grid>
