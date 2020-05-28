@@ -149,7 +149,7 @@ export default function AppFooter() {
           </Grid>
           <Grid item>
             <Typography variant="caption">
-              {'Created by Aichi Chang, Denisa Miheala and Sonia Choudhury'}
+              {'Created by Aichi Chang, Denisa Mihaela and Sonia Choudhury'}
               <Link href="https://www.freepik.com" rel="sponsored" title="Freepik">
                 {/* Freepik */}
               </Link>
