@@ -150,22 +150,22 @@ export default function AppFooter() {
           <Grid item>
             <Typography variant="caption">
               {'Created by Aichi Chang, Denisa Mihaela and Sonia Choudhury'}
-              <Link href="https://www.freepik.com" rel="sponsored" title="Freepik">
+              {/* <Link href="https://www.freepik.com" rel="sponsored" title="Freepik"> */}
                 {/* Freepik */}
-              </Link>
+              {/* </Link> */}
               {' - GA Grads 2020'}
-              <Link href="https://www.flaticon.com" rel="sponsored" title="Flaticon">
+              {/* <Link href="https://www.flaticon.com" rel="sponsored" title="Flaticon"> */}
                 {/* www.flaticon.com */}
-              </Link>
+              {/* </Link> */}
               {/* {' is licensed by '} */}
-              <Link
+              {/* <Link
                 href="https://creativecommons.org/licenses/by/3.0/"
                 title="Creative Commons BY 3.0"
                 target="_blank"
                 rel="noopener noreferrer"
-              >
+              > */}
                 {/* CC 3.0 BY */}
-              </Link>
+              {/* </Link> */}
             </Typography>
           </Grid>
         </Grid>

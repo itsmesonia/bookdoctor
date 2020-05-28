@@ -1,24 +1,18 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import Avatar from '@material-ui/core/Avatar'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Grid from '@material-ui/core/Grid'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
-import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
-// import AppointmentForm from './AppointmentForm'
-
-import axios from 'axios'
+import Box from '@material-ui/core/Box'
+import TextField from '@material-ui/core/TextField'  
 import 'date-fns'
 import DateFnsUtils from '@date-io/date-fns'
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker,
-} from '@material-ui/pickers'
-
+import { MuiPickersUtilsProvider,KeyboardTimePicker,KeyboardDatePicker } from '@material-ui/pickers'
 import SelectDoc from './SelectDoc'
-// import AppointmentComment from './AppointmentComment'
-
+import axios from 'axios'
+import Auth from '../lib/auth'
 
 
 
@@ -64,42 +58,52 @@ export default function BookApp(props) {
   const classes = useStyles()
 
   const [selectedDate, setSelectedDate] = useState({ date: new Date() })
-  const [doctorInfo, setDoctorInfo] = useState()
-  const [time, setTime] = useState()
-  const [reason, setReason] = useState()
+
+  const [data, setData] = useState({
+    date: selectedDate.date.toLocaleDateString(),
+    time: '',
+    reason: '',
+    doctor: ''
+  })
+
+  const [error, setError] = useState('')
 
 
 
   const handleDateChange = (date) => {
     setSelectedDate({ date: date })
+    setData({ ...data, date: date.toLocaleDateString() })
+  }
+
+  function handleChange(e) {
+    e.persist()
+    setData({ ...data, [e.target.name]: e.target.value })
   }
 
   
   const handleSubmit = (e) => {
+    if (data.doctor === '' || data.reason === '' || data.time === '') alert('Please fill in all sections')
     e.preventDefault()
     axios
-      .post('/api/appointment')
-      .then(() => console.log('sent')
-        // {
-        // if (
-        //   errors.date === '' &&
-        //   errors.reason === '' &&
-        //   errors.doctor === ''
-        // ) {
-        // props.history.push('/dashboard')
-        // props.history.push('/')
-        // window.location.reload()
-        //ask aichi about this line^
-        // }
-      )
-      .catch((err) => console.log(err))
+      .post('/api/appointment', data, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+      .then(() => {
+        if (error === '') {
+          props.history.push('/dashboard')
+        }
+      })
+      .catch((err) => setError(err.response.data))
   }
 
 
+  console.log(data)
 
 
-  if (doctorInfo) console.log(doctorInfo)
-  if (selectedDate) console.log(selectedDate)
+  if (error) {
+    alert(error.message)
+    window.location.reload()
+  }  
 
 
   return (
@@ -111,19 +115,19 @@ export default function BookApp(props) {
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <h1>
             Book your Appointment
-          </Typography>
+          </h1>
 
           <form
             className={classes.container}
             noValidate
             onSubmit={(e) => handleSubmit(e)}
           >
-            {/* <AppointmentForm /> */}
 
             <SelectDoc 
-              update={setDoctorInfo}
+              update={setData}
+              data={data}
             />
 
             <MuiPickersUtilsProvider utils={DateFnsUtils} >
@@ -143,8 +147,9 @@ export default function BookApp(props) {
                   'aria-label': 'change date',
                 }}
               />
+            </MuiPickersUtilsProvider>
 
-              {/* <KeyboardTimePicker
+            {/* <KeyboardTimePicker
                   name='date'
                   required
                   fullWidth
@@ -158,10 +163,37 @@ export default function BookApp(props) {
                   }}
                 /> */}
 
-              {/* </Grid> */}
-            </MuiPickersUtilsProvider>
+            {/* </Grid> */}
+
+            <TextField
+              onChange={(e) => handleChange(e)}
+              // variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="reason"
+              label="Reason"
+              type="text"
+              id="reason"
+              InputProps={{
+                classes: {
+                  root: classes.cssOutlinedInput,
+                  focused: classes.cssFocused,
+                  notchedOutline: classes.notchedOutline
+                }
+              }}
+            />
+
+            <button className='button' >
+              Submit
+            </button>    
+
           </form>
         </div>
+
+        <Box mt={5}>
+          <div>Copyright © <Link target='blank' className='links' to="https://github.com/soniacweb/bookdoctor">bookdoctors.com</Link>{' '}{new Date().getFullYear()}</div>
+        </Box>
       </Grid>
     </Grid>
   )

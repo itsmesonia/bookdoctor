@@ -1,5 +1,6 @@
 import React from 'react'
 import LazyHero from 'react-lazy-hero'
+import Navbar from './Navbar'
 import 'bulma'
 
 import axios from 'axios'
@@ -33,6 +34,7 @@ class About extends React.Component {
     console.log(this.state.article)
     return (
       <div>
+        <Navbar />
         <LazyHero
           imageSrc="https://i.imgur.com/LcwSFCg.jpg" 
           parallaxOffset={100} 
