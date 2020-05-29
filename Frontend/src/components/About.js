@@ -20,8 +20,8 @@ class About extends React.Component {
       // method: 'GET',
       type: 'GET',
       headers: {
-        'subscription-key': '{f01b767a2e9e4ed8a2aa639350206fbc}',
-        'Content-Type': 'application/json'
+        subscription-key:'{f01b767a2e9e4ed8a2aa639350206fbc}',
+        Content-Type: 'application/json'
       }
       // dataType: 'json'
     })
