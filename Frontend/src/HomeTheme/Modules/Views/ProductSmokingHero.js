@@ -10,14 +10,8 @@ const styles = (theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    marginTop: theme.spacing(30),
+    marginTop: theme.spacing(20),
     marginBottom: theme.spacing(12)
-  },
-  a: {
-    // border: '2px solid black',
-    borderRadius: 60,
-    height: 'auto'
-    // padding: theme.spacing(2)
   },
   link: {
     marginTop: theme.spacing(3),
@@ -35,12 +29,13 @@ function ProductSmokingHero(props) {
   return (
     <Container className={classes.root} component="section">
       <h1 className='homeTitle'>
-        Got any questions? Need help?
+        Got any questions? We are here to help!
       </h1>
-      <p className='content'>
-        We are here to help. Get in touch!
+      <p className='homeContent'>
+        Click here to contact us via email
       </p>
-      <a href="mailto: abc@example.com" className={classes.a}>
+  
+      <a href="mailto: abc@example.com" >
         <ContactSupportIcon style={{ fontSize: 60 }} />
         {/* <img src="https://i.imgur.com/GQBnuem.png" className={classes.buoy} alt="buoy" /> */}
       </a>

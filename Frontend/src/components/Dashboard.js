@@ -111,9 +111,10 @@ export default function Dashboard() {
 
 
 
+  if (!singleUser.appointment) return <h1>Loading...</h1>
+
   return (
     <div className={classes.root}>
-
 
       <Drawer
         variant="permanent"
@@ -150,18 +151,17 @@ export default function Dashboard() {
               </MuiPickersUtilsProvider> 
             </Box>
 
-            <Grid item xs={12} md={4} lg={3}>
+            <Grid item xs={12} md={4} lg={5}>
               <Paper className={fixedHeightPaper}>
                 <h1 className='title'>Most recent appointment </h1>
-                {!singleUser.appointment === [] ? 
-                  <p className='content'>{singleUser && singleUser.appointment[singleUser.appointment.length - 1].date} with {singleUser.appointment[singleUser.appointment.length - 1].doctor}</p> : 
-                  <p className='content'>No Appointment Booked</p>}
+                {singleUser.appointment.length === 0 ? <p className='content'>No Appointment Booked</p> :
+                  <p className='content'>{ singleUser.appointment[singleUser.appointment.length - 1].date} with {singleUser.appointment[singleUser.appointment.length - 1].doctor}</p> }
               </Paper>
             </Grid>
           
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                {!singleUser.history === [] ? <MedicalHistory singleUser={singleUser} /> : <h1 className='title'>No Medical History</h1>}
+                {!singleUser.history.length === 0 ? <MedicalHistory singleUser={singleUser} /> : <h1 className='title'>No Medical History</h1>}
               </Paper>
             </Grid>
 

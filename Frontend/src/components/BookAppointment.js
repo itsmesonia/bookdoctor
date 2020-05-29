@@ -88,7 +88,6 @@ export default function BookApp(props) {
 
 
 
-
   if (error) {
     alert(error.message)
     window.location.reload()
@@ -100,7 +99,7 @@ export default function BookApp(props) {
     <Grid container className={classes.root}>
       <CssBaseline />
 
-      <div className='bookPage'>
+      {Auth.isAuthenticated() ? <div className='bookPage'>
         <Grid  item xs={6} sm={8} md={5} elevation={6} square="true">
 
           
@@ -184,7 +183,13 @@ export default function BookApp(props) {
 
         </Grid>
 
-      </div>
+      </div> : 
+      
+        <div className='bookPageFlex'>
+          <p className='bookPageLogin'>Please Click Here to Login</p>
+          <Link to='/login' className='button'>Login</Link>
+        </div>
+      }
 
     </Grid>
         
