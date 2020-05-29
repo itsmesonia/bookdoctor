@@ -10,7 +10,7 @@ import Auth from '../lib/auth'
 
 export default function Picker({ url }) {
 
-
+  
   const [selectedDates, setSelectedDates] = useState()
   const [selectedDays, setSelectedDays] = useState([])
   // const [errors, setErrors] = useState()

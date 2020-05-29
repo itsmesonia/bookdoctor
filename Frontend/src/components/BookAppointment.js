@@ -48,14 +48,13 @@ export default function BookApp(props) {
   const classes = useStyles()
 
   const [selectedDate, setSelectedDate] = useState({ date: new Date() })
-
   const [data, setData] = useState({
     date: selectedDate.date.toLocaleDateString(),
     time: '',
     reason: '',
     doctor: ''
   })
-
+  const today = new Date()
   const [error, setError] = useState('')
 
 
@@ -136,6 +135,7 @@ export default function BookApp(props) {
                 {/* <Grid container justify="space-around"> */}
 
                 <KeyboardDatePicker
+                  minDate={today}
                   name='date'
                   required
                   fullWidth
