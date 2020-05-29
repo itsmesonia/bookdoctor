@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom'
 import Avatar from '@material-ui/core/Avatar'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Grid from '@material-ui/core/Grid'
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
+import AssignmentIndIcon from '@material-ui/icons/AssignmentInd'
 import { makeStyles } from '@material-ui/core/styles'
-import Box from '@material-ui/core/Box'
 import TextField from '@material-ui/core/TextField'  
 import 'date-fns'
 import DateFnsUtils from '@date-io/date-fns'
@@ -13,6 +12,7 @@ import { MuiPickersUtilsProvider,KeyboardTimePicker,KeyboardDatePicker } from '@
 import SelectDoc from './SelectDoc'
 import axios from 'axios'
 import Auth from '../lib/auth'
+import Picker from './Picker'
 
 
 
@@ -21,33 +21,23 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
   },
-  image: {
-    backgroundImage: 'url(https://source.unsplash.com/random)',
-    backgroundRepeat: 'no-repeat',
-    backgroundColor:
-      theme.palette.type === 'light'
-        ? theme.palette.grey[50]
-        : theme.palette.grey[900],
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  },
   paper: {
     margin: theme.spacing(8, 4),
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: '#7C2855'
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
+    width: '100%', 
+    marginTop: theme.spacing(1)
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
+    margin: theme.spacing(3, 0, 2)
+  }
 }))
 
 
@@ -97,7 +87,6 @@ export default function BookApp(props) {
   }
 
 
-  console.log(data)
 
 
   if (error) {
@@ -107,21 +96,34 @@ export default function BookApp(props) {
 
 
   return (
-    <div className='flexBox'>
-      <Grid container className={classes.root}>
-        <CssBaseline />
-        <Grid item xs={false} sm={4} md={7} className={classes.image} />
-        <Grid item xs={12} sm={8} md={5} elevation={6} square="true">
-          <div className={classes.paper}>
-            <Avatar className={classes.avatar}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <h1>
-              Book your Appointment
-            </h1>
 
+    <Grid container className={classes.root}>
+      <CssBaseline />
+
+      <div className='bookPage'>
+        <Grid  item xs={6} sm={8} md={5} elevation={6} square="true">
+
+          
+
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <Picker 
+              url={`/api/appointment/doc/${data.doctor ? data.doctor : null}`}
+            />
+          </MuiPickersUtilsProvider>
+
+        </Grid>
+        
+
+        <Grid item xs={6} sm={8} md={5} elevation={6} square="true">
+
+          <div className={classes.paper}>
+            <Avatar className={classes.avatar}><AssignmentIndIcon /></Avatar>
+            
+            <h1 className='formTitle'>Book your Appointment</h1>
+            <p className='calendarTitle'>Select Your Doctor and Check Their Available Time</p>
+            
             <form
-              className={classes.container}
+              className='formStyle'
               noValidate
               onSubmit={(e) => handleSubmit(e)}
             >
@@ -150,22 +152,6 @@ export default function BookApp(props) {
                 />
               </MuiPickersUtilsProvider>
 
-              {/* <KeyboardTimePicker
-                    name='date'
-                    required
-                    fullWidth
-                    margin="dense"
-                    id="date"
-                    label="Time"
-                    value={selectedDate}
-                    onChange={(e) => handleChange(e)}
-                    KeyboardButtonProps={{
-                      'aria-label': 'change time',
-                    }}
-                  /> */}
-
-              {/* </Grid> */}
-
               <TextField
                 onChange={(e) => handleChange(e)}
                 // variant="outlined"
@@ -190,14 +176,18 @@ export default function BookApp(props) {
               </button>    
 
             </form>
+
+            <div>Copyright © <Link target='blank' className='links' to="https://github.com/soniacweb/bookdoctor">bookdoctors.com</Link>{' '}{new Date().getFullYear()}</div>
+
           </div>
 
-          <Box mt={5}>
-            <div>Copyright © <Link target='blank' className='links' to="https://github.com/soniacweb/bookdoctor">bookdoctors.com</Link>{' '}{new Date().getFullYear()}</div>
-          </Box>
+
         </Grid>
-      </Grid>
-    </div>
+
+      </div>
+
+    </Grid>
+        
     
   )
 }

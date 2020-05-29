@@ -47,7 +47,7 @@ export default function SimpleSelect({ update, data }) {
     update({ ...data, [e.target.name]: e.target.value })
   }
 
-  console.log(doctor)
+
 
 
   return (

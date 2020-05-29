@@ -104,7 +104,7 @@ export default function Login(props) {
             <AssignmentTurnedInIcon /> 
           </Avatar>
           
-          <h1>Login</h1>
+          <h1 className='formTitle'>Login</h1>
 
           <form className='formStyle' onSubmit={(e) => handleSubmit(e)}>
             
@@ -177,7 +177,6 @@ export default function Login(props) {
 
         </div>
 
-        {loginInfo.role === 'doctor' && <div>hello</div>}
       </Grid>
     </Grid>
   )  
