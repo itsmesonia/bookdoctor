@@ -107,94 +107,97 @@ export default function BookApp(props) {
 
 
   return (
-    <Grid container className={classes.root}>
-      <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.image} />
-      <Grid item xs={12} sm={8} md={5} elevation={6} square="true">
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <h1>
-            Book your Appointment
-          </h1>
+    <div className='flexBox'>
+      <Grid container className={classes.root}>
+        <CssBaseline />
+        <Grid item xs={false} sm={4} md={7} className={classes.image} />
+        <Grid item xs={12} sm={8} md={5} elevation={6} square="true">
+          <div className={classes.paper}>
+            <Avatar className={classes.avatar}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <h1>
+              Book your Appointment
+            </h1>
 
-          <form
-            className={classes.container}
-            noValidate
-            onSubmit={(e) => handleSubmit(e)}
-          >
+            <form
+              className={classes.container}
+              noValidate
+              onSubmit={(e) => handleSubmit(e)}
+            >
 
-            <SelectDoc 
-              update={setData}
-              data={data}
-            />
-
-            <MuiPickersUtilsProvider utils={DateFnsUtils} >
-              {/* <Grid container justify="space-around"> */}
-
-              <KeyboardDatePicker
-                name='date'
-                required
-                fullWidth
-                margin="dense"
-                id="date"
-                label="Date"
-                format="MM/dd/yyyy"
-                value={selectedDate.date}
-                onChange={(e) => handleDateChange(e)}
-                KeyboardButtonProps={{
-                  'aria-label': 'change date',
-                }}
+              <SelectDoc 
+                update={setData}
+                data={data}
               />
-            </MuiPickersUtilsProvider>
 
-            {/* <KeyboardTimePicker
+              <MuiPickersUtilsProvider utils={DateFnsUtils} >
+                {/* <Grid container justify="space-around"> */}
+
+                <KeyboardDatePicker
                   name='date'
                   required
                   fullWidth
                   margin="dense"
                   id="date"
-                  label="Time"
-                  value={selectedDate}
-                  onChange={(e) => handleChange(e)}
+                  label="Date"
+                  format="MM/dd/yyyy"
+                  value={selectedDate.date}
+                  onChange={(e) => handleDateChange(e)}
                   KeyboardButtonProps={{
-                    'aria-label': 'change time',
+                    'aria-label': 'change date',
                   }}
-                /> */}
+                />
+              </MuiPickersUtilsProvider>
 
-            {/* </Grid> */}
+              {/* <KeyboardTimePicker
+                    name='date'
+                    required
+                    fullWidth
+                    margin="dense"
+                    id="date"
+                    label="Time"
+                    value={selectedDate}
+                    onChange={(e) => handleChange(e)}
+                    KeyboardButtonProps={{
+                      'aria-label': 'change time',
+                    }}
+                  /> */}
 
-            <TextField
-              onChange={(e) => handleChange(e)}
-              // variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="reason"
-              label="Reason"
-              type="text"
-              id="reason"
-              InputProps={{
-                classes: {
-                  root: classes.cssOutlinedInput,
-                  focused: classes.cssFocused,
-                  notchedOutline: classes.notchedOutline
-                }
-              }}
-            />
+              {/* </Grid> */}
 
-            <button className='button' >
-              Submit
-            </button>    
+              <TextField
+                onChange={(e) => handleChange(e)}
+                // variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="reason"
+                label="Reason"
+                type="text"
+                id="reason"
+                InputProps={{
+                  classes: {
+                    root: classes.cssOutlinedInput,
+                    focused: classes.cssFocused,
+                    notchedOutline: classes.notchedOutline
+                  }
+                }}
+              />
 
-          </form>
-        </div>
+              <button className='button' >
+                Submit
+              </button>    
 
-        <Box mt={5}>
-          <div>Copyright © <Link target='blank' className='links' to="https://github.com/soniacweb/bookdoctor">bookdoctors.com</Link>{' '}{new Date().getFullYear()}</div>
-        </Box>
+            </form>
+          </div>
+
+          <Box mt={5}>
+            <div>Copyright © <Link target='blank' className='links' to="https://github.com/soniacweb/bookdoctor">bookdoctors.com</Link>{' '}{new Date().getFullYear()}</div>
+          </Box>
+        </Grid>
       </Grid>
-    </Grid>
+    </div>
+    
   )
 }

@@ -15,12 +15,18 @@ class About extends React.Component {
   }
   
   componentDidMount() {
-    // const key = "{26217b2fd13a473f8ee90f7fbc56cdec}"
-    axios.get('https://api.nhs.uk/news')
+    const key = '26217b2fd13a473f8ee90f7fbc56cdec'
+    axios.get('https://api.nhs.uk/news', {
+      headers: {
+        'subscription-key': key 
+      }
+    })
+      
       .then(res => this.setState({ 
         article: res.data 
       }))
   }
+  
 
   
   render() {

@@ -9,7 +9,8 @@ import Auth from '../lib/auth'
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
-    margin: theme.spacing(1),
+    width: '100%',
+    margin: theme.spacing(1, 0, 2),
     minWidth: 450
   },
   cssOutlinedInput: {
@@ -48,8 +49,9 @@ export default function SimpleSelect({ update, data }) {
 
 
 
+
   return (
-    <div >
+    <div>
       <FormControl required className={classes.formControl} >
         <InputLabel className='selectedInput'>Doctor</InputLabel>
         <Select
