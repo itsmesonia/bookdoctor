@@ -26,7 +26,8 @@ function create(req, res) {
 
 function index(req, res) {
   History
-    .find()
+  // doctor will only see the histories they created
+    .find({ user: { _id: req.currentUser._id } })
     .then(history => {
       return res.status(200).json(history)
     })
@@ -49,6 +50,7 @@ function show(req, res) {
 
 function patientHistory(req, res) {
   History
+  // patient will only see their own histories
     .find({ patient: req.currentUser.username })
     .then(history => {
       return res.status(200).json(history)
