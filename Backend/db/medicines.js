@@ -289,139 +289,139 @@ const medicines = () => {
     }
   },
   {
-    '@type': 'LinkRole',
-    'name': 'Beclometasone nasal spray',
-    'articleStatus': 'published',
-    'linkRelationship': 'Result',
-    'url': 'https://www.nhs.uk/medicines/beclometasone-nasal-spray/',
-    'description': 'NHS medicines information on beclometasone - what it's used for, who can use it, how to apply it, side effects and dosage.',
-    'mainEntityOfPage': {
-      'genre': 'medicine',
-      'lastReviewed': [
+    type: 'LinkRole',
+    name: 'Beclometasone nasal spray',
+    articleStatus: 'published',
+    linkRelationship: 'Result',
+    url: 'https://www.nhs.uk/medicines/beclometasone-nasal-spray/',
+    description: 'NHS medicines information on beclometasone - what it's used for, who can use it, how to apply it, side effects and dosage.',
+    mainEntityOfPage: {
+      genre: 'medicine',
+      lastReviewed: [
         '2020-03-16T14:26:00+00:00',
         '2023-03-16T14:26:00+00:00'
       ],
-      'dateModified': '2020-03-26T22:42:47+00:00',
-      '@type': 'MedicalWebPage'
+      dateModified: '2020-03-26T22:42:47+00:00',
+      type: 'MedicalWebPage'
     }
   },
   {
-    '@type': 'LinkRole',
-    'name': 'Bendroflumethiazide',
-    'articleStatus': 'published',
-    'linkRelationship': 'Result',
-    'url': 'https://www.nhs.uk/medicines/bendroflumethiazide/',
-    'description': 'NHS medicines information on bendroflumethiazide - what it's used for, side effects, dosage and who can take it.',
-    'mainEntityOfPage': {
-      'genre': 'medicine',
-      'lastReviewed': [
+    type: 'LinkRole',
+    name: 'Bendroflumethiazide',
+    articleStatus: 'published',
+    linkRelationship: 'Result',
+    url: 'https://www.nhs.uk/medicines/bendroflumethiazide/',
+    description: 'NHS medicines information on bendroflumethiazide - what it's used for, side effects, dosage and who can take it.',
+    mainEntityOfPage: {
+     genre: 'medicine',
+     lastReviewed: [
         '2018-04-10T11:39:00+00:00',
         '2021-04-10T11:39:00+00:00'
       ],
-      'dateModified': '2019-12-02T14:31:06+00:00',
-      '@type': 'MedicalWebPage'
+      dateModified: '2019-12-02T14:31:06+00:00',
+      type: 'MedicalWebPage'
     }
   },
   {
-    '@type': 'LinkRole',
-    'name': 'Benzoyl peroxide',
-    'articleStatus': 'published',
-    'linkRelationship': 'Result',
-    'url': 'https://www.nhs.uk/medicines/benzoyl-peroxide/',
-    'description': 'NHS medicines information on benzoyl peroxide - what it's used for, side effects, dosage, who can take it.',
-    'mainEntityOfPage': {
-      'genre': 'medicine',
-      'lastReviewed': [
+    type: 'LinkRole',
+    name: 'Benzoyl peroxide',
+    articleStatus: 'published',
+    linkRelationship: 'Result',
+    url: 'https://www.nhs.uk/medicines/benzoyl-peroxide/',
+    description: 'NHS medicines information on benzoyl peroxide - what it's used for, side effects, dosage, who can take it.',
+    mainEntityOfPage: {
+      genre: 'medicine',
+      lastReviewed: [
         '2019-09-06T07:46:00+00:00',
         '2022-09-06T07:46:00+00:00'
       ],
-      'dateModified': '2019-09-25T10:32:40+00:00',
-      '@type': 'MedicalWebPage'
+      dateModified: '2019-09-25T10:32:40+00:00',
+      type: 'MedicalWebPage'
     }
   },
   {
-    '@type': 'LinkRole',
-    'name': 'Betahistine',
-    'articleStatus': 'published',
-    'linkRelationship': 'Result',
-    'url': 'https://www.nhs.uk/medicines/betahistine/',
-    'description': 'NHS information on betahistine - what it's used for, side effects, dosage and who can take it.',
-    'mainEntityOfPage': {
-      'genre': 'medicine',
-      'lastReviewed': [
+    type: 'LinkRole',
+    name: 'Betahistine',
+    articleStatus: 'published',
+    linkRelationship: 'Result',
+    url: 'https://www.nhs.uk/medicines/betahistine/',
+    description: 'NHS information on betahistine - what it's used for, side effects, dosage and who can take it.',
+    mainEntityOfPage: {
+      genre: 'medicine',
+      lastReviewed: [
         '2019-08-29T00:00:00+00:00',
         '2022-08-29T00:00:00+00:00'
       ],
-      'dateModified': '2019-09-06T10:54:22+00:00',
-      '@type': 'MedicalWebPage'
+      dateModified: '2019-09-06T10:54:22+00:00',
+      type: 'MedicalWebPage'
     }
   },
   {
-    '@type': 'LinkRole',
-    'name': 'Bisacodyl',
-    'articleStatus': 'published',
-    'linkRelationship': 'Result',
-    'url': 'https://www.nhs.uk/medicines/bisacodyl/',
-    'description': 'NHS medicines information on bisacodyl - what it’s used for, side effects, dosage and who can take it.',
-    'mainEntityOfPage': {
-      'genre': 'medicine',
-      'lastReviewed': [
+    type: 'LinkRole',
+    name: 'Bisacodyl',
+    articleStatus: 'published',
+    linkRelationship: 'Result',
+    url: 'https://www.nhs.uk/medicines/bisacodyl/',
+    description: 'NHS medicines information on bisacodyl - what it’s used for, side effects, dosage and who can take it.',
+    mainEntityOfPage: {
+      genre: 'medicine',
+      lastReviewed: [
         '2018-04-19T13:08:00+00:00',
         '2021-04-19T13:08:00+00:00'
       ],
-      'dateModified': '2019-12-02T15:30:30+00:00',
-      '@type': 'MedicalWebPage'
+      dateModified: '2019-12-02T15:30:30+00:00',
+      type: 'MedicalWebPage'
     }
   },
   {
-    '@type': 'LinkRole',
-    'name': 'Bisoprolol',
-    'articleStatus': 'published',
-    'linkRelationship': 'Result',
-    'url': 'https://www.nhs.uk/medicines/bisoprolol/',
-    'description': 'NHS medicines information on bisoprolol - what it's used for, side effects, dosage and who can take it.',
-    'mainEntityOfPage': {
-      'genre': 'medicine',
-      'lastReviewed': [
+    type: 'LinkRole',
+    name: 'Bisoprolol',
+    articleStatus: 'published',
+    linkRelationship: 'Result',
+    url: 'https://www.nhs.uk/medicines/bisoprolol/',
+    description: 'NHS medicines information on bisoprolol - what it's used for, side effects, dosage and who can take it.',
+    mainEntityOfPage: {
+      genre: 'medicine',
+      lastReviewed: [
         '2018-12-13T00:00:00+00:00',
         '2021-12-13T00:00:00+00:00'
       ],
-      'dateModified': '2019-12-02T14:37:14+00:00',
-      '@type': 'MedicalWebPage'
+      dateModified: '2019-12-02T14:37:14+00:00',
+      type: 'MedicalWebPage'
     }
   },
   {
-    '@type': 'LinkRole',
-    'name': 'Bumetanide',
-    'articleStatus': 'published',
-    'linkRelationship': 'Result',
-    'url': 'https://www.nhs.uk/medicines/bumetanide/',
-    'description': 'NHS medicines information on bumetanide - what it's used for, side effects, dosage and who can take it.',
-    'mainEntityOfPage': {
-      'genre': 'medicine',
-      'lastReviewed': [
+    type: 'LinkRole',
+    name: 'Bumetanide',
+    articleStatus: 'published',
+    linkRelationship: 'Result',
+    url: 'https://www.nhs.uk/medicines/bumetanide/',
+    description: 'NHS medicines information on bumetanide - what it's used for, side effects, dosage and who can take it.',
+    mainEntityOfPage: {
+      genre: 'medicine',
+      lastReviewed: [
         '2019-01-10T00:00:00+00:00',
         '2022-01-10T00:00:00+00:00'
       ],
-      'dateModified': '2020-05-11T14:49:27+00:00',
-      '@type': 'MedicalWebPage'
+      dateModified: '2020-05-11T14:49:27+00:00',
+      type: 'MedicalWebPage'
     }
   },
   {
-    '@type': 'LinkRole',
-    'name': 'Buprenorphine for pain',
-    'articleStatus': 'published',
-    'linkRelationship': 'Result',
-    'url': 'https://www.nhs.uk/medicines/buprenorphine-for-pain/',
-    'description': 'NHS medicines information on buprenorphine for pain – who should take it, what it's used for, side effects and dosage.',
-    'mainEntityOfPage': {
-      'genre': 'medicine',
-      'lastReviewed': [
+    type: 'LinkRole',
+    name: 'Buprenorphine for pain',
+    articleStatus: 'published',
+    linkRelationship: 'Result',
+    url: 'https://www.nhs.uk/medicines/buprenorphine-for-pain/',
+    description: 'NHS medicines information on buprenorphine for pain – who should take it, what it's used for, side effects and dosage.',
+    mainEntityOfPage: {
+      genre: 'medicine',
+      lastReviewed: [
         '2020-04-30T11:35:00+00:00',
         '2023-04-30T11:35:00+00:00'
       ],
-      'dateModified': '2020-05-22T09:50:31+00:00',
-      '@type': 'MedicalWebPage'
+      dateModified: '2020-05-22T09:50:31+00:00',
+      type: 'MedicalWebPage'
     }
   }
 ]}
