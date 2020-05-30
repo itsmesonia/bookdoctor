@@ -50,6 +50,10 @@ const Navbar = () => {
           <div className="navbar-item">
             <Link className='naV' to={'/about'}>About</Link>
           </div>
+          {Auth.isAuthenticated() && Auth.getUser().role === 'doctor' && 
+            <div className="navbar-item">
+              <Link className='naV' to={'/history'}>Patient History</Link>
+            </div>}
           {Auth.isAuthenticated() && <div className='flexBox'>
             <div className="navbar-item">
               <Link className='naV' to={'/dashboard'}>Dashboard</Link>
@@ -58,6 +62,7 @@ const Navbar = () => {
               <a id='' className='naV'>LogOut</a>
             </div>
           </div>}
+          
           {!Auth.isAuthenticated() && <div className='flexBox'>
             <div className="navbar-item">
               <Link className='naV' to={'/login'}>Login</Link>

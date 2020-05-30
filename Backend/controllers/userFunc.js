@@ -58,6 +58,12 @@ function doctors(req, res) {
     .catch((err) => res.json(err))
 }
 
+function patients(req, res) {
+  User.find({ role: 'patient' })
+    .then((user) => res.status(200).json(user))
+    .catch((err) => res.json(err))
+}
+
 
 // version 2.0
 // function showAppointment(req, res) {
@@ -81,5 +87,6 @@ module.exports = {
   login,
   index,
   show,
-  doctors
+  doctors,
+  patients
 }

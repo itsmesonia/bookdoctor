@@ -57,6 +57,9 @@ router.route('/user')
 router.route('/doctors')
   .get(secureRoute, userFunc.doctors)
 
+router.route('/patients')
+  .get(secureRoute, userControl('doctor'), userFunc.patients)
+
 
 router.route('/user/:id')
   .get(secureRoute, userFunc.show)
