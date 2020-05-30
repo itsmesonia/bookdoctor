@@ -77,11 +77,15 @@ body {
 }
 
 .homeTitle {
-  color: $nhs-dark-blue;
+  color: black;
   font-size: 30px;
   font-weight: 500;
 }
 
+.homeContent {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
 
 .title {
   color: $nhs-color;
@@ -119,4 +123,48 @@ body {
 
 .tile-is-child-notification {
   background-color: $nhs-light-blue;
+}
+
+
+.bookPage {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  background-color: $milk-white;
+}
+
+
+.formTitle {
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+
+.calendarTitle {
+  font-size: 18px;
+  color: $nhs-mid-gray;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.dashboardTitle {
+  font-size: 30px;
+  color: $nhs-light-blue;
+  margin-bottom: 20px;
+}
+
+.bookPageLogin {
+  font-size: 40px;
+  color: $nhs-color;
+}
+
+.bookPageFlex {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
 }

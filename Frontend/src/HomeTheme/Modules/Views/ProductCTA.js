@@ -1,14 +1,12 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Hidden from '@material-ui/core/Hidden'
 import Container from '@material-ui/core/Container'
 import Typography from '../Components/Typography'
-import TextField from '../Components/TextField'
-import Snackbar from '../Components/Snackbar'
-import Button from '../Components/Button'
-// import { relativeTimeRounding } from 'moment'
+
+
 
 const styles = (theme) => ({
   root: {
@@ -34,9 +32,6 @@ const styles = (theme) => ({
     width: '100%',
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(2),
-  },
-  button: {
-    width: '100%',
   },
   imagesWrapper: {
     position: 'relative',
@@ -87,10 +82,10 @@ function ProductCTA(props) {
               <Typography variant="h5">
                 Check the available time
               </Typography>
-              <TextField noBorder className={classes.textField} placeholder="Search for your GP" />
-              <Button type="submit" color="primary" variant="contained" className={classes.button}>
-                Search
-              </Button>
+              {/* <TextField noBorder className={classes.textField} placeholder="Search for your GP" /> */}
+              <Link to='/appointment' className='button'>
+                Go to Booking Page
+              </Link>
             </form>
           </div>
         </Grid>
@@ -99,7 +94,6 @@ function ProductCTA(props) {
           <Hidden smDown>
             <div className={classes.imageDots} />
             <img
-              // src="https://i.imgur.com/qUlHfLb.jpg"
               src='https://i.imgur.com/oha3yLB.jpg'
               alt="wellbeing"
               className={classes.image}
@@ -109,17 +103,13 @@ function ProductCTA(props) {
       
       </Grid>
 
-      <Snackbar
-        open={open}
-        onClose={handleClose}
-        message="We will send you our best offers, once a week."
-      />
+
     </Container>
   )
 }
 
-ProductCTA.propTypes = {
-  classes: PropTypes.object.isRequired,
-}
+// ProductCTA.propTypes = {
+//   classes: PropTypes.object.isRequired
+// }
 
 export default withStyles(styles)(ProductCTA)

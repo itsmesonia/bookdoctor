@@ -55,9 +55,14 @@ body {
 }
 
 .homeTitle {
-  color: #003087;
+  color: black;
   font-size: 30px;
   font-weight: 500;
+}
+
+.homeContent {
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
 .title {
@@ -93,6 +98,46 @@ body {
 
 .tile-is-child-notification {
   background-color: #41B6E6;
+}
+
+.bookPage {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #faf6ef;
+}
+
+.formTitle {
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+.calendarTitle {
+  font-size: 18px;
+  color: #768692;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.dashboardTitle {
+  font-size: 30px;
+  color: #41B6E6;
+  margin-bottom: 20px;
+}
+
+.bookPageLogin {
+  font-size: 40px;
+  color: #005EB8;
+}
+
+.bookPageFlex {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /*# sourceMappingURL=style.css.map */

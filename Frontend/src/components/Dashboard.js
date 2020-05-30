@@ -13,12 +13,12 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight' 
 import ListItems from './ListItems' 
 import MedicalHistory from './MedicalHistory' 
- 
+import Auth from '../lib/auth'
+import axios from 'axios'
+
 import { MuiPickersUtilsProvider } from '@material-ui/pickers'
 import DateFnsUtils from '@date-io/date-fns'
-import axios from 'axios'
 import Picker from './Picker'
-import Auth from '../lib/auth'
 
 
 
@@ -87,10 +87,10 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function Dashboard(props) {
+export default function Dashboard() {
   const classes = useStyles()
   
-  const [singleUser, setSingleUser] = useState()
+  const [singleUser, setSingleUser] = useState({})
   const [open, setOpen] = useState(false) 
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight) 
 
@@ -100,20 +100,21 @@ export default function Dashboard(props) {
  
  
 
-  // useEffect(() => {
-  //   axios.get(`/api/user/${Auth.getUser().id}`, {
-  //     headers: { Authorization: `Bearer ${Auth.getToken()}` }
-  //   })
-  //     .then(res => setSingleUser(res.data))
-  //     .catch(err => console.log(err))
-  // }, [])
+  useEffect(() => {
+    axios.get(`/api/user/${Auth.getUser().id}`, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
+      .then(res => setSingleUser(res.data))
+      .catch(err => console.log(err))
+  }, [])
 
 
 
+
+  if (!singleUser.appointment) return <h1>Loading...</h1>
 
   return (
     <div className={classes.root}>
-
 
       <Drawer
         variant="permanent"
@@ -136,30 +137,31 @@ export default function Dashboard(props) {
 
 
       <main className={classes.content}>
+      
         <Container maxWidth="lg" className={classes.container}>
-
+          <h1 className='dashboardTitle'>Hello, {singleUser.username}</h1>
+          
           <Grid container spacing={3}>
       
             <Box margin={1.5}>
               <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <Picker 
-                  // updateDate={setDate}
+                  url={'/api/appointment'}
                 />
               </MuiPickersUtilsProvider> 
             </Box>
 
-            {singleUser && <Grid item xs={12} md={4} lg={3}>
+            <Grid item xs={12} md={4} lg={5}>
               <Paper className={fixedHeightPaper}>
                 <h1 className='title'>Most recent appointment </h1>
-                <p className='content'>{singleUser.appointment[singleUser.appointment.length - 1].date} with {singleUser.appointment[singleUser.appointment.length - 1].doctor}</p>
+                {singleUser.appointment.length === 0 ? <p className='content'>No Appointment Booked</p> :
+                  <p className='content'>{ singleUser.appointment[singleUser.appointment.length - 1].date} with {singleUser.appointment[singleUser.appointment.length - 1].doctor}</p> }
               </Paper>
-            </Grid>}
+            </Grid>
           
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <MedicalHistory 
-                  singleUser={singleUser}
-                />
+                {!singleUser.history.length === 0 ? <MedicalHistory singleUser={singleUser} /> : <h1 className='title'>No Medical History</h1>}
               </Paper>
             </Grid>
 

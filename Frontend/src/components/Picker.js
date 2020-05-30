@@ -8,20 +8,21 @@ import Auth from '../lib/auth'
 
 
 
-export default function Picker() {
+export default function Picker({ url }) {
 
-
+  
   const [selectedDates, setSelectedDates] = useState()
   const [selectedDays, setSelectedDays] = useState([])
   // const [errors, setErrors] = useState()
 
   useEffect(() => {
-    axios.get('/api/appointment', {
+    axios.get(url, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
       .then(res => setSelectedDays(res.data))
       // .catch(err => setErrors({ ...errors, errors: err.response.data }))
-  }, [])
+  }, [url])
+
 
 
 
@@ -57,7 +58,6 @@ export default function Picker() {
     }
   })
 
-  if (selectedDates) console.log(selectedDates)
 
 
   return (

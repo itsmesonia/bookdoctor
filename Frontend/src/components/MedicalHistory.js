@@ -12,8 +12,6 @@ export default function MedicalHistory({ singleUser }) {
 
   
 
-  console.log(singleUser)
-
   return (
     <React.Fragment>
       <h1 className='title'>Medical History</h1>

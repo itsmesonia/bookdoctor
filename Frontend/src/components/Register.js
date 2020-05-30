@@ -103,7 +103,7 @@ export default function Register(props) {
             <AssignmentIcon /> 
           </Avatar>
           
-          <h1>Sign Up</h1>
+          <h1 className='formTitle'>Sign Up</h1>
 
           <form className='formStyle' onSubmit={(e) => handleSubmit(e)}>
             <TextField
