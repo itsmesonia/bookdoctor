@@ -1,4 +1,4 @@
-const medicines = () => {
+const meds = () => {
   return [{
     type: 'LinkRole',
     name: 'Aciclovir (including Zovirax)',
@@ -56,7 +56,7 @@ const medicines = () => {
     articleStatus: 'published',
     linkRelationship: 'Result',
     url: 'https://www.nhs.uk/medicines/alendronic-acid/',
-    description: 'NHS medicines information on alendronic acid - what it's used for, side effects, dosage and who can take it.',
+    description: 'NHS medicines information on alendronic acid - what it\'s used for, side effects, dosage and who can take it.',
     mainEntityOfPage: {
       genre: 'medicine',
       lastReviewed: [
@@ -73,7 +73,7 @@ const medicines = () => {
     articleStatus: 'published',
     linkRelationship: 'Result',
     url: 'https://www.nhs.uk/medicines/allopurinol/',
-    description: 'NHS medicines information on allopurinol – what it's used for, side effects, dosage and who can take it.',
+    description: 'NHS medicines information on allopurinol – what it\'s used for, side effects, dosage and who can take it.',
     mainEntityOfPage: {
       genre: 'medicine',
       lastReviewed: [
@@ -90,7 +90,7 @@ const medicines = () => {
     articleStatus: 'published',
     linkRelationship: 'Result',
     url: 'https://www.nhs.uk/medicines/alogliptin/',
-    description: 'NHS medicines information on alogliptin – what it's used for, side effects, dosage and who can take it.',
+    description: 'NHS medicines information on alogliptin – what it\'s used for, side effects, dosage and who can take it.',
     mainEntityOfPage: {
       genre: 'medicine',
       lastReviewed: [
@@ -141,7 +141,7 @@ const medicines = () => {
     articleStatus: 'published',
     linkRelationship: 'Result',
     url: 'https://www.nhs.uk/medicines/amlodipine/',
-    description: 'NHS medicines information on amlodipine - what it's used for, side effects, dosage and who can take it.',
+    description: 'NHS medicines information on amlodipine - what it\'s used for, side effects, dosage and who can take it.',
     mainEntityOfPage: {
       genre: 'medicine',
       lastReviewed: [
@@ -175,7 +175,7 @@ const medicines = () => {
     articleStatus: 'published',
     linkRelationship: 'Result',
     url: 'https://www.nhs.uk/medicines/apixaban/',
-    description: 'NHS medicines information on apixaban - what it's used for, side effects, dosage and who can take it.',
+    description: 'NHS medicines information on apixaban - what it\'s used for, side effects, dosage and who can take it.',
     mainEntityOfPage: {
       genre: 'medicine',
       lastReviewed: [
@@ -209,7 +209,7 @@ const medicines = () => {
     articleStatus: 'published',
     linkRelationship: 'Result',
     url: 'https://www.nhs.uk/medicines/atenolol/',
-    description: 'NHS medicines information on atenolol - what it's used for, side effects, dosage and who can take it.',
+    description: 'NHS medicines information on atenolol - what it\'s used for, side effects, dosage and who can take it.',
     mainEntityOfPage: {
       genre: 'medicine',
       lastReviewed: [
@@ -243,7 +243,7 @@ const medicines = () => {
     articleStatus: 'published',
     linkRelationship: 'Result',
     url: 'https://www.nhs.uk/medicines/azathioprine/',
-    description: 'Azathioprine is an immunosuppressant used to treat conditions such as rheumatoid arthritis and Crohn's disease or after an organ transplant.',
+    description: 'Azathioprine is an immunosuppressant used to treat conditions such as rheumatoid arthritis and Crohn\'s disease or after an organ transplant.',
     mainEntityOfPage: {
       genre: 'medicine',
       lastReviewed: [
@@ -277,7 +277,7 @@ const medicines = () => {
     articleStatus: 'published',
     linkRelationship: 'Result',
     url: 'https://www.nhs.uk/medicines/beclometasone-inhalers/',
-    description: 'NHS medicines information on beclometasone - what it's used for, who can use it, how to apply it, side effects and dosage.',
+    description: 'NHS medicines information on beclometasone - what it\'s used for, who can use it, how to apply it, side effects and dosage.',
     mainEntityOfPage: {
       genre: 'medicine',
       lastReviewed: [
@@ -294,7 +294,7 @@ const medicines = () => {
     articleStatus: 'published',
     linkRelationship: 'Result',
     url: 'https://www.nhs.uk/medicines/beclometasone-nasal-spray/',
-    description: 'NHS medicines information on beclometasone - what it's used for, who can use it, how to apply it, side effects and dosage.',
+    description: 'NHS medicines information on beclometasone - what it\'s used for, who can use it, how to apply it, side effects and dosage.',
     mainEntityOfPage: {
       genre: 'medicine',
       lastReviewed: [
@@ -311,10 +311,10 @@ const medicines = () => {
     articleStatus: 'published',
     linkRelationship: 'Result',
     url: 'https://www.nhs.uk/medicines/bendroflumethiazide/',
-    description: 'NHS medicines information on bendroflumethiazide - what it's used for, side effects, dosage and who can take it.',
+    description: 'NHS medicines information on bendroflumethiazide - what it\'s used for, side effects, dosage and who can take it.',
     mainEntityOfPage: {
-     genre: 'medicine',
-     lastReviewed: [
+      genre: 'medicine',
+      lastReviewed: [
         '2018-04-10T11:39:00+00:00',
         '2021-04-10T11:39:00+00:00'
       ],
@@ -328,7 +328,7 @@ const medicines = () => {
     articleStatus: 'published',
     linkRelationship: 'Result',
     url: 'https://www.nhs.uk/medicines/benzoyl-peroxide/',
-    description: 'NHS medicines information on benzoyl peroxide - what it's used for, side effects, dosage, who can take it.',
+    description: 'NHS medicines information on benzoyl peroxide - what it\'s used for, side effects, dosage, who can take it.',
     mainEntityOfPage: {
       genre: 'medicine',
       lastReviewed: [
@@ -345,7 +345,7 @@ const medicines = () => {
     articleStatus: 'published',
     linkRelationship: 'Result',
     url: 'https://www.nhs.uk/medicines/betahistine/',
-    description: 'NHS information on betahistine - what it's used for, side effects, dosage and who can take it.',
+    description: 'NHS information on betahistine - what it\'s used for, side effects, dosage and who can take it.',
     mainEntityOfPage: {
       genre: 'medicine',
       lastReviewed: [
@@ -379,7 +379,7 @@ const medicines = () => {
     articleStatus: 'published',
     linkRelationship: 'Result',
     url: 'https://www.nhs.uk/medicines/bisoprolol/',
-    description: 'NHS medicines information on bisoprolol - what it's used for, side effects, dosage and who can take it.',
+    description: 'NHS medicines information on bisoprolol - what it\'s used for, side effects, dosage and who can take it.',
     mainEntityOfPage: {
       genre: 'medicine',
       lastReviewed: [
@@ -396,7 +396,7 @@ const medicines = () => {
     articleStatus: 'published',
     linkRelationship: 'Result',
     url: 'https://www.nhs.uk/medicines/bumetanide/',
-    description: 'NHS medicines information on bumetanide - what it's used for, side effects, dosage and who can take it.',
+    description: 'NHS medicines information on bumetanide - what it\'s used for, side effects, dosage and who can take it.',
     mainEntityOfPage: {
       genre: 'medicine',
       lastReviewed: [
@@ -413,7 +413,7 @@ const medicines = () => {
     articleStatus: 'published',
     linkRelationship: 'Result',
     url: 'https://www.nhs.uk/medicines/buprenorphine-for-pain/',
-    description: 'NHS medicines information on buprenorphine for pain – who should take it, what it's used for, side effects and dosage.',
+    description: 'NHS medicines information on buprenorphine for pain – who should take it, what it\'s used for, side effects and dosage.',
     mainEntityOfPage: {
       genre: 'medicine',
       lastReviewed: [
@@ -423,5 +423,7 @@ const medicines = () => {
       dateModified: '2020-05-22T09:50:31+00:00',
       type: 'MedicalWebPage'
     }
-  }
-]}
+  }]
+}
+
+module.exports = meds

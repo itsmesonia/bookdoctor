@@ -111,6 +111,7 @@ export default function Dashboard() {
   const end = singleUser.appointment && singleUser.appointment.length - 1
 
 
+  console.log(singleUser)
 
 
   if (!singleUser.appointment) return <h1>Loading...</h1>
@@ -176,7 +177,8 @@ export default function Dashboard() {
           
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                {!singleUser.history.length === 0 ? <MedicalHistory singleUser={singleUser} /> : <h1 className='title'>No Medical History</h1>}
+                {singleUser.history.length === 0 ? <h1 className='title'>No Medical History</h1> :
+                  <MedicalHistory singleUser={singleUser} />}
               </Paper>
             </Grid>
 

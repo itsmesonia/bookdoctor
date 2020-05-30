@@ -5,7 +5,14 @@ const secureRoute = require('./lib/secureRoute')
 const userFunc = require('./controllers/userFunc')
 const appointmentFunc =  require('./controllers/appointmentFunc')
 const historyFunc = require('./controllers/historyFunc')
+const medicinesFunc = require('./controllers/medicinesFunc')
 
+
+
+// ************************ Medicines ************************
+router.route('/medicines')
+  .post(secureRoute, medicinesFunc.create)
+  .get(medicinesFunc.index)
 
 
 
@@ -25,11 +32,10 @@ router.route('/appointment/:id')
 
 
 
-
 // ************************ history ************************
 router.route('/history')
   .post(secureRoute, userControl('doctor'), historyFunc.create)
-  .get(secureRoute, historyFunc.index)
+  .get(secureRoute, userControl('doctor'), historyFunc.index)
 
 
 router.route('/history/patient')

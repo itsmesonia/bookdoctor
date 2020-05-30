@@ -26,7 +26,7 @@ function create(req, res) {
 
 function index(req, res) {
   History
-    .find({ user: { _id: req.currentUser._id } })
+    .find()
     .then(history => {
       return res.status(200).json(history)
     })
