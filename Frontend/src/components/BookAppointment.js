@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 import Avatar from '@material-ui/core/Avatar'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Grid from '@material-ui/core/Grid'
@@ -10,7 +11,7 @@ import 'date-fns'
 import DateFnsUtils from '@date-io/date-fns'
 import { MuiPickersUtilsProvider,KeyboardTimePicker,KeyboardDatePicker } from '@material-ui/pickers'
 import SelectDoc from './SelectDoc'
-import axios from 'axios'
+import Navbar from './Navbar'
 import Auth from '../lib/auth'
 import Picker from './Picker'
 
@@ -29,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: '#7C2855'
+    backgroundColor: '#AE2573'
   },
   form: {
     width: '100%', 
@@ -90,7 +91,11 @@ export default function BookApp(props) {
   if (error) {
     alert(error.message)
     window.location.reload()
-  }  
+  }
+  
+  function disableWeekends(date) {
+    return date.getDay() === 0 || date.getDay() === 6
+  }
 
 
   return (
@@ -98,10 +103,9 @@ export default function BookApp(props) {
     <Grid container className={classes.root}>
       <CssBaseline />
 
+      <Navbar />
       {Auth.isAuthenticated() ? <div className='bookPage'>
         <Grid  item xs={6} sm={8} md={5} elevation={6} square="true">
-
-          
 
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <Picker 
@@ -145,8 +149,9 @@ export default function BookApp(props) {
                   format="MM/dd/yyyy"
                   value={selectedDate.date}
                   onChange={(e) => handleDateChange(e)}
+                  shouldDisableDate={date => disableWeekends(date)}
                   KeyboardButtonProps={{
-                    'aria-label': 'change date',
+                    'aria-label': 'change date'
                   }}
                 />
               </MuiPickersUtilsProvider>

@@ -63,7 +63,6 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     height: '100vh',
-    // overflow: 'auto',
     backgroundColor: '#faf6ef'
   },
   container: {
@@ -93,11 +92,9 @@ export default function Dashboard() {
   const [singleUser, setSingleUser] = useState({})
   const [open, setOpen] = useState(false) 
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight) 
-
   const handleDrawer = () => {
     return open ? setOpen(false) : setOpen(true)
   } 
- 
  
 
   useEffect(() => {
@@ -107,6 +104,11 @@ export default function Dashboard() {
       .then(res => setSingleUser(res.data))
       .catch(err => console.log(err))
   }, [])
+
+  
+
+  const start = singleUser.appointment && singleUser.appointment.length - 4
+  const end = singleUser.appointment && singleUser.appointment.length - 1
 
 
 
@@ -153,9 +155,22 @@ export default function Dashboard() {
 
             <Grid item xs={12} md={4} lg={5}>
               <Paper className={fixedHeightPaper}>
-                <h1 className='title'>Most recent appointment </h1>
+                <h1 className='title'>Most recent appointments </h1>
                 {singleUser.appointment.length === 0 ? <p className='content'>No Appointment Booked</p> :
-                  <p className='content'>{ singleUser.appointment[singleUser.appointment.length - 1].date} with {singleUser.appointment[singleUser.appointment.length - 1].doctor}</p> }
+                  singleUser.appointment.length <= 3 ? 
+                    <div>
+                      {singleUser.appointment.map((info, i) => {
+                        return <p className='content' key={i}>
+                          {info.date} with {info.doctor}
+                        </p>
+                      })}
+                    </div> :
+                    <div>{singleUser.appointment.slice(start, end).map((info, i) => {
+                      return <p className='content' key={i}>
+                        {info.date} with {info.doctor}
+                      </p>
+                    })}</div>
+                }
               </Paper>
             </Grid>
           

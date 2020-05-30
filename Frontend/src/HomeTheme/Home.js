@@ -5,12 +5,9 @@ import WithRoot from './Modules/WithRoot'
 import Navbar from '../components/Navbar'
 
 // --- Post bootstrap -----
-// import ProductCategories from './Modules/Views/ProductCategories'
 import ProductSmokingHero from './Modules/Views/ProductSmokingHero'
 import AppFooter from './Modules/Views/AppFooter'
-// import ProductHero from './Modules/Views/ProductHero'
 import ProductValues from './Modules/Views/ProductValues'
-// import ProductHowItWorks from './Modules/Views/ProductHowItWorks'
 import ProductCTA from './Modules/Views/ProductCTA'
 
 
