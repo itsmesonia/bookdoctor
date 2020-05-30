@@ -14,21 +14,12 @@ class About extends React.Component {
     }
   }
   
-  // componentDidMount() {
-  //   // const key = "{26217b2fd13a473f8ee90f7fbc56cdec}"
-  //   axios.get('https://api.nhs.uk/living-well/', {
-  //     // method: 'GET',
-  //     type: 'GET',
-  //     headers: {
-  //       'subscription-key':'{f01b767a2e9e4ed8a2aa639350206fbc}',
-  //       'Content-Type': 'application/json'
-  //     }
-  //     // dataType: 'json'
-  //   })
-  //     .then(res => res.json())
-  //     .then(res => this.setState({ article: res.data }))
-  // }
-  
+  componentDidMount() {
+    // const key = "{26217b2fd13a473f8ee90f7fbc56cdec}"
+    axios.get('https://api.covid19api.com/summary')
+      .then(res => res.json())
+      .then(res => this.setState({ article: res.data }))
+  }
 
   
   render() {
