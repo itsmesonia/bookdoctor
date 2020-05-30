@@ -11,7 +11,7 @@ const historyFunc = require('./controllers/historyFunc')
 
 // ************************ appointments ************************
 router.route('/appointment')
-  .post(secureRoute, userControl('patient'), appointmentFunc.create)
+  .post(secureRoute, appointmentFunc.create)
   .get(secureRoute, appointmentFunc.index)
 
 
@@ -20,7 +20,7 @@ router.route('/appointment/doc/:name')
 
 
 router.route('/appointment/:id')
-  .delete(secureRoute, appointmentFunc.remove)
+  .delete(secureRoute, userControl('doctor'), appointmentFunc.remove)
   .get(secureRoute, appointmentFunc.show)
 
 
@@ -33,7 +33,7 @@ router.route('/history')
 
 
 router.route('/history/patient')
-  .get(secureRoute, userControl('patient'), historyFunc.patientHistory)
+  .get(secureRoute, historyFunc.patientHistory)
 
 router.route('/history/:id')
   .get(secureRoute, historyFunc.show)
