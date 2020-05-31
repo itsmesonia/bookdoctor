@@ -109,7 +109,8 @@ export default function Dashboard() {
 
   const start = singleUser.appointment && singleUser.appointment.length - (singleUser.appointment.length - 2)
   const end = singleUser.appointment && singleUser.appointment.length
-
+  const patient = singleUser && singleUser.role === 'patient'
+  const doctor = singleUser && singleUser.role === 'doctor'
   // console.log(singleUser.appointment, start, end)
 
 
@@ -148,22 +149,22 @@ export default function Dashboard() {
             <Box margin={1.5}>
               <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <Picker
-                  url={singleUser && singleUser.role === 'patient' ? '/api/appointment' : singleUser.role === 'doctor' && `/api/appointment/doc/${singleUser.username}`}
+                  url={patient ? '/api/appointment' : doctor && `/api/appointment/doc/${singleUser.username}`}
                 />
               </MuiPickersUtilsProvider> 
             </Box>
 
             <Grid item xs={12} md={4} lg={5}>
               <Paper className={fixedHeightPaper}>
-                {singleUser && singleUser.role === 'patient' && <h1 className='title'> Most recent appointments </h1>}
-                {singleUser && singleUser.role === 'doctor' && <h1 className='title'> Today's appointments </h1>}
-                {singleUser.role === 'doctor' && singleUser.appointment.map((info, i) => {
+                {patient && <h1 className='title'> Most recent appointments </h1>}
+                {doctor && <h1 className='title'> Today's appointments </h1>}
+                {doctor && singleUser.appointment.map((info, i) => {
                   return <p className='content' key={i}>
                     {info.date} at {info.time}
                   </p>
                 })}
-                {singleUser.role === 'patient' && singleUser.appointment.length === 0 ? <p className='content'>No Appointment Booked</p> :
-                  singleUser.role === 'patient' && singleUser.appointment.length <= 3 ? 
+                {patient && singleUser.appointment.length === 0 ? <p className='content'>No Appointment Booked</p> :
+                  patient && singleUser.appointment.length <= 3 ? 
                     <div>
                       {singleUser.appointment.map((info, i) => {
                         return <p className='content' key={i}>
@@ -171,7 +172,7 @@ export default function Dashboard() {
                         </p>
                       })}
                     </div> :
-                    <div>{singleUser.role === 'patient' && singleUser.appointment.slice(start, end).map((info, i) => {
+                    <div>{patient && singleUser.appointment.slice(start, end).map((info, i) => {
                       return <p className='content' key={i}>
                         {info.date} with {info.doctor} at {info.time}
                       </p>
