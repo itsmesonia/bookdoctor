@@ -6,6 +6,7 @@ import ListItemText from '@material-ui/core/ListItemText'
 // import ListSubheader from '@material-ui/core/ListSubheader'
 import HomeIcon from '@material-ui/icons/Home'
 import AddCircleIcon from '@material-ui/icons/AddCircle'
+import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import Avatar from './Avatar'
 
 import Auth from '../lib/auth'
@@ -13,6 +14,10 @@ import Auth from '../lib/auth'
 
 
 export default function ListItems({ open }) {
+
+  function handleLogout() {
+    Auth.logOut()
+  }
 
 
   return (
@@ -45,12 +50,16 @@ export default function ListItems({ open }) {
         </Link>
       </ListItem>
     
-      {/* <ListItem button>
-        <ListItemIcon>
-          <LayersIcon />
-        </ListItemIcon>
-        <ListItemText primary="History" />
-      </ListItem> */}
+      <ListItem button>
+        <a href='/' onClick={() => handleLogout()}>
+          <ListItemIcon>
+            <ExitToAppIcon />
+          </ListItemIcon>
+        </a>
+        <a href='/' onClick={() => handleLogout()}>
+          <ListItemText primary="Log Out"/> 
+        </a>
+      </ListItem>
     </div>
   )
 
