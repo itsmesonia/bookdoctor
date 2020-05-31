@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'  
 import 'date-fns'
 import DateFnsUtils from '@date-io/date-fns'
-import { MuiPickersUtilsProvider,KeyboardTimePicker,KeyboardDatePicker } from '@material-ui/pickers'
+import { MuiPickersUtilsProvider,KeyboardTimePicker,KeyboardDatePicker, Day } from '@material-ui/pickers'
 import SelectDoc from './SelectDoc'
 import Navbar from './Navbar'
 import Auth from '../lib/auth'
@@ -48,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
 export default function BookApp(props) {
   const classes = useStyles()
 
+  const [doctorProfile, setDoctorProfile] = useState()
   const [selectedDate, setSelectedDate] = useState({ date: new Date() })
   const [data, setData] = useState({
     date: selectedDate.date.toLocaleDateString(),
@@ -57,6 +58,24 @@ export default function BookApp(props) {
   })
   const today = new Date()
   const [error, setError] = useState('')
+
+
+  useEffect(() => {
+    if (data) {
+      axios.get('/api/doctors', {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+        .then(res => setDoctorProfile(res.data))
+        .catch(err => console.log(err.response.data))
+    }
+  },[data])
+
+
+  const selectedDoc = doctorProfile ? doctorProfile.filter(select => {
+    if (data.doctor) {
+      return select.username === data.doctor
+    }
+  }) : null
 
 
 
@@ -106,6 +125,12 @@ export default function BookApp(props) {
       <Navbar />
       {Auth.isAuthenticated() ? <div className='bookPage'>
         <Grid  item xs={6} sm={8} md={5} elevation={6} square="true">
+
+          <div className='flexTitle'>
+            <p className='title'>Expertise: </p>
+            <p className='content'>{selectedDoc && selectedDoc[0] && selectedDoc[0].expertise}</p>
+          </div>
+           
 
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <Picker 
