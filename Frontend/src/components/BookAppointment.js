@@ -20,7 +20,7 @@ import Picker from './Picker'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '100vh',
+    height: '100vh'
   },
   paper: {
     margin: theme.spacing(8, 4),
@@ -124,20 +124,16 @@ export default function BookApp(props) {
 
       <Navbar />
       {Auth.isAuthenticated() ? <div className='bookPage'>
-        <Grid  item xs={6} sm={8} md={5} elevation={6} square="true">
 
-          <div className='flexTitle'>
-            <p className='title'>Expertise: </p>
-            <p className='content'>{selectedDoc && selectedDoc[0] && selectedDoc[0].expertise}</p>
-          </div>
-           
+        <Grid  item xs={6} sm={8} md={5} elevation={6} square="true">
+          {selectedDoc && selectedDoc[0] && <p className='doctorInfo'>Doctor:  <span style={{ color: '#41B6E6' }}>{selectedDoc[0].username}</span></p>}
+          {selectedDoc && selectedDoc[0] && <p className='doctorInfo'>Expertise:  <span style={{ color: '#41B6E6' }}>{selectedDoc[0].expertise}</span></p>}
 
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <Picker 
               url={`/api/appointment/doc/${data.doctor ? data.doctor : null}`}
             />
           </MuiPickersUtilsProvider>
-
         </Grid>
         
 
@@ -214,10 +210,14 @@ export default function BookApp(props) {
         </Grid>
 
       </div> : 
-      
+
         <div className='bookPageFlex'>
-          <p className='bookPageLogin'>Please Click Here to Login</p>
-          <Link to='/login' className='button'>Login</Link>
+          <img className='imageStyle' src='https://i.imgur.com/Qj84uzw.png' />
+          <div>
+            <p className='bookPageLogin'>To book your GP appointment, please login here</p>
+            <Link to='/login' className='button'>Login</Link>
+          </div>
+  
         </div>
       }
 

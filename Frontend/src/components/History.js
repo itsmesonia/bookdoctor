@@ -24,7 +24,12 @@ import zIndex from '@material-ui/core/styles/zIndex'
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
-    backgroundColor: '#E8EDEE'
+    backgroundColor: '#E8EDEE',
+    backgroundImage: "url('https://i.imgur.com/bT8qWho.png')",
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center center',
+    backgroundSize: 'cover',
+    backgroundAttachment: 'fixed'
   },
   grid: {
     marginLeft: 'auto',
@@ -112,7 +117,6 @@ export default function BookApp(props) {
     <Grid container className={classes.root}>
       <CssBaseline />
       <Navbar />
-
       {Auth.isAuthenticated() && Auth.getUser().role === 'doctor' ? 
 
         <Grid item xs={false} sm={8} md={6} elevation={6} square="true" className={classes.grid}>
@@ -189,8 +193,12 @@ export default function BookApp(props) {
         : 
       
         <div className='bookPageFlex'>
-          <p className='bookPageLogin'>Oops, seems like you don't have access to visit this page</p>
-          <Link to='/' className='button'>Take Me Back</Link>
+          <img className='imageStyle' src='https://i.imgur.com/Qj84uzw.png' />
+          <div>
+            <p className='bookPageLogin'>Oops, seems like you don't have access to visit this page</p>
+            <Link to='/' className='button'>Take Me Back</Link>
+          </div>
+          
         </div>
       }
 

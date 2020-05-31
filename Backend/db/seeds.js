@@ -19,7 +19,7 @@ mongoose.connect(
           password: 'doctor1',
           passwordConfirmation: 'doctor1',
           role: 'doctor',
-          expertise: 'Everything',
+          expertise: 'General Practitioner, Dermatologist',
           clinic: 'London',
           appointment: [],
           history: []
@@ -29,7 +29,7 @@ mongoose.connect(
           password: 'doctor2',
           passwordConfirmation: 'doctor2',
           role: 'doctor',
-          expertise: 'Everything',
+          expertise: 'General Practitioner, Otolaryngologist',
           clinic: 'London',
           appointment: [],
           history: []
@@ -39,7 +39,7 @@ mongoose.connect(
           password: 'doctor3',
           passwordConfirmation: 'doctor3',
           role: 'doctor',
-          expertise: 'Everything',
+          expertise: 'General Practitioner, Psychiatrist',
           clinic: 'London',
           appointment: [],
           history: []
@@ -49,7 +49,7 @@ mongoose.connect(
           password: 'doctor4',
           passwordConfirmation: 'doctor4',
           role: 'doctor',
-          expertise: 'Everything',
+          expertise: 'General Practitioner, Pediatrician',
           clinic: 'London',
           appointment: [],
           history: []
@@ -59,7 +59,7 @@ mongoose.connect(
           password: 'doctor5',
           passwordConfirmation: 'doctor5',
           role: 'doctor',
-          expertise: 'Everything',
+          expertise: 'General Practitioner, Rheumatologist',
           clinic: 'London',
           appointment: [],
           history: []

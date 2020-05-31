@@ -24,6 +24,7 @@ export default function Picker({ url }) {
   }, [url])
 
 
+  // console.log(selectedDays)
 
 
   function handleChange(e) {
@@ -58,6 +59,10 @@ export default function Picker({ url }) {
     }
   })
 
+  function disableWeekends(date) {
+    return date.getDay() === 0 || date.getDay() === 6
+  }
+
 
 
   return (
@@ -66,6 +71,7 @@ export default function Picker({ url }) {
 
       <ThemeProvider theme={materialTheme}>
         <DatePicker
+          shouldDisableDate={date => disableWeekends(date)}
           autoOk
           orientation="landscape"
           variant="static"
