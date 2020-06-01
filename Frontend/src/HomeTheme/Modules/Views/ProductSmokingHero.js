@@ -16,9 +16,6 @@ const styles = (theme) => ({
   link: {
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(3)
-  },
-  buoy: {
-    width: 60
   }
 })
 
@@ -35,8 +32,8 @@ function ProductSmokingHero(props) {
         Click here to contact us via email
       </p>
   
-      <a href="mailto: abc@example.com" >
-        <ContactSupportIcon style={{ fontSize: 60 }} />
+      <a href="mailto: bookdoctorappointments@gmail.com" >
+        <ContactSupportIcon style={{ fontSize: '60px' }}  />
         {/* <img src="https://i.imgur.com/GQBnuem.png" className={classes.buoy} alt="buoy" /> */}
       </a>
     </Container>

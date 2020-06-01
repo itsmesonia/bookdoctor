@@ -187,7 +187,7 @@ export default function BookApp(props) {
             </form>
 
           </Paper>
-          <div style={{ textAlign: 'center' }}>Copyright © <Link target='blank' className='links' to="https://github.com/soniacweb/bookdoctor">bookdoctors.com</Link>{' '}{new Date().getFullYear()}</div>        
+          <div style={{ textAlign: 'center' }}>Copyright © <Link target='blank' className='links' to="https://github.com/soniacweb/bookdoctor">bookdoctor</Link>{' '}{new Date().getFullYear()}</div>        
         </Grid>
         
         : 

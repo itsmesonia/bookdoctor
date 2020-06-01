@@ -200,7 +200,7 @@ export default function BookApp(props) {
 
             </form>
 
-            <div>Copyright © <Link target='blank' className='links' to="https://github.com/soniacweb/bookdoctor">bookdoctors.com</Link>{' '}{new Date().getFullYear()}</div>
+            <div>Copyright © <Link target='blank' className='links' to="https://github.com/soniacweb/bookdoctor">bookdoctor</Link>{' '}{new Date().getFullYear()}</div>
 
           </div>
 

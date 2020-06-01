@@ -108,9 +108,16 @@ body {
 .naV {
   color: $nhs-color;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 16px;
+  margin-top: 10px;
+  padding: 3px 8px;
+  border: .5px solid;
+  border-radius: 50px;
+  transition: all .3s ease-in-out;
   &:hover {
     color: $nhs-light-blue;
+    border: .5px solid $nhs-color;
+    transform: scale(1.1);
   }
 }
 
@@ -190,3 +197,4 @@ body {
   display: flex;
   align-items: center;
 }
+

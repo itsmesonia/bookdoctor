@@ -6,19 +6,8 @@ import Container from '@material-ui/core/Container'
 // import Typography from '../Components/Typography'
 import Typography from '@material-ui/core/Typography'
 
-import TextField from '../Components/TextField'
+// import TextField from '../Components/TextField'
 
-function Copyright() {
-  return (
-    <React.Fragment>
-      {'© '}
-      <Link color="inherit" href="https://material-ui.com/">
-        bookdoctor.com
-      </Link>{' '}
-      {new Date().getFullYear()}
-    </React.Fragment>
-  )
-}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,14 +22,10 @@ const useStyles = makeStyles((theme) => ({
   iconsWrapper: {
     height: 120
   },
-  icons: {
-    display: 'flex'
-  },
   icon: {
-    width: 48,
-    height: 48,
+    width: 28,
+    height: 28,
     display: 'flex',
-    justifyContent: 'center',
     alignItems: 'center',
     // backgroundColor: theme.palette.warning.main,
     marginRight: theme.spacing(1),
@@ -63,16 +48,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-// const LANGUAGES = [
-//   {
-//     code: 'en-US',
-//     name: 'English',
-//   },
-//   {
-//     code: 'fr-FR',
-//     name: 'Français',
-//   },
-// ]
+
 
 export default function AppFooter() {
   const classes = useStyles()
@@ -80,29 +56,26 @@ export default function AppFooter() {
   return (
     <Typography component="footer" className={classes.root}>
       <Container className={classes.container}>
+
         <Grid container spacing={5}>
-          <Grid item xs={6} sm={4} md={3}>
-            <Grid
-              container
-              direction="column"
-              justify="flex-end"
-              className={classes.iconsWrapper}
-              spacing={2}
-            >
-              <Grid item className={classes.icons}>
-                <a href="/" className={classes.icon}>
-                  <img src="https://i.imgur.com/H2XF43d.png" alt="Facebook" />
-                </a>
-                <a href="/" className={classes.icon}>
-                  <img src="https://i.imgur.com/dDElfmP.png" alt="Twitter" />
-                </a>
-              </Grid>
-              <Grid item>
-                <Copyright />
-              </Grid>
-            </Grid>
+          <Grid item xs={6} sm={8} md={4}>
+            <Typography variant="h6" marked="left" gutterBottom>
+            Contact
+            </Typography>
+            <ul className={classes.list}>
+              <li className={classes.listItem}>
+                <Link href="https://www.linkedin.com/in/aichi-chang/">Aichi Chang</Link>
+              </li>
+              <li className={classes.listItem}>
+                <Link href="https://www.linkedin.com/in/denisa-tanase/">Denisa Mihaela</Link>
+              </li>
+              <li className={classes.listItem}>
+                <Link href="https://www.linkedin.com/in/sonia-k-choudhury/">Sonia Choudhury</Link>
+              </li>
+            </ul>
           </Grid>
-          <Grid item xs={6} sm={4} md={2}>
+
+          <Grid item xs={6} sm={8} md={4}>
             <Typography variant="h6" marked="left" gutterBottom>
               Legal
             </Typography>
@@ -115,60 +88,34 @@ export default function AppFooter() {
               </li>
             </ul>
           </Grid>
-          <Grid item xs={6} sm={8} md={4}>
 
+          <Grid item xs={6} sm={4} md={2}>
             <Typography variant="h6" marked="left" gutterBottom>
-              Contact
+              Media
             </Typography>
             <ul className={classes.list}>
               <li className={classes.listItem}>
-                <Link href="/premium-themes/onepirate/terms/">NHS</Link>
+                <a id="" className={classes.icon}>
+                  <img src="https://i.imgur.com/H2XF43d.png" alt="Facebook" />s
+                </a>
               </li>
               <li className={classes.listItem}>
-                <Link href="/premium-themes/onepirate/privacy/">GOV.UK</Link>
+                <a id="" className={classes.icon}>
+                  <img src="https://i.imgur.com/dDElfmP.png" alt="Twitter" />
+                </a>
               </li>
             </ul>
-
-
-            {/* <Typography variant="h6" marked="left" gutterBottom>
-              Language
-            </Typography> */}
-            {/* <TextField
-              select
-              SelectProps={{
-                native: true,
-              }}
-              className={classes.language}
-            >
-              {LANGUAGES.map((language) => (
-                <option value={language.code} key={language.code}>
-                  {language.name}
-                </option>
-              ))}
-            </TextField> */}
           </Grid>
-          <Grid item>
+
+          <Grid item xs={6} md={10}>
             <Typography variant="caption">
-              {'Created by Aichi Chang, Denisa Mihaela and Sonia Choudhury'}
-              {/* <Link href="https://www.freepik.com" rel="sponsored" title="Freepik"> */}
-                {/* Freepik */}
-              {/* </Link> */}
+              {'Created by Aichi Chang, Denisa Mihaela and Sonia Choudhury with 💙'}
               {' - GA Grads 2020'}
-              {/* <Link href="https://www.flaticon.com" rel="sponsored" title="Flaticon"> */}
-                {/* www.flaticon.com */}
-              {/* </Link> */}
-              {/* {' is licensed by '} */}
-              {/* <Link
-                href="https://creativecommons.org/licenses/by/3.0/"
-                title="Creative Commons BY 3.0"
-                target="_blank"
-                rel="noopener noreferrer"
-              > */}
-                {/* CC 3.0 BY */}
-              {/* </Link> */}
             </Typography>
           </Grid>
         </Grid>
+
+
       </Container>
     </Typography>
   )

@@ -86,10 +86,17 @@ body {
 .naV {
   color: #005EB8;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 16px;
+  margin-top: 10px;
+  padding: 3px 8px;
+  border: 0.5px solid;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
 }
 .naV:hover {
   color: #41B6E6;
+  border: 0.5px solid #005EB8;
+  transform: scale(1.1);
 }
 
 .navbar-item:hover {

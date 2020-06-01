@@ -192,7 +192,7 @@ export default function Register(props) {
           <Link to="/login" className='links'>Already have an account? Login</Link>
 
           <Box mt={5}>
-            <div>Copyright © <Link target='blank' className='links' to="https://github.com/soniacweb/bookdoctor">bookdoctors.com</Link>{' '}{new Date().getFullYear()}</div>
+            <div>Copyright © <Link target='blank' className='links' to="https://github.com/soniacweb/bookdoctor">bookdoctor</Link>{' '}{new Date().getFullYear()}</div>
           </Box>
 
         </div>
