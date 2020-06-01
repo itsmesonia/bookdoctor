@@ -8,7 +8,7 @@ const appointmentSchema = new Schema({
   time: { type: String, required: true },
   reason: { type: String, required: true },
   doctor: { type: String, require: true },
-  user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+  user: { type: Schema.Types.ObjectId, ref: 'User', required: true }
 })
 
 appointmentSchema.plugin(uniqueValidator)

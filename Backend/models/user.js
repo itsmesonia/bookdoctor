@@ -33,6 +33,7 @@ const userSchema = new Schema({
     transform(doc, json) {
       return {
         username: json.username,
+        email: json.email,
         id: json._id,
         role: json.role,
         expertise: json.expertise,

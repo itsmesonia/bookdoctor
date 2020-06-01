@@ -1,19 +1,25 @@
 require('dotenv').config()
 const sgMail = require('@sendgrid/mail')
+
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+
 const msg = {
-  to: 'aichi.p.chang@gmail.com',
+  to: `${email}`,
   from: 'bookdoctorappointments@gmail.com',
-  subject: 'Sending with SendGrid is Fun',
-  text: 'and easy to do anywhere, even with Node.js',
-  html: '<strong>and easy to do anywhere, even with Node.js</strong>'
+  subject: 'Your Appointment is Booked!',
+  text: '',
+  html: `Hello ${user},
+  Your appointment is at ${time}, ${date} with ${doctor}.
+  To cancel it, please call your GP 48hrs before the appointment.
+  <hr />
+  Thank you,
+  Bookdoctor.com`
 }
+
 sgMail.send(msg)
   .then(() => {
     console.log('Message sent')
   }).catch((error) => {
     console.log(error.response.body)
-    // console.log(error.response.body.errors[0].message)
   })
 
-// console.log(process.env.SENDGRID_API_KEY)

@@ -1,12 +1,33 @@
+require('dotenv').config()
 const Appointment = require('../models/Appointment')
 const User = require('../models/User')
 
 const mongoose = require('mongoose')
 mongoose.set('useFindAndModify', false)
 
+const sgMail = require('@sendgrid/mail')
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+// sgMail.setSubstitutionWrappers('{{', '}}')
+
 
 
 function create(req, res) {
+  const msg = {
+    to: `${req.currentUser.email}`,
+    from: 'bookdoctorappointments@gmail.com',
+    html: `<div>Hello ${req.currentUser.username}<div>,`,
+    templateId: 'd-a4dbb4f0e0e942f7918365c89b5ee519',
+    dynamic_template_data: {
+      subject: 'Your Appointment Is Booked! ☑️',
+      name: `${req.currentUser.username}`,
+      date: `${req.body.date}`,
+      time: `${req.body.time}`,
+      doctor: `${req.body.doctor}`
+    }
+  }
+  
+
   req.body.user = req.currentUser
   const appoint = Appointment.findOne({ date: req.body.date, time: req.body.time, doctor: req.body.doctor }).exec()
   appoint
@@ -30,6 +51,14 @@ function create(req, res) {
           //   return res.status(200).json(appointment)
           // })
           .catch(err => res.json(err))
+
+        sgMail.send(msg)
+          .then(() => {
+            console.log('Message sent')
+          }).catch((error) => {
+            console.log(error.response.body)
+          })
+        
       } else {
         console.log('Time not available')
         return res.status(406).json({ message: 'This time is not available' })
