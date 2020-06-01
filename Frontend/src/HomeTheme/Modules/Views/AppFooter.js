@@ -96,7 +96,7 @@ export default function AppFooter() {
             <ul className={classes.list}>
               <li className={classes.listItem}>
                 <a id="" className={classes.icon}>
-                  <img src="https://i.imgur.com/H2XF43d.png" alt="Facebook" />s
+                  <img src="https://i.imgur.com/H2XF43d.png" alt="Facebook" />
                 </a>
               </li>
               <li className={classes.listItem}>
