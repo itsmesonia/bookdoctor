@@ -157,7 +157,6 @@ export default function BookApp(props) {
               />
 
               <MuiPickersUtilsProvider utils={DateFnsUtils} >
-                {/* <Grid container justify="space-around"> */}
 
                 <KeyboardDatePicker
                   minDate={today}
@@ -179,7 +178,6 @@ export default function BookApp(props) {
 
               <TextField
                 onChange={(e) => handleChange(e)}
-                // variant="outlined"
                 margin="normal"
                 required
                 fullWidth

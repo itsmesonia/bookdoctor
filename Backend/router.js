@@ -27,7 +27,7 @@ router.route('/appointment/doc/:name')
 
 
 router.route('/appointment/:id')
-  .delete(secureRoute, userControl('doctor'), appointmentFunc.remove)
+  .delete(secureRoute, appointmentFunc.remove)
   .get(secureRoute, appointmentFunc.show)
 
 

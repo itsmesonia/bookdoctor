@@ -86,10 +86,11 @@ export default function Register(props) {
       })
       .catch(err => {
         setErrors({ ...errors, ...err.response.data })
+        window.location.reload()
       })
   }
 
-  console.log(registerInfo)
+
 
 
   return (
@@ -123,7 +124,7 @@ export default function Register(props) {
                 }
               }}
             />
-            {errors.username && <small>{errors.username.message}</small>}
+            {errors.username && <small style={{ color: 'red' }}>{errors.username.message}</small>}
             <TextField
               onChange={(e) => handleChange(e)}
               variant="outlined"
@@ -143,7 +144,7 @@ export default function Register(props) {
                 }
               }}
             />
-            {errors.email && <small>{errors.email.message}</small>}
+            {errors.email && <small style={{ color: 'red' }}>{errors.email.message}</small>}
             <TextField
               onChange={(e) => handleChange(e)}
               variant="outlined"
@@ -162,7 +163,7 @@ export default function Register(props) {
                 }
               }}
             />
-            {errors.password && <small>{errors.password.message}</small>}
+            {errors.password && <small style={{ color: 'red' }}>{errors.password.message}</small>}
             <TextField
               onChange={(e) => handleChange(e)}
               variant="outlined"
@@ -181,7 +182,7 @@ export default function Register(props) {
                 }
               }}
             />
-            {errors.passwordConfirmation && <small>{errors.passwordConfirmation.message}</small>}
+            {errors.passwordConfirmation && <small style={{ color: 'red' }}>{errors.passwordConfirmation.message}</small>}
             <button className='button' >
               Sign In
             </button>

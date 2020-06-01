@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react' 
+import axios from 'axios'
 import { Link } from 'react-router-dom'
 import clsx from 'clsx' 
 import { makeStyles } from '@material-ui/core/styles' 
@@ -14,7 +15,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import ListItems from './ListItems' 
 import MedicalHistory from './MedicalHistory' 
 import Auth from '../lib/auth'
-import axios from 'axios'
+import DeleteAppointment from './DeleteAppointment'
 
 import { MuiPickersUtilsProvider } from '@material-ui/pickers'
 import DateFnsUtils from '@date-io/date-fns'
@@ -167,9 +168,11 @@ export default function Dashboard() {
                   patient && singleUser.appointment.length <= 3 ? 
                     <div>
                       {singleUser.appointment.map((info, i) => {
-                        return <p className='content' key={i}>
+                        return <div key={i} className='appointmentFlex'><p className='content'>
                           {info.date} with {info.doctor} at {info.time}
                         </p>
+                        <DeleteAppointment id={info._id}/>
+                        </div>
                       })}
                     </div> :
                     <div>{patient && singleUser.appointment.slice(start, end).map((info, i) => {
