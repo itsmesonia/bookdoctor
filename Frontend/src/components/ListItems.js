@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-// import ListSubheader from '@material-ui/core/ListSubheader'
+import NoteAddIcon from '@material-ui/icons/NoteAdd'
 import HomeIcon from '@material-ui/icons/Home'
 import AddCircleIcon from '@material-ui/icons/AddCircle'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
@@ -39,7 +39,7 @@ export default function ListItems({ open }) {
         </Link>
       </ListItem>
     
-      <ListItem button>
+      {Auth.getUser().role === 'patient' && <ListItem button>
         <Link to={'/appointment'}>
           <ListItemIcon>
             <AddCircleIcon />
@@ -48,7 +48,18 @@ export default function ListItems({ open }) {
         <Link to={'/appointment'}>
           <ListItemText primary="Book Appointment"/> 
         </Link>
-      </ListItem>
+      </ListItem>}
+
+      {Auth.getUser().role === 'doctor' && <ListItem button>
+        <Link to={'/appointment'}>
+          <ListItemIcon>
+            <NoteAddIcon />
+          </ListItemIcon>
+        </Link>
+        <Link to={'/history'}>
+          <ListItemText primary="Patient History"/> 
+        </Link>
+      </ListItem>}
     
       <ListItem button>
         <a href='/' onClick={() => handleLogout()}>

@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
     backgroundColor: '#E8EDEE',
-    backgroundImage: "url('https://i.imgur.com/bT8qWho.png')",
+    backgroundImage: "url('https://66.media.tumblr.com/db4695b73f74690c83cbfbee3a7aa571/tumblr_njt2v19H9l1tf8vylo1_1280.png')",
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center center',
     backgroundSize: 'cover',

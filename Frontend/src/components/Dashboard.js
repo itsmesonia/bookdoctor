@@ -64,7 +64,12 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     height: '100vh',
-    backgroundColor: '#faf6ef'
+    backgroundColor: '#faf6ef',
+    backgroundImage: "url('https://66.media.tumblr.com/a1b8dbd82bab7cc1b3a24886a2af1267/tumblr_njay1iUqqY1tf8vylo1_1280.png')",
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center center',
+    backgroundSize: 'cover',
+    backgroundAttachment: 'fixed'
   },
   container: {
     marginLeft: '40px',
@@ -116,6 +121,8 @@ export default function Dashboard() {
 
 
   if (!singleUser.appointment) return <h1>Loading...</h1>
+
+
 
   return (
     <div className={classes.root}>
@@ -176,9 +183,11 @@ export default function Dashboard() {
                       })}
                     </div> :
                     <div>{patient && singleUser.appointment.slice(start, end).map((info, i) => {
-                      return <p className='content' key={i}>
+                      return <div key={i} className='appointmentFlex'><p className='content'>
                         {info.date} with {info.doctor} at {info.time}
                       </p>
+                      <DeleteAppointment id={info._id}/>
+                      </div>
                     })}</div>
                 }
               </Paper>
