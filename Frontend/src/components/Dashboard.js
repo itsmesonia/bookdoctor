@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     height: '100vh',
     backgroundColor: '#faf6ef',
-    backgroundImage: "url('https://66.media.tumblr.com/a1b8dbd82bab7cc1b3a24886a2af1267/tumblr_njay1iUqqY1tf8vylo1_1280.png')",
+    backgroundImage: "url('https://66.media.tumblr.com/35fc9656171b7472aab2414605218409/tumblr_nwemlgsZcE1tf8vylo1_1280.png')",
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center center',
     backgroundSize: 'cover',
