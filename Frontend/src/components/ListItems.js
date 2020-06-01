@@ -51,7 +51,7 @@ export default function ListItems({ open }) {
       </ListItem>}
 
       {Auth.getUser().role === 'doctor' && <ListItem button>
-        <Link to={'/appointment'}>
+        <Link to={'/history'}>
           <ListItemIcon>
             <NoteAddIcon />
           </ListItemIcon>
