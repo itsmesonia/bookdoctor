@@ -1,5 +1,5 @@
 sendgrid.env
 node_modules
 backend/config/
-**/database.js
+database.js
 
