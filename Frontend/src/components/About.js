@@ -6,23 +6,17 @@ import 'bulma'
 import axios from 'axios'
 // import { Link } from 'react-router-dom'
 
-export default function Dashboard() {
+export default function About() {
 
   const [article, setArticle] = useState('')
 
-
   
   useEffect(() => {
-    // const key = '26217b2fd13a473f8ee90f7fbc56cdec'
-    // axios.get('https://api.covid19api.com/summary', {
-    //   headers: { Authorization: `Bearer ${key}` }
-    // })
     axios.get('https://api.nhs.uk/conditions/coronavirus-covid-19?url=bookdoctorsappointments.com&modules=false')
       .then(res => setArticle(res.data))
   }, []) 
     
   
-
   console.log(article)
 
   return (
@@ -43,18 +37,22 @@ export default function Dashboard() {
           <div className="tile">
             <div className="tile is-parent is-vertical">
               <article className="tile is-child notification">
-                <p className="title">About page.</p>
-                <p className="subtitle">About</p>
+                <p className="title">{article.headline}</p>
+                {/* <p className="subtitle">{article.hasPart[0].description}</p> */}
               </article>
               <article className="tile is-child notification">
-                <p className="title">...what we do</p>
-                <p className="subtitle">Bottom tile</p>
+                <p className="title">{article.name}</p>
+                <p>For more information, please check out our</p><a href={article.url}>NHS Resources here</a>
+                {/* <p className="subtitle">{article.about}</p> */}
               </article>
             </div>
             <div className="tile is-parent">
               <article className="tile is-child notification">
-                <p className="title">Middle tile</p>
-                <p className="subtitle">With an image</p>
+                <p className="title">
+                  {/* {state.article.headline} */}
+                
+                </p>
+                {/* <p className="subtitle">{article.name}</p> */}
                 <figure className="image is-4by7">
                   <img src="https://i.imgur.com/KbkSHZJ.jpg" />
                 </figure>
@@ -63,8 +61,8 @@ export default function Dashboard() {
           </div>
           <div className="tile is-parent">
             <article className="tile is-child notification">
-              <p className="title">Wide tile</p>
-              <p className="subtitle">Aligned with the right tile</p>
+              {/* <p className="title">{article.name}</p>
+              <p className="subtitle">{article.name}</p> */}
               <div className="content">
           content
               </div>
@@ -74,10 +72,29 @@ export default function Dashboard() {
         <div className="tile is-parent">
           <article className="tile is-child notification">
             <div className="content">
-              <p className="title">Tall tile</p>
-              <p className="subtitle">With even more content</p>
+              <p className="title">works fine {article.headline}</p>
+              <p className="subtitle"> works fine {article.description}</p>
               <div className="content">
-        content
+                {article.text}
+                {/* {article.mainEntityOfPage.mainEntityOfPage[1]}
+                {article.mainEntityOfPage.mainEntityOfPage[2]}
+                {article.mainEntityOfPage.mainEntityOfPage[3]}
+                {article.mainEntityOfPage.mainEntityOfPage[3]} */}
+
+
+                {/* <ul> { article[0].map((item, index) => (
+                  <li key={index.id}>{item.hasPart}</li>)) }
+                </ul> */}
+
+                {/* <p> {article.about}</p> */}
+
+                {/* <div> 
+                  {article[1].hasPart.map((value, i) => {
+                    return <p key={i}>{value}</p>
+                  })}
+                </div>  */}
+
+                {/* <p>{article[1].hasPart[1]}</p> */}
               </div>
             </div>
           </article>
