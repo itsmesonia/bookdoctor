@@ -14,16 +14,39 @@ class About extends React.Component {
     }
   }
   
+  
+  
   componentDidMount() {
-    // const key = "{26217b2fd13a473f8ee90f7fbc56cdec}"
-    axios.get('https://api.covid19api.com/summary')
-      .then(res => res.json())
+
+    // const axios = require('axios')
+
+    // axios({
+    //   'method': 'GET',
+    //   'url': 'https://priaid-symptom-checker-v1.p.rapidapi.com/body/locations',
+    //   'headers': {
+    //     'content-type': 'application/octet-stream',
+    //     'x-rapidapi-host': 'priaid-symptom-checker-v1.p.rapidapi.com',
+    //     'x-rapidapi-key': '727f4c3230msh9b73b1de28071fdp11661ejsn7fd09c81cd0e',
+    //     'useQueryString': true
+    //   },'params': {
+    //     'language': 'en-gb'
+    //   }
+    // })
+    //   .then((response)=>{
+    //     console.log(response)
+    //   })
+    //   .catch((error)=>{
+    //     console.log(error)
+    //   })
+    axios.get('https://covid19.mathdro.id/api')
       .then(res => this.setState({ article: res.data }))
+      .catch(err => console.log(err.res))
   }
+
 
   
   render() {
-    console.log(this.state.article)
+    // console.log(this.state.article)
     return (
       <div>
         <Navbar />
