@@ -1,3 +1,5 @@
+const { validationResult } = require('express-validator')
+
 const History = require('../models/History')
 const User = require('../models/User')
 
@@ -8,18 +10,24 @@ mongoose.set('useFindAndModify', false)
 
 
 function create(req, res) {
-  // this will put doctor(currenly loged in) as the user of this just created history into the objact
-  // and we will push this history object into patient object
-  req.body.user = req.currentUser
-  History.create(req.body)
-    .then(history => {
-      // find the patient in db and push their history into their file
-      return User.findOneAndUpdate({ username: req.body.patient }, { $push: { history: history } }, { new: true })
-    })
-    .then(history => {
-      return res.status(201).json(history)
-    })
-    .catch(err => res.json(err))
+  const errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() })
+  } else {
+    // this will put doctor(currenly loged in) as the user of this just created history into the objact
+    // and we will push this history object into patient object
+    req.body.user = req.currentUser
+    History.create(req.body)
+      .then(history => {
+        // find the patient in db and push their history into their file
+        return User.findOneAndUpdate({ username: req.body.patient }, { $push: { history: history } }, { new: true })
+      })
+      .then(history => {
+        return res.status(201).json(history)
+      })
+      .catch(err => res.json(err))
+  }  
+  
 }
 
 

@@ -1,3 +1,5 @@
+const { check, validationResult } = require('express-validator')
+
 const router = require('express').Router()
 
 const userControl = require('./lib/userControl')
@@ -17,8 +19,13 @@ router.route('/medicines')
 
 
 // ************************ appointments ************************
+router.post('/appointment', secureRoute, userControl('patient'),
+  [
+    check('reason').not().isEmpty().trim().escape()
+  ], appointmentFunc.create)
+
+
 router.route('/appointment')
-  .post(secureRoute, appointmentFunc.create)
   .get(secureRoute, appointmentFunc.index)
 
 
@@ -33,8 +40,12 @@ router.route('/appointment/:id')
 
 
 // ************************ history ************************
+router.post('/history', secureRoute, userControl('doctor'),
+  [
+    check('content').not().isEmpty().trim().escape()
+  ],  historyFunc.create)
+
 router.route('/history')
-  .post(secureRoute, userControl('doctor'), historyFunc.create)
   .get(secureRoute, userControl('doctor'), historyFunc.index)
 
 
@@ -48,12 +59,19 @@ router.route('/history/:id')
 
 
 // ************************ user ************************
-router.route('/register')
-  .post(userFunc.register)
+router.post('/register',
+  [
+    check('username').isLength({ min: 2 }).trim().escape(),
+    check('email').isEmail().normalizeEmail(),
+    check('password').not().isEmpty().trim().escape()
+  ], userFunc.register)
 
 
-router.route('/login')
-  .post(userFunc.login)
+router.post('/login', [
+  check('username').isLength({ min: 2 }).trim().escape(),
+  check('email').isEmail().normalizeEmail(),
+  check('password').not().isEmpty().trim().escape()
+], userFunc.login)
 
 
 router.route('/user')

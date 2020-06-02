@@ -1,11 +1,11 @@
 require('dotenv').config()
+
+const { validationResult } = require('express-validator')
 const Appointment = require('../models/Appointment')
 const User = require('../models/User')
-
+const sgMail = require('@sendgrid/mail')
 const mongoose = require('mongoose')
 mongoose.set('useFindAndModify', false)
-
-const sgMail = require('@sendgrid/mail')
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 // sgMail.setSubstitutionWrappers('{{', '}}')
@@ -27,43 +27,50 @@ function create(req, res) {
     }
   }
   
+  const errors = validationResult(req)
 
-  req.body.user = req.currentUser
-  const appoint = Appointment.findOne({ date: req.body.date, time: req.body.time, doctor: req.body.doctor }).exec()
-  appoint
-    .then(function(appointmentItem) {
-      if (!appointmentItem) {
-        console.log('Appointment available')
-        Appointment
-          .create(req.body)
-          .then(async function(appointment) {
-            try {
-              const promise1 = User.findOneAndUpdate({ _id: req.currentUser._id }, { $push: { appointment: appointment } }, { new: true })
-              const promise2 = User.findOneAndUpdate({ username: req.body.doctor }, { $push: { appointment: appointment } }, { new: true })
-              const result = await Promise.all([promise1, promise2])
-              return res.status(200).json(appointment)
-            } catch (err) {
-              console.log(err)
-            }
-          })
-          // That particular error occurs whenever you try to send more than one response to the same request and is usually caused by improper asynchronous code.
-          // .then(appointment => {
-          //   return res.status(200).json(appointment)
-          // })
-          .catch(err => res.json(err))
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() })
+  } else {
+    req.body.user = req.currentUser
+    const appoint = Appointment.findOne({ date: req.body.date, time: req.body.time, doctor: req.body.doctor }).exec()
+    appoint
+      .then(function(appointmentItem) {
+        if (!appointmentItem) {
+          console.log('Appointment available')
+          Appointment
+            .create(req.body)
+            .then(async function(appointment) {
+              try {
+                const promise1 = User.findOneAndUpdate({ _id: req.currentUser._id }, { $push: { appointment: appointment } }, { new: true })
+                const promise2 = User.findOneAndUpdate({ username: req.body.doctor }, { $push: { appointment: appointment } }, { new: true })
+                const result = await Promise.all([promise1, promise2])
+                return res.status(200).json(appointment)
+              } catch (err) {
+                console.log(err)
+              }
+            })
+            // That particular error occurs whenever you try to send more than one response to the same request and is usually caused by improper asynchronous code.
+            // .then(appointment => {
+            //   return res.status(200).json(appointment)
+            // })
+            .catch(err => res.json(err))
 
-        sgMail.send(msg)
-          .then(() => {
-            console.log('Message sent')
-          }).catch((error) => {
-            console.log(error.response.body)
-          })
-        
-      } else {
-        console.log('Time not available')
-        return res.status(406).json({ message: 'This time is not available' })
-      }
-    })
+          sgMail.send(msg)
+            .then(() => {
+              console.log('Message sent')
+            }).catch((error) => {
+              console.log(error.response.body)
+            })
+          
+        } else {
+          console.log('Time not available')
+          return res.status(406).json({ message: 'This time is not available' })
+        }
+      })
+  }  
+
+  
 }
 
 
