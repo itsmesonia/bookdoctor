@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+// require('../database')
 
 const { port, dbURI } = require('./config/environment')
 // const path = require('path')

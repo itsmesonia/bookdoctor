@@ -1,4 +1,4 @@
-const port = 8000
+const port = process.env.PORT || 8000
 const dbURIPrefix = 'mongodb://localhost/'
 const dbName = 'book-doctor'
 const dbURI = `${dbURIPrefix}${dbName}`
