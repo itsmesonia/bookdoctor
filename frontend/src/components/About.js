@@ -6,7 +6,7 @@ import 'bulma'
 import axios from 'axios'
 // import { Link } from 'react-router-dom'
 
-export default function Dashboard() {
+export default function About() {
 
   const [article, setArticle] = useState('')
 
