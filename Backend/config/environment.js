@@ -1,9 +1,9 @@
 const port = process.env.PORT || 8000
 const dbURIPrefix = 'mongodb://localhost/'
 const dbName = 'book-doctor'
-const dbURI = `${dbURIPrefix}${dbName}`
+// const dbURI = `${dbURIPrefix}${dbName}`
+const dbURI = 'mongodb+srv://aichichang:bookDoctor2020@cluster369-aprqf.mongodb.net/book-doctor?retryWrites=true&w=majority'
 // const dbURI = process.env.MONGODB_URI || 'mongodb://localhost/bookdoctor'
-// our secret used for encoding our JWT tokens, used in '/controllers/user' and '/lib/secureRoute'
 const secret = 'This is my really secret string that nobody is going to be able to guess1'
 
 module.exports = { 

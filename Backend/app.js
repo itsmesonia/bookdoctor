@@ -15,6 +15,7 @@ const router = require('./router')
 mongoose.connect(dbURI,
   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
   () => console.log('Mongo is connected'))
+  .catch(err => console.log(err))
 
 
 const app = express()
