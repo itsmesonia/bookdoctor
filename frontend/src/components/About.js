@@ -37,11 +37,14 @@ export default function About() {
           <div className="tile">
             <div className="tile is-parent is-vertical">
               <article className="tile is-child notification">
-                <p className="title">{article.headline}</p>
+                <p className="title">
+                  Who we are.
+                  {article.headline}</p>
                 {/* <p className="subtitle">{article.hasPart[0].description}</p> */}
               </article>
               <article className="tile is-child notification">
-                <p className="title">{article.name}</p>
+                <p className="title">Where can I find more information?</p>
+                <p className="sub-title">{article.name}</p>
                 <p>For more information, please check out our</p><a href={article.url}>NHS Resources here</a>
                 {/* <p className="subtitle">{article.about}</p> */}
               </article>
@@ -81,10 +84,20 @@ export default function About() {
                 {article.mainEntityOfPage.mainEntityOfPage[3]}
                 {article.mainEntityOfPage.mainEntityOfPage[3]} */}
 
+                {/* stackoverflow solution to array of objects: 
+                <ul>Quote: { response.map((item, index) => (<li key={index}>{item.quote}</li>)) }</ul> */}
 
-                {/* <ul> { article[0].map((item, index) => (
-                  <li key={index.id}>{item.hasPart}</li>)) }
+                {/* <ul> { article.map((item, index) => (
+                  <li key={index}>{item.hasPart}</li>)) }
                 </ul> */}
+
+                {/* Aichi's solution: */}
+                {/* <p>
+                  {article.hasPart.map((info, i)=> {
+                    return <div key={i}>{info.description}</div> 
+                  }
+                  )}
+                </p> */}
 
                 {/* <p> {article.about}</p> */}
 
