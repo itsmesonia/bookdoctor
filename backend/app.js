@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+// require('../database')
 
 const { port, dbURI } = require('./config/environment')
 // const path = require('path')
@@ -14,6 +15,7 @@ const router = require('./router')
 mongoose.connect(dbURI,
   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
   () => console.log('Mongo is connected'))
+  .catch(err => console.log(err))
 
 
 const app = express()
