@@ -33,7 +33,7 @@ export default function About() {
         style={{ overflow: 'hidden' }}>
         {/* <h1 className='title'>Stay Home | Save Lives</h1> */}
         <h3 className='title'>We care about Public Health.</h3>
-        <p className='content'></p>
+        {/* <p className='content'></p> */}
 
         <p className='content'>Find out more on how to keep yourself and your family safe</p>
       </LazyHero>
@@ -171,12 +171,17 @@ export default function About() {
           </div>
         </div>
         <div className="tile is-parent">
-          <article className="tile is-child notification">
+          <article id="statcolumn" className="tile is-child notification">
             <div className="content">
               
-              <p className="title">
-                  Live UK Stats</p>
+              <div className="container">
+                <img id="alert"src="https://i.imgur.com/5zpIWWB.gif"></img>
+ 
+                <p id="statwidth" className="title">
+                  Live UK Stats 
+                </p>
 
+              </div>
               <AboutStats />
                 
         
