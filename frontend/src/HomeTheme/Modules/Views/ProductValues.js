@@ -93,7 +93,7 @@ function ProductValues(props) {
                 Track Your Health
               </Typography>
               <Typography variant="h5">
-                {'By registering, you will access your GP\'s availabilit to book an appointment '}
+                {'By registering, you will access your GP\'s availability and book an appointment '}
                 {'or book a chat and healthy history.'}
               </Typography>
             </div>
