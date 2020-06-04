@@ -9,6 +9,7 @@ mongoose.set('useFindAndModify', false)
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 // sgMail.setSubstitutionWrappers('{{', '}}')
+// console.log(process.env.SENDGRID_API_KEY)
 
 
 
