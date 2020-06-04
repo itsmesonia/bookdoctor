@@ -17,6 +17,9 @@ const useStyles = makeStyles((theme) => ({
   container: {
     marginTop: theme.spacing(8),
     marginBottom: theme.spacing(8),
+    marginLeft: theme.spacing(30),
+    // marginRight: theme.spacing(25),
+
     display: 'flex'
   },
   iconsWrapper: {
@@ -57,7 +60,7 @@ export default function AppFooter() {
     <Typography component="footer" className={classes.root}>
       <Container className={classes.container}>
 
-        <Grid container spacing={5}>
+        <Grid container spacing={3}>
           <Grid item xs={6} sm={8} md={4}>
             <Typography variant="h6" marked="left" gutterBottom>
             Contact
@@ -75,7 +78,7 @@ export default function AppFooter() {
             </ul>
           </Grid>
 
-          <Grid item xs={6} sm={8} md={4}>
+          {/* <Grid item xs={6} sm={8} md={4}>
             <Typography variant="h6" marked="left" gutterBottom>
               Legal
             </Typography>
@@ -85,6 +88,21 @@ export default function AppFooter() {
               </li>
               <li className={classes.listItem}>
                 <Link href="/premium-themes/onepirate/privacy/">Privacy</Link>
+              </li>
+            </ul>
+          </Grid> */}
+
+        
+          <Grid item xs={6} sm={8} md={4}>
+            <Typography variant="h6" marked="left" gutterBottom>
+              Other Services            
+            </Typography>
+            <ul className={classes.list}>
+              <li className={classes.listItem}>
+                <Link href="https://www.nhs.uk/">NHS</Link>
+              </li>
+              <li className={classes.listItem}>
+                <Link href="https://www.nhs.uk/service-search/other-services/Urgent-Care/LocationSearch/1824">Urgent Care Services</Link>
               </li>
             </ul>
           </Grid>
@@ -106,7 +124,7 @@ export default function AppFooter() {
               </li>
             </ul>
           </Grid>
-
+          
           <Grid item xs={6} md={10}>
             <Typography variant="caption">
               {'Created by Aichi Chang, Denisa Mihaela and Sonia Choudhury with 💙'}

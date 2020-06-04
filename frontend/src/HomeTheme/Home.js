@@ -21,8 +21,9 @@ function Index() {
         opacity={0.6}
         minHeight={'140vh'}
         style={{ overflow: 'hidden' }}>
-        <h1 className='title'>Stay Home Stay Safe</h1>
-        <p className='content'>Book your GP appointment online</p>
+        <h1 className='title'>Stay Home | Save Lives</h1>
+        <p className='content'>Contact your GP or book an appointment online</p>
+
       </LazyHero>
 
       <ProductValues />

@@ -12,6 +12,7 @@ export default function About() {
 
   const [article, setArticle] = useState('')
 
+  const URL = 'http://www.nhs.uk'
   
   useEffect(() => {
     axios.get('https://api.nhs.uk/conditions/coronavirus-covid-19?url=bookdoctorsappointments.com&modules=false')
@@ -30,7 +31,10 @@ export default function About() {
         opacity={0.6}
         minHeight={'140vh'}
         style={{ overflow: 'hidden' }}>
-        <h1 className='title'>Stay Home | Save Lives</h1>
+        {/* <h1 className='title'>Stay Home | Save Lives</h1> */}
+        <h3 className='title'>We care about Public Health.</h3>
+        {/* <p className='content'></p> */}
+
         <p className='content'>Find out more on how to keep yourself and your family safe</p>
       </LazyHero>
 
@@ -40,6 +44,7 @@ export default function About() {
             <div className="tile is-parent is-vertical">
 
               <article className="tile is-child notification">
+                <p className="content">We've accumilated all the information you need to know from leading health authorities, so you can concentrate on taking care of yourself, your family and your friends.</p>
                 <p className="title">Coronavirus Explained</p>
                 <p className="subtitle">{article.headline}</p>
                 <p className="subtitle">{article.text}</p>
@@ -66,20 +71,14 @@ export default function About() {
 
 
               <article className="tile is-child notification">
-                <p className="subtitle">Can I Get Tested for Coronavirus? Testing and tracing</p>
-                <p className="subtitle">Self-isolation and treatment if you have symptoms</p>
+                
                 <p className="subtitle">GOV.UK: coronavirus advice for traveller- should I tell my GP Im going away?</p>
                 <p className="subtitle">GOV.UK: coronavirus action plan</p>
-                <p className="subtitle">Government information and advice</p>
-                <p className="subtitle">People at higher risk</p>
-                <p className="subtitle">How to check if your child has symptoms</p>
-                <p className="subtitle">Social distancing and changes to everyday lif</p>
+
                 {/* new block for doctors? */}
                 <p className="subtitle">Information For Health Professionals</p>
      
-                {/* <p>{article.mainEntityOfPage[0].mainEntityOfPage.text && article.mainEntityOfPage[0].mainEntityOfPage.text}</p> */}
-                
-                {/* <p>{article.mainEntityOfpage && article.mainEntityOfPage[0].mainEntityOfPage[0].text}</p> */}
+               
 
                 {/* <p>
                   {article.mainEntityOfpage && article.mainEntityOfPage[0].mainEntityOfPage.map((info, i)=> {
@@ -88,12 +87,45 @@ export default function About() {
                   )}
                 </p> */}
 
-                {/* <p>
-                  {article.mainEntityOfPage[1] && article.mainEntityOfPage[1].map((info, i)=> {
-                    return <p key={i}>{info.text}</p> 
+                <p>
+                  {article.mainEntityOfPage && article.mainEntityOfPage[0].mainEntityOfPage.map((info, i)=> {
+                    return <p className="title" key={i}>  
+                      <a href={URL + info.url} target="_blank" rel="noreferrer">{info.headline}</a>
+                      <p className="subtitle">
+                        {info.text}</p>
+                    </p>
                   }
                   )}
+                </p>
+
+                <p>
+                  {article.mainEntityOfPage && article.mainEntityOfPage[1].map((info, i)=> {
+                    return <p className="title" key={i}>  
+                      <a href={URL + info.url} target="_blank" rel="noreferrer">{info.headline.replace(/<[^>]*>/g, ' ')}</a>
+                      <p className="subtitle">
+                        {info.text}</p>
+                    
+                    </p>
+                  } 
+                  )}
+                </p>
+
+                {/* <p>
+                  {article.mainEntityOfPage && article.mainEntityOfPage[1].mainEntityOfPage}
                 </p> */}
+                {/* <p>
+                  {article.mainEntityOfPage && article.mainEntityOfPage.map((info, i)=> {
+                    return <p className="title" key={i}> 
+                      <p className="subtitle">
+                        {info.text}</p>
+                    </p>
+                  } 
+                  )}
+                </p> */}
+
+               
+
+             
 
                 <p className="subtitle">Where can I find more information?</p>
                 <p className="subtitle">{article.description}</p>
@@ -139,12 +171,17 @@ export default function About() {
           </div>
         </div>
         <div className="tile is-parent">
-          <article className="tile is-child notification">
+          <article id="statcolumn" className="tile is-child notification">
             <div className="content">
               
-              <p className="title">
-                  Live UK Stats</p>
+              <div className="container">
+                <img id="alert"src="https://i.imgur.com/5zpIWWB.gif"></img>
+ 
+                <p id="statwidth" className="title">
+                  Live UK Stats 
+                </p>
 
+              </div>
               <AboutStats />
                 
         

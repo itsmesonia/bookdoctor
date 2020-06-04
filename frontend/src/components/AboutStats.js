@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import 'bulma'
 import axios from 'axios'
-import * as moment from 'moment'
 
 export default function AboutStats() {
 
