@@ -12,6 +12,7 @@ import Dashboard from './components/Dashboard'
 //pages
 import Home from './HomeTheme/Home'
 import About from './components/About'
+
 import NotFound from './components/NotFound'
 
 import 'bulma'
@@ -29,7 +30,6 @@ const App = () => (
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/history" component={History} />
       <Route path="/appointment" component={BookAppointment} />
-
 
       <Route exact path= '/notfound' component={NotFound} />    
 
