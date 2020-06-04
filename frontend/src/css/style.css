@@ -173,3 +173,19 @@ body {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+/* About Page*/
+/* .sub-title-stats {
+  font-size: 19px;
+  font-weight: bold;
+  line-height: 1.6;
+} */
+
+#globalstats {
+  margin-top: 40px;
+}
+
+#dateupdated {
+  font-size: 17px;
+  font-weight: normal; 
+}
