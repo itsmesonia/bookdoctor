@@ -74,7 +74,7 @@ function ProductValues(props) {
                 alt="graph"
               />
               <Typography variant="h6" className={classes.title}>
-                Contact Your GP
+                Free Information Hub
               </Typography>
               <Typography variant="h5">
                 {'An information hub, advice, tips and tools to help you make the best choices about'}
