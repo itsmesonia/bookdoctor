@@ -31,7 +31,10 @@ export default function About() {
         opacity={0.6}
         minHeight={'140vh'}
         style={{ overflow: 'hidden' }}>
-        <h1 className='title'>Stay Home | Save Lives</h1>
+        {/* <h1 className='title'>Stay Home | Save Lives</h1> */}
+        <h3 className='title'>We care about Public Health.</h3>
+        <p className='content'></p>
+
         <p className='content'>Find out more on how to keep yourself and your family safe</p>
       </LazyHero>
 
@@ -41,6 +44,7 @@ export default function About() {
             <div className="tile is-parent is-vertical">
 
               <article className="tile is-child notification">
+                <p className="content">We've accumilated all the information you need to know from leading health authorities, so you can concentrate on taking care of yourself, your family and your friends.</p>
                 <p className="title">Coronavirus Explained</p>
                 <p className="subtitle">{article.headline}</p>
                 <p className="subtitle">{article.text}</p>
