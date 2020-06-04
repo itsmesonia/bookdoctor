@@ -61,8 +61,8 @@ function ProductValues(props) {
                 Connect With your GP
               </Typography>
               <Typography variant="h5">
-                {'From the latest trendy boutique hotel to the iconic palace with XXL pool'}
-                {', go for a mini-vacation just a few subway stops away from your home.'}
+                {'Connect with your GPs directly'}
+                {' and learn more about the advice and services the NHS can offer you and your family.'}
               </Typography>
             </div>
           </Grid>
@@ -77,8 +77,8 @@ function ProductValues(props) {
                 Contact Your GP
               </Typography>
               <Typography variant="h5">
-                {'Privatize a pool, take a Japanese bath or wake up in 900m2 of garden… '}
-                {'your Sundays will not be alike.'}
+                {'An information hub, advice, tips and tools to help you make the best choices about'}
+                {' your health and wellbeing.'}
               </Typography>
             </div>
           </Grid>
@@ -93,8 +93,8 @@ function ProductValues(props) {
                 Track Your Health
               </Typography>
               <Typography variant="h5">
-                {'By registering, you will access specially negotiated rates '}
-                {'that you will not find anywhere else.'}
+                {'By registering, you will access your GP\'s availabilit to book an appointment '}
+                {'or book a chat and healthy history.'}
               </Typography>
             </div>
           </Grid>
