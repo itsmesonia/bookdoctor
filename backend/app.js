@@ -48,7 +48,7 @@ app.get([
   '/appointment',
   '/history'
 ] , (req, res) => {
-  res.sendFile(path.resolve('dist', app.get('appPath') + 'index.html'))
+  res.sendFile(path.resolve('dist', 'index.html'))
 })
 
 app.get('/notfound', (req, res) => {
