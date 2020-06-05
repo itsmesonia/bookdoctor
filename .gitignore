@@ -1,4 +1,4 @@
-sendgrid.env
+.env
 node_modules
 backend/config/
 database.js
