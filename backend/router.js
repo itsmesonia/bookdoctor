@@ -68,7 +68,6 @@ router.post('/register',
 
 
 router.post('/login', [
-  check('username').isLength({ min: 2 }).trim().escape(),
   check('email').isEmail().normalizeEmail(),
   check('password').not().isEmpty().trim().escape()
 ], userFunc.login)
