@@ -5,14 +5,21 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
 
 export default function DeleteAppointment({ id }) {
 
-  function handleDelete() {
-    axios.delete(`/api/appointment/${id}`, {
-      headers: { Authorization: `Bearer ${Auth.getToken()}` }
-    })
-      // .then(() => {
-    window.location.reload()
-      // })
+  async function handleDelete() {
+    try {
+      let res = await axios.delete(`/api/appointment/${id}`, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+      if (res.status === 200) {
+        window.location.reload()
+      }
+    } catch (err) {
+      console.log(err)
+    }
+    
+    
   }
+
 
 
 

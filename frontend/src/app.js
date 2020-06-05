@@ -1,6 +1,8 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import ReactDOM from 'react-dom'
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
 
 //Components
 //user focused

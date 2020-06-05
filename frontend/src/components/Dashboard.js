@@ -92,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function Dashboard() {
+export default function Dashboard(props) {
   const classes = useStyles()
   
   const [singleUser, setSingleUser] = useState({})
@@ -178,7 +178,7 @@ export default function Dashboard() {
                         return <div key={i} className='appointmentFlex'><p className='content'>
                           {info.date} with {info.doctor} at {info.time}
                         </p>
-                        <DeleteAppointment id={info._id}/>
+                        <DeleteAppointment id={info._id} props={props}/>
                         </div>
                       })}
                     </div> :
