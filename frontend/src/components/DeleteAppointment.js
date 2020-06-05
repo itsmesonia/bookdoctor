@@ -10,7 +10,7 @@ export default function DeleteAppointment({ id }) {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
       // .then(() => {
-      //   window.location.reload()
+    window.location.reload()
       // })
   }
 
