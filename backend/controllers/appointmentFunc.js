@@ -1,8 +1,8 @@
 require('dotenv').config()
 
 const { validationResult } = require('express-validator')
-const Appointment = require('../models/appointment')
-const User = require('../models/user')
+const Appointment = require('../models/Appointment')
+const User = require('../models/User')
 const sgMail = require('@sendgrid/mail')
 const mongoose = require('mongoose')
 mongoose.set('useFindAndModify', false)

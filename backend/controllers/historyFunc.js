@@ -1,7 +1,7 @@
 const { validationResult } = require('express-validator')
 
-const History = require('../models/history')
-const User = require('../models/user')
+const History = require('../models/History')
+const User = require('../models/User')
 
 const mongoose = require('mongoose')
 mongoose.set('useFindAndModify', false)

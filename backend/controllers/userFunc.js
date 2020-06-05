@@ -1,5 +1,5 @@
 const { check, validationResult } = require('express-validator')
-const User = require('../models/user')
+const User = require('../models/User')
 // const Appointment = require('../models/Appointment')
 const jwt = require('jsonwebtoken')
 const { secret } = require('../config/environment')
