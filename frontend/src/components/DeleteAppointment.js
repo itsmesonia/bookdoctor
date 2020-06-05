@@ -9,9 +9,9 @@ export default function DeleteAppointment({ id }) {
     axios.delete(`/api/appointment/${id}`, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
-      .then(() => {
-        window.location.reload()
-      })
+      // .then(() => {
+      //   window.location.reload()
+      // })
   }
 
 
