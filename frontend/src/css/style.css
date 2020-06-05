@@ -213,3 +213,25 @@ body {
 #statwidth {
   width: 190px;
 }
+
+#prevention {
+margin-top: 20px;
+}
+
+#treatments {
+margin-top: 20px;  
+}
+
+#healthybody {
+margin-top: 20px;  
+}
+
+#yogapic {
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+#subtitle-stats {
+  line-height: 10px;
+  font-weight: bold;
+}

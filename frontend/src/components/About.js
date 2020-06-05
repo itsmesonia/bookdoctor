@@ -72,20 +72,15 @@ export default function About() {
 
               <article className="tile is-child notification">
                 
-                <p className="subtitle">GOV.UK: coronavirus advice for traveller- should I tell my GP Im going away?</p>
-                <p className="subtitle">GOV.UK: coronavirus action plan</p>
+                <p className="title"><a href="https://www.gov.uk/guidance/travel-advice-novel-coronavirus" target="_blank" rel="noreferrer">GOV.UK: Coronavirus advice for travellers- should I tell my GP Im going away?</a></p>
+
+
+                <p className="title"><a href="https://www.gov.uk/government/publications/coronavirus-action-plan">GOV.UK: Coronavirus Action Plan</a></p>
 
                 {/* new block for doctors? */}
-                <p className="subtitle">Information For Health Professionals</p>
+                {/* <p className="subtitle">Information For Health Professionals</p> */}
      
-               
-
-                {/* <p>
-                  {article.mainEntityOfpage && article.mainEntityOfPage[0].mainEntityOfPage.map((info, i)=> {
-                    return <p key={i}>{info.text}</p>
-                  }
-                  )}
-                </p> */}
+            
 
                 <p>
                   {article.mainEntityOfPage && article.mainEntityOfPage[0].mainEntityOfPage.map((info, i)=> {
@@ -98,7 +93,9 @@ export default function About() {
                   )}
                 </p>
 
-                <p>
+
+{/* this works but cant access the arrays inside these - ie Advice in other parts of the UK etc, need to access the links for the headlines */}
+                {/* <p>
                   {article.mainEntityOfPage && article.mainEntityOfPage[1].map((info, i)=> {
                     return <p className="title" key={i}>  
                       <a href={URL + info.url} target="_blank" rel="noreferrer">{info.headline.replace(/<[^>]*>/g, ' ')}</a>
@@ -108,28 +105,17 @@ export default function About() {
                     </p>
                   } 
                   )}
-                </p>
+                </p> */}
 
-                {/* <p>
-                  {article.mainEntityOfPage && article.mainEntityOfPage[1].mainEntityOfPage}
-                </p> */}
-                {/* <p>
-                  {article.mainEntityOfPage && article.mainEntityOfPage.map((info, i)=> {
-                    return <p className="title" key={i}> 
-                      <p className="subtitle">
-                        {info.text}</p>
-                    </p>
-                  } 
-                  )}
-                </p> */}
+   
 
                
+                <p className="subtitle">Where can I find more information?</p>
+                <p className="subtitle">{article.description}</p>
+                <p><a href={article.url} target="_blank" rel="noreferrer">NHS Resources here</a></p>
 
              
 
-                <p className="subtitle">Where can I find more information?</p>
-                <p className="subtitle">{article.description}</p>
-                <p>For more information, please check out our</p><a href={article.url} target="_blank" rel="noreferrer">NHS Resources here</a>
               </article>
             </div>
 
@@ -146,6 +132,13 @@ export default function About() {
                 <figure className="image is-4by7">
                   <img src="https://i.imgur.com/KbkSHZJ.jpg" />
                 </figure>
+                <p id="healthybody" className="title">Healthy body</p>
+                <p className="subtitle">Get some practical information and advice for keeping your body in tip-top health.</p><a href="https://www.nhs.uk/live-well/healthy-body/">More info</a> 
+              
+                <figure id="yogapic" className="image is-4by7">
+                  <img src="https://i.imgur.com/gZ5AHPQ.jpg" />
+                </figure>
+              
               </article>
             </div>
           </div>
@@ -196,14 +189,17 @@ export default function About() {
                 </p> */}
                
                          
-                <p className="title">Prevention</p>
+                <p id="prevention" className="title">Prevention</p>
                 <p className="subtitle"> {article.hasPart && article.hasPart[5].description.replace(/<[^>]*>/g, ' ')}</p>
                 <p className="subtitle"> {article.hasPart && article.hasPart[5].text.replace(/<[^>]*>/g, ' ')}</p>
                 <p>NHS guidelines for more information, on prevention </p><a href={article.hasPart && article.hasPart[5].url} target="_blank" rel="noreferrer">here</a>
 
-                <p className="title">Treatments</p>
+                <p id="treatments" className="title">Treatments</p>
                 <p className="subtitle"> {article.hasPart && article.hasPart[4].text.replace(/<[^>]*>/g, ' ')}</p>
 
+                <figure className="image is-4by7">
+                  <img src="https://i.imgur.com/6WnBISG.jpg" />
+                </figure>
               </div>
             </div>
           </article>
