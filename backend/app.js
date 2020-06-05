@@ -37,19 +37,10 @@ app.use('/api', router)
 
 app.use(errorHandler)
 
-app.use(express.static('dist'))
+app.use('/', express.static('dist'))
 
-app.get([
-  '/',
-  '/about',
-  '/history',
-  '/appointment',
-  '/dashboard',
-  '/about',
-  '/register',
-  '/login'
-], (req, res) => {
-  res.sendFile(path.resolve('dist', 'index.html'))
+app.get( '*' , (req, res) => {
+  res.sendFile(path.join('dist', 'index.html'))
 })
 
 app.get('/notfound', (req, res) => {
