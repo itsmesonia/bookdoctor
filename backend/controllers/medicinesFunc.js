@@ -1,4 +1,4 @@
-const Medicines = require('../models/medicines')
+const Medicines = require('../models/Medicines')
 
 
 function create(req, res) {
