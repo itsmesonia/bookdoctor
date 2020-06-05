@@ -55,7 +55,7 @@ app.get('/notfound', (req, res) => {
   res.status(404).sendFile(path.resolve('dist', 'index.html'))
 })
 
-// app.use('/api/*', (req, res) => res.status(404).json({ message: 'Not Found' }))
+app.use('/api/*', (req, res) => res.status(404).json({ message: 'Not Found' }))
 
 // app.use('/*', (req, res) => {
 //   res.redirect('/notfound')
