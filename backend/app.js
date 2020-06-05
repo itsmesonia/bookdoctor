@@ -48,7 +48,7 @@ app.get([
   '/appointment',
   '/history'
 ] , (req, res) => {
-  res.sendFile(path.join('dist', 'index.html'))
+  res.sendFile(path.join('dist', 'index.html', { root: __dirname }))
 })
 
 // app.get('/notfound', (req, res) => {
