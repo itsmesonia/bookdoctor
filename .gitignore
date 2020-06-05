@@ -1,4 +1,4 @@
 .env
 node_modules
-# backend/config/
+backend/config/dev.js
 frontend/dist
