@@ -17,7 +17,6 @@ export default function DeleteAppointment({ id }) {
       console.log(err)
     }
     
-    
   }
 
 
