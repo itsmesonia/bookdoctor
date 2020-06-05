@@ -27,10 +27,10 @@ function register(req, res) {
 // login route -/login
 // user supplies in body of request, email and password only
 function login(req, res) {
-  // const errors = validationResult(req)
-  // if (!errors.isEmpty()) {
-    // return res.status(422).json({ errors: errors.array() })
-  // } else {
+  const errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() })
+  } else {
     User.findOne({ email: req.body.email }) //find the user by that email
       .then((user) => {
         //check to if we found a record and the password provided matches what is in the database
@@ -41,7 +41,7 @@ function login(req, res) {
         res.status(202).json({ message: `Hello ${user.username}`, token, user })
       }) //finally send back a message with that created token
       .catch(() => res.status(401).json({ message: 'Unauthorized' }))
-  // }  s
+  }  
   
 }
 
