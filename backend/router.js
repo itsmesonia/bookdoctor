@@ -60,18 +60,19 @@ router.route('/history/:id')
 
 // ************************ user ************************
 router.post('/register',
-  [
-    check('username').isLength({ min: 2 }).trim().escape(),
-    check('email').isEmail().normalizeEmail(),
-    check('password').not().isEmpty().trim().escape()
-  ], userFunc.register)
+  // [
+  //   check('username').isLength({ min: 2 }).trim().escape(),
+  //   check('email').isEmail().normalizeEmail(),
+  //   check('password').not().isEmpty().trim().escape()
+  // ], 
+  userFunc.register)
 
 
-router.post('/login', [
-  check('email').isEmail().normalizeEmail(),
-  check('password').not().isEmpty().trim().escape()
-], userFunc.login)
-
+router.post('/login', userFunc.login)
+// [
+//   check('email').isEmail().normalizeEmail(),
+//   check('password').not().isEmpty().trim().escape()
+// ],
 
 router.route('/user')
   .get(secureRoute, userFunc.index)
