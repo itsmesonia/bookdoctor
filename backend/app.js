@@ -1,12 +1,10 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
-// require('../database')
 
 const { port, dbURI } = require('./config/environment')
-// const path = require('path')
-
-// const errorHandler = require('./lib/errorHandler')
+const path = require('path')
+const errorHandler = require('./lib/errorHandler')
 const router = require('./router')
 
 
@@ -26,8 +24,8 @@ app.use(bodyParser.json())
 
 app.use((req, res, next) => {
   console.log(`${req.method} to ${req.url}`)
-  // res.header('Access-Control-Allow-Origin', '*')
-  // res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
   next()
 })
 
@@ -37,31 +35,32 @@ app.use((req, res, next) => {
 
 app.use('/api', router)
 
-// app.use(errorHandler)
+app.use(errorHandler)
 
-// app.use(express.static('dist'))
+app.use(express.static('dist'))
 
-// app.get([
-//   '/',
-//   '/doctorcalendar',
-//   '/doctors',
-//   '/dashboard',
-//   '/about',
-//   '/register',
-//   '/login'
-// ], (req, res) => {
-//   res.sendFile(path.resolve('dist', 'index.html'))
-// })
+app.get([
+  '/',
+  '/about',
+  '/history',
+  '/appointment',
+  '/dashboard',
+  '/about',
+  '/register',
+  '/login'
+], (req, res) => {
+  res.sendFile(path.resolve('dist', 'index.html'))
+})
 
-// app.get('/notfound', (req, res) => {
-//   res.status(404).sendFile(path.resolve('dist', 'index.html'))
-// })
+app.get('/notfound', (req, res) => {
+  res.status(404).sendFile(path.resolve('dist', 'index.html'))
+})
 
-// app.use('/api/*', (req, res) => res.status(404).json({ message: 'Not Found' }))
+app.use('/api/*', (req, res) => res.status(404).json({ message: 'Not Found' }))
 
-// app.use('/*', (req, res) => {
-//   res.redirect('/notfound')
-// })
+app.use('/*', (req, res) => {
+  res.redirect('/notfound')
+})
 
 // ************************ listen to the port ************************
 
