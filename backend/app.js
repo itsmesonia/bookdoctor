@@ -39,19 +39,27 @@ app.use(errorHandler)
 
 app.use('/', express.static('dist'))
 
-app.get( '*' , (req, res) => {
-  res.sendFile(path.join('dist', 'index.html'))
+app.get([
+  '/',
+  '/register',
+  '/login',
+  '/dashboard',
+  '/about',
+  '/appointment',
+  '/history'
+] , (req, res) => {
+  res.sendFile(path.resoleve('dist', 'index.html'))
 })
 
-app.get('/notfound', (req, res) => {
-  res.status(404).sendFile(path.resolve('dist', 'index.html'))
-})
+// app.get('/notfound', (req, res) => {
+//   res.status(404).sendFile(path.resolve('dist', 'index.html'))
+// })
 
 app.use('/api/*', (req, res) => res.status(404).json({ message: 'Not Found' }))
 
-app.use('/*', (req, res) => {
-  res.redirect('/notfound')
-})
+// app.use('/*', (req, res) => {
+//   res.redirect('/notfound')
+// })
 
 // ************************ listen to the port ************************
 
