@@ -15,6 +15,9 @@ $nhs-dark-gray: #425563;
 $milk-white: #faf6ef;
 
 
+$large-screen: 700px;
+
+
 
 
 body {
@@ -72,11 +75,9 @@ h1 {
 }
 
 
-.flexBox {
+.navFlexBox {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-direction: column;
 }
 
 .homeTitle {
@@ -206,3 +207,15 @@ h1 {
   align-items: center;
 }
 
+
+
+@media (min-width: $large-screen) {
+
+  .navFlexBox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+}

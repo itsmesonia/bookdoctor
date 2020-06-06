@@ -6,6 +6,10 @@ body {
   position: relative;
 }
 
+h1 {
+  color: #005EB8;
+}
+
 .button {
   border: none;
   outline: none;
@@ -47,11 +51,9 @@ body {
   border-color: #AE2573;
 }
 
-.flexBox {
+.navFlexBox {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-direction: column;
 }
 
 .homeTitle {
@@ -172,66 +174,14 @@ body {
   align-items: center;
 }
 
+@media (min-width: 700px) {
+  .navFlexBox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */
-
-/* About Page*/
-/* .sub-title-stats {
-  font-size: 19px;
-  font-weight: bold;
-  line-height: 1.6;
-} */
-
-#globalstats {
-  margin-top: 40px;
-  line-height: 0.5;
-}
-
-#dateupdated {
-  font-size: 17px;
-  font-weight: normal; 
-}
-
-.container {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-#alert {
-  align-content: flext-start;
-  width: 30px;
-  height: 30px;
-  margin: 3px 3px;
-  /* margin-top: 5px; */
-  padding: 2px;
-}
- 
-/* #statcolumn {
-  width: 500px;
-  margin: 10px;
-} */
-
-#statwidth {
-  width: 190px;
-}
-
-#prevention {
-margin-top: 20px;
-}
-
-#treatments {
-margin-top: 20px;  
-}
-
-#healthybody {
-margin-top: 20px;  
-}
-
-#yogapic {
-  margin-bottom: 10px;
-  margin-top: 20px;
-}
-
-#subtitle-stats {
-  line-height: 10px;
-  font-weight: bold;
-}

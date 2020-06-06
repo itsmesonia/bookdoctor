@@ -58,7 +58,7 @@ const Navbar = () => {
             <div className="navbar-item">
               <Link className='naV' to={'/appointment'}>Book Appointment</Link>
             </div>}
-          {Auth.isAuthenticated() && <div className='flexBox'>
+          {Auth.isAuthenticated() && <div className='navFlexBox'>
             <div className="navbar-item">
               <Link className='naV' to={'/dashboard'}>Dashboard</Link>
             </div>
@@ -67,7 +67,7 @@ const Navbar = () => {
             </div>
           </div>}
           
-          {!Auth.isAuthenticated() && <div className='flexBox'>
+          {!Auth.isAuthenticated() && <div className='navFlexBox'>
             <div className="navbar-item">
               <Link className='naV' to={'/login'}>Login</Link>
             </div>

@@ -13,7 +13,8 @@ import axios from 'axios'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '100vh'
+    // height: '100vh',
+    overFlow: 'hidden'
   },
   cssOutlinedInput: {
     '&$cssFocused $notchedOutline': {
@@ -46,6 +47,11 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2)
+  },
+  box: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
   }
 }))  
 
@@ -191,10 +197,10 @@ export default function Register(props) {
             
           <Link to="/login" className='links'>Already have an account? Login</Link>
 
-          <Box mt={5}>
+          <Box mt={5} className={classes.box}>
+            <small style={{ color: 'red', textAlign: 'center', marginBottom: '20px' }}>By registering, I agree to bookdoctor saving and processing my data for demonstration purposes.</small>
             <div>Copyright © <Link target='blank' className='links' to="https://github.com/soniacweb/bookdoctor">bookdoctor</Link>{' '}{new Date().getFullYear()}</div>
           </Box>
-
         </div>
       </Grid>
     </Grid>

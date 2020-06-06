@@ -22,7 +22,7 @@ export default function ListItems({ open }) {
 
   return (
     <div>
-      <div className='flexBox'>
+      <div className='navFlexBox'>
         <Avatar />
         {open ? <h1>Hello, {`${Auth.getUser().username}`}</h1> : null}
       </div>
