@@ -2,9 +2,9 @@
 
 # Bookdoctor 
 
-A global pandemic has unfortunately led to a deluge and staggering amounts of covid patients coming through the doors. Our already stretched NHS pressured to keep up with the demands of overwhelming numbers without adequate PPE. It got us frustrated with a lot of things we feel are wrong with the system. 
+A global pandemic has unfortunately led to a staggering amount of covid patients coming through the doors of hospitals and GP surgeries across the UK. Our already stretched NHS, are pressured to keep up with the demands of overwhelming numbers without adequate PPE. During lockdown, tt got us frustrated with a lot of things we feel are wrong with the system. 
 
-Somewhow, clapping for the NHS wasn't enough for some of us during these trying times. My friends and I had an idea- wouldn't it be wonderful to ease their burden and patient's? If there wasn't much bureaucracy involved when you wanted to talk to your doctor or have a quick chat about prescriptions on symptoms without clogging up the phones or GP surgeries? In an alternative reality where you don't have to wait 2 weeks to see your GP, we wanted to build a platform where you could easily access your GP's availability, book an appointment if necessary, and/or request for a repeat prescription to avoid clogging up surgeries.
+Somehow, clapping for the NHS wasn't enough for some of us during these trying times. My friends and I had an idea- wouldn't it be wonderful to ease their burden and patients' everywhere? If there wasn't much bureaucracy involved when you wanted to talk to your doctor or have a quick chat about prescriptions on symptoms without clogging up the phones or GP surgeries? In an alternative reality where you don't have to wait 2 weeks to see your GP, we wanted to build a platform where you could easily access your GP's availability, book an appointment if necessary, and/or request for a repeat prescription to avoid clogging up surgeries.
 
 I worked with other developer friends to create this online GP appointment booking system, Bookdoctor. 
 
@@ -85,6 +85,7 @@ You can also register your own account(with real email). Please note that once r
 * JWT
 * SendGrid
 * NHS Corona Virus API
+* Covid Summary Api
 
 #### Frontend & UI: ####
 
@@ -126,7 +127,7 @@ You can also register your own account(with real email). Please note that once r
 
 
 
-### 🧐 Chanllenges
+### 🧐 Challenges
 
 #### User control
 As we want patients and doctors can both use this app. In order to create two different colelctions in the databas, it's easier and DRYer to set a user control in our backend. When user requests an action, the backend middleware will check if this user has the correct authorization for it.
