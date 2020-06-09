@@ -32,7 +32,7 @@ export default function About() {
         minHeight={'140vh'}
         style={{ overflow: 'hidden' }}>
         {/* <h1 className='title'>Stay Home | Save Lives</h1> */}
-        <h3 className='title'>We care about Public Health.</h3>
+        <h3 className='title'>We Care About Public Health.</h3>
         {/* <p className='content'></p> */}
 
         <p className='content'>Find out more on how to keep yourself and your family safe</p>
@@ -46,8 +46,8 @@ export default function About() {
               <article className="tile is-child notification">
                 <p className="content">We've accumilated all the information you need to know from leading health authorities, so you can concentrate on taking care of yourself, your family and your friends.</p>
                 <p className="title">Coronavirus Explained</p>
-                <p className="subtitle">{article.headline}</p>
-                <p className="subtitle">{article.text}</p>
+                <p className="content">{article.headline}</p>
+                <p className="content">{article.text}</p>
 
                 <p>
                   {article.itemListElement && article.itemListElement.map((info, i)=> {
