@@ -20,7 +20,7 @@ export default function About() {
   }, []) 
     
   
-  console.log(article)
+  // console.log(article)
 
   return (
     <div>
@@ -49,19 +49,19 @@ export default function About() {
                 <p className="content">{article.headline}</p>
                 <p className="content">{article.text}</p>
 
-                <p>
+                <div>
                   {article.itemListElement && article.itemListElement.map((info, i)=> {
                     return <p key={i}>{info.name}</p> 
                   }
                   )}
-                </p>
+                </div>
 
-                <p>
+                <div>
                   {article.hasPart && article.hasPart.map((info, i)=> {
                     return <p key={i}>{info.description}</p> 
                   }
                   )}
-                </p>
+                </div>
 
                 {/* <figure className="image is-4by3">
                   <img src="https://i.imgur.com/6WnBISG.jpg" />
@@ -82,16 +82,16 @@ export default function About() {
      
             
 
-                <p>
+                <div>
                   {article.mainEntityOfPage && article.mainEntityOfPage[0].mainEntityOfPage.map((info, i)=> {
-                    return <p className="title" key={i}>  
+                    return <div className="title" key={i}>  
                       <a href={URL + info.url} target="_blank" rel="noreferrer">{info.headline}</a>
                       <p className="subtitle">
                         {info.text}</p>
-                    </p>
+                    </div>
                   }
                   )}
-                </p>
+                </div>
 
 
 {/* this works but cant access the arrays inside these - ie Advice in other parts of the UK etc, need to access the links for the headlines */}

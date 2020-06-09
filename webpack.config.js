@@ -1,12 +1,14 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   entry: './frontend/src/app.js',
   output: {
-    // path: path.resolve('dist'),
-    //filename: 'bundle.js'
+    path: path.resolve('dist'),
+    filename: 'bundle.js',
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -38,6 +40,7 @@ module.exports = {
       template: './frontend/src/index.html',
       filename: 'index.html',
       inject: 'body'
-    })
+    }),
+    new Dotenv()
   ]
 }

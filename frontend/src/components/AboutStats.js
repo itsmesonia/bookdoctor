@@ -13,7 +13,7 @@ export default function AboutStats() {
   }, []) 
     
   
-  console.log(stat)
+  // console.log(stat)
 
   return (
     <div>

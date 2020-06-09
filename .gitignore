@@ -1,5 +1,4 @@
 .env
 node_modules
 backend/config/
-database.js
-
+frontend/dist
