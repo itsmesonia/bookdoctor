@@ -59,7 +59,7 @@
     "react-lazy-hero": "^2.0.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "recharts": "^1.8.5",
+    "recharts": "^2.1.14",
     "regenerator-runtime": "^0.13.5",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
